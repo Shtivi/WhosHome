@@ -1,5 +1,7 @@
 package bl.sensors;
 
+import bl.informationEngine.Hub;
+
 public interface ISensor {
 	/**
 	 * Starts the sensor activity
@@ -20,4 +22,10 @@ public interface ISensor {
 	 * Returns the sensor type (as SensorType enum)
 	 */
 	public SensorType getSensorType();
+	
+	public Hub<SensorEventData> getHub();
+	
+	public void setHub(Hub<SensorEventData> hub);
+	
+	public void detachHub();
 }

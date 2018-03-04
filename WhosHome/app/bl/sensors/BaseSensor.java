@@ -29,8 +29,15 @@ public abstract class BaseSensor implements ISensor {
 		return this.hub;
 	}
 	
-	private void setHub(Hub<SensorEventData> hub) {
+	public void setHub(Hub<SensorEventData> hub) {
 		this.hub = hub;
+	}
+	
+	// API
+	
+	public void detachHub() {
+		this.setHub(null);
+		this.stop();
 	}
 	
 	// Methods
