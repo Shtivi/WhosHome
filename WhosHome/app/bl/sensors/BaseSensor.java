@@ -1,0 +1,44 @@
+package bl.sensors;
+
+import bl.informationEngine.Hub;
+
+public abstract class BaseSensor implements ISensor {
+	// Data members
+	private int ID;
+	private Hub<SensorEventData> hub;
+	
+	// Ctor
+	public BaseSensor(int ID, Hub<SensorEventData> hub) {
+		this.setID(ID);
+		this.setHub(hub);
+	}
+	
+	// Access methods
+	
+	@Override
+	public int getID() {
+		return this.ID;
+	}
+	
+	private void setID(int ID) {
+		this.ID = ID;
+	}
+	
+	public Hub<SensorEventData> getHub() {
+		return this.hub;
+	}
+	
+	private void setHub(Hub<SensorEventData> hub) {
+		this.hub = hub;
+	}
+	
+	// Methods
+	
+	protected void report(SensorEventData eventData) {
+		this.getHub().recieve(eventData);
+	}
+	
+	protected SensorEventData createEventData(EventType eventType, IdentifyingData identifyingData) {
+		return new SensorEventData(eventType, identifyingData, this);
+	}
+}
