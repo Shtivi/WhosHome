@@ -17,16 +17,32 @@
 
         <!-- Javascripts -->
         <script src="./javascripts/app.js"></script>
+        <script src="./javascripts/main-menu.ctrl.js"></script>
         <script src="./views/home/home.ctrl.js"></script>
+        <script src="./views/history/history.ctrl.js"></script>
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="./stylesheets/main.css">
+        <link rel="stylesheet" href="./stylesheets/main-menu.css">
     </head>
 
     <body>
         <div layout="column">
-            <div ng-view flex="75"></div>
-            <div flex="25">Menu</div>
+            <!-- Body content -->
+            <div ng-view flex="80"></div>
+
+            <!-- Main Menu -->
+            <div ng-controller="mainMenuCtrl" id="main-menu"
+                flex="20" layout="row" layout-align="center stretch" 
+                md-colors="{'border-color': 'accent-400'}">
+                <div ng-repeat="menuItem in mainMenuItems" flex="grow" class="menu-item" layout="column" ng-click="navigate(menuItem)"
+                    md-colors="currentPath == menuItem.href ? {'background': 'accent-400'} : {'background': 'primary'}">
+                    <div class="item-icon">
+                        <i class="fa fa-{{menuItem.icon}}"></i>
+                    </div>
+                    {{menuItem.description}}
+                </div>
+            </div>
         </div>
     </body>
 </html>
