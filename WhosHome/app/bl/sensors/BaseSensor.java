@@ -1,5 +1,6 @@
 package bl.sensors;
 
+import bl.identifiers.IdentificationData;
 import bl.informationEngine.Hub;
 
 public abstract class BaseSensor implements ISensor {
@@ -38,7 +39,7 @@ public abstract class BaseSensor implements ISensor {
 		this.getHub().recieve(eventData);
 	}
 	
-	protected SensorEventData createEventData(EventType eventType, IdentifyingData identifyingData) {
+	protected SensorEventData createEventData(EventType eventType, IdentificationData identifyingData) {
 		return new SensorEventData(eventType, identifyingData, this);
 	}
 }

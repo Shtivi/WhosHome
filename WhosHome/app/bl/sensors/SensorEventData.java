@@ -2,15 +2,16 @@ package bl.sensors;
 
 import java.util.Date;
 
+import bl.identifiers.IdentificationData;
 import bl.informationEngine.InformingEvent;
 
 public class SensorEventData extends InformingEvent {
 	// Data members
-	private IdentifyingData identifyingData;
+	private IdentificationData identifyingData;
 	private ISensor sensor;
 	
 	// Ctor
-	public SensorEventData(EventType eventType, IdentifyingData identifyingData, ISensor sensor) {
+	public SensorEventData(EventType eventType, IdentificationData identifyingData, ISensor sensor) {
 		super(eventType);
 		this.setSensor(sensor);
 		this.setIdentifyingData(identifyingData);
@@ -18,11 +19,11 @@ public class SensorEventData extends InformingEvent {
 	
 	// Access methods
 	
-	public IdentifyingData getIdentifyingData() {
+	public IdentificationData getIdentificationData() {
 		return identifyingData;
 	}
 	
-	public void setIdentifyingData(IdentifyingData identifyingData) {
+	public void setIdentificationData(IdentificationData identifyingData) {
 		this.identifyingData = identifyingData;
 	}
 	
