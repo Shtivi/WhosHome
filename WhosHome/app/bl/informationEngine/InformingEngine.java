@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Singleton;
+
 import bl.sensors.ISensor;
 import bl.sensors.SensorEventData;
 import bl.sensors.SensorType;
 import bl.sensors.SensorsFactory;
 
+@Singleton
 public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	// Data members
 	private List<Hub<ActivityEvent>> observers;
@@ -24,7 +27,10 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 		this.setSensorsFactory(new SensorsFactory());
 		
 		// Create sensors
-		this.getSensorsFactory().createSensor(SensorType.NETWORK, this);
+		this.attachSensor(this.getSensorsFactory().createSensor(SensorType.NETWORK, this));
+		
+		// Start sensors
+		this.getSensors().values().forEach(sensor -> sensor.start());
 	}
 	
 	// Access methods

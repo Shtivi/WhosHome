@@ -2,13 +2,11 @@ package bl.sensors.lan;
 
 import bl.informationEngine.Hub;
 import bl.sensors.BaseSensor;
-import bl.sensors.ISensor;
 import bl.sensors.SensorEventData;
 import bl.sensors.SensorType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Map;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;

@@ -14,7 +14,7 @@ public class SensorEventData extends InformingEvent {
 	public SensorEventData(EventType eventType, IdentificationData identifyingData, ISensor sensor) {
 		super(eventType);
 		this.setSensor(sensor);
-		this.setIdentifyingData(identifyingData);
+		this.setIdentificationData(identifyingData);
 	}
 	
 	// Access methods
