@@ -11,6 +11,7 @@ import bl.sensors.ISensor;
 import bl.sensors.SensorEventData;
 import bl.sensors.SensorType;
 import bl.sensors.SensorsFactory;
+import utils.GsonParser;
 
 @Singleton
 public class InformingEngine implements Hub<SensorEventData>, InformingManager {
@@ -30,7 +31,13 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 		this.attachSensor(this.getSensorsFactory().createSensor(SensorType.NETWORK, this));
 		
 		// Start sensors
-		this.getSensors().values().forEach(sensor -> sensor.start());
+		this.getSensors().values().forEach(sensor -> {
+			try {
+				sensor.start();
+			} catch (Exception e) {
+				System.err.println("Sensor " + sensor.toString() + " failed to start: " + e.getMessage());
+			}
+		});
 	}
 	
 	// Access methods
@@ -86,7 +93,7 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	
 	@Override
 	public void recieve(SensorEventData eventData) {
-		
+
 	}
 
 	@Override
