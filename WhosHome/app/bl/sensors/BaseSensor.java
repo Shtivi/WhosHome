@@ -7,13 +7,12 @@ public abstract class BaseSensor implements ISensor {
 	// Data members
 	private int ID;
 	private Hub<SensorEventData> hub;
-	private boolean ready;
+	private SensorState state;
 	
 	// Ctor
 	public BaseSensor(int ID, Hub<SensorEventData> hub) {
 		this.setID(ID);
 		this.setHub(hub);
-		this.setReady(false);
 	}
 	
 	// Access methods
@@ -35,28 +34,33 @@ public abstract class BaseSensor implements ISensor {
 		this.hub = hub;
 		
 		if (hub != null) {
-			this.setReady(true);
+			this.setSensorState(SensorState.READY);
+		} else {
+			this.setSensorState(SensorState.NOT_READY);
 		}
 	}
 	
 	public boolean isReady() {
-		return this.ready;
+		return (this.ready());
 	}
 	
-	protected void setReady(boolean ready) {
-		this.ready = ready;
+	public SensorState getSensorState() {
+		return this.state;
+	}
+	
+	protected void setSensorState(SensorState state) {
+		this.state = state;
 	}
 	
 	// API
 	
 	public void detachHub() {
-		this.setHub(null);
-		this.setReady(false);
 		this.stop();
+		this.setHub(null);
 	}
 	
 	public boolean ready() {
-		return this.isReady();
+		return (this.state == SensorState.READY);
 	}
 	
 	@Override

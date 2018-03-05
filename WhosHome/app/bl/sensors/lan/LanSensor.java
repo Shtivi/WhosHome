@@ -4,6 +4,7 @@ import bl.informationEngine.Hub;
 import bl.sensors.BaseSensor;
 import bl.sensors.EventType;
 import bl.sensors.SensorEventData;
+import bl.sensors.SensorState;
 import bl.sensors.SensorType;
 import utils.GsonParser;
 
@@ -29,11 +30,12 @@ public class LanSensor extends BaseSensor {
 		super(ID, hub);
 		
 		try {
+			// Create a web socket client to communicate with the sensor service
 			sensorWs = new WebSocketClient(new URI(SENSOR_URI)) {
 				
 				@Override
 				public void onOpen(ServerHandshake arg0) {
-					
+					setSensorState(SensorState.ACTIVE);
 				}
 				
 				@Override
@@ -49,14 +51,12 @@ public class LanSensor extends BaseSensor {
 				
 				@Override
 				public void onError(Exception arg0) {
-					// TODO Auto-generated method stub
-					
+					setSensorState(SensorState.ERROR);
 				}
 				
 				@Override
 				public void onClose(int arg0, String arg1, boolean arg2) {
-					// TODO Auto-generated method stub
-					
+					setSensorState(SensorState.READY);
 				}
 			};
 		} catch (URISyntaxException e) {
@@ -81,5 +81,10 @@ public class LanSensor extends BaseSensor {
 	@Override
 	public SensorType getSensorType() {
 		return (SensorType.NETWORK);
+	}
+
+	@Override
+	public String getName() {
+		return ("Lan Scanner");
 	}
 }

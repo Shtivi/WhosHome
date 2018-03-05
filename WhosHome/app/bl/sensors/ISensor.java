@@ -43,4 +43,14 @@ public interface ISensor {
 	 * Returns true if the sensor is ready for action
 	 */
 	public boolean ready();
+	
+	/**
+	 * Returns the SensorState
+	 */
+	public SensorState getSensorState();
+	
+	/**
+	 * Returns the sensor name
+	 */
+	public String getName();
 }
