@@ -87,4 +87,5 @@ public class LanSensor extends BaseSensor {
 	public String getName() {
 		return ("Lan Scanner");
 	}
+
 }

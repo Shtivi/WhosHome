@@ -3,8 +3,9 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET		/						controllers.Assets.at(path="/public", file="main.html")
-GET		/hello					controllers.HomeController.blah()
+GET		/									controllers.Assets.at(path="/public", file="main.html")
+
+GET		/presentEntities					controllers.HomeController.getPresentEntities()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file               controllers.Assets.versioned(path="/public", file: Asset)

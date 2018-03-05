@@ -27,4 +27,24 @@ public class NetworkIdentificationData extends IdentificationData {
 	public void setMac(String mac) {
 		this.mac = mac;
 	}	
+	
+	// API
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!super.equals(obj)) {
+			return false;
+		} else {
+			// Cast to identification data
+			NetworkIdentificationData other = (NetworkIdentificationData) obj;
+			
+			// Compare
+			return (this.getMac().equals(other.getMac()));
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return this.mac;
+	}
 }

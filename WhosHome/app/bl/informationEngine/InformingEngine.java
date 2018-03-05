@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Singleton;
 
 import bl.identifiers.IdentificationCenter;
+import bl.identifiers.IdentificationData;
 import bl.sensors.EventType;
 import bl.sensors.ISensor;
 import bl.sensors.SensorEventData;
@@ -22,6 +23,7 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	private List<Hub<ActivityEvent>> observers;
 	private Map<Integer, ISensor> sensors;
 	private SensorsFactory sensorsFactory;
+	private Map<IdentificationData, Person> presentEntities;
 	
 	// Ctor
 	public InformingEngine() {
@@ -29,6 +31,7 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 		this.setObservers(new ArrayList<Hub<ActivityEvent>>());
 		this.setSensors(new HashMap<Integer, ISensor>());
 		this.setSensorsFactory(new SensorsFactory());
+		this.setPresentEntities(new HashMap<IdentificationData, Person>());
 		
 		// Create sensors
 		this.attachSensor(this.getSensorsFactory().createSensor(SensorType.NETWORK, this));
@@ -69,6 +72,10 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 		this.sensorsFactory = factory;
 	}
 	
+	private void setPresentEntities(Map<IdentificationData, Person> presentEntities) {
+		this.presentEntities = presentEntities;
+	}
+	
 	// Methods
 	
 	private void report(ActivityEvent event) {
@@ -96,13 +103,20 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	
 	@Override
 	public void recieve(SensorEventData eventData) {
-		// Recieved an event from the sensor, now find out who it is
+		// Received an event from the sensor, now find out who it is
 		Person subject = IdentificationCenter.instance().identify(eventData.getIdentificationData());
 		
-		// TODO: add to db, log, etc...
+		// Update present entities holder
+		if (eventData.getEventType() == EventType.IN) {
+			this.getPresentEntities().put(eventData.getIdentificationData(), subject);
+		} else {
+			this.getPresentEntities().remove(eventData.getIdentificationData());
+		}
 		
 		// Report the event to observers
 		this.report(new ActivityEvent(eventData, subject));
+		
+		System.out.println(GsonParser.instance().toJson(eventData));
 	}
 
 	@Override
@@ -113,5 +127,10 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	@Override
 	public void ungisterObserver(Hub<ActivityEvent> observer) {
 		this.getObservers().remove(observer);
+	}
+	
+	@Override
+	public Map<IdentificationData, Person> getPresentEntities() {
+		return this.presentEntities;
 	}
 }
