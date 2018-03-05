@@ -30,8 +30,14 @@ app.config(function($routeProvider, $mdThemingProvider) {
     })
 })
 
-// app.run(function($location, $rootScope) {
-//     $rootScope.$on("$locationChangeStart", function($event, next, current) {
-//         console.log("from " + current + " to " + next);
-//     })
-// })
+app.run(function() {
+    var ws = new WebSocket("ws://localhost:5001");
+    
+    ws.onopen =() => {
+        console.log("Socket connected");
+    }
+
+    ws.onmessage = (msg) => {
+        console.log(msg);
+    }
+})
