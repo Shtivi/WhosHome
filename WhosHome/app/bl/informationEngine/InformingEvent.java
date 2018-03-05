@@ -15,6 +15,11 @@ public abstract class InformingEvent {
 		this.setEventType(eventType);
 	}
 	
+	public InformingEvent(EventType eventType, Date time) {
+		this.setTime(time);
+		this.setEventType(eventType);
+	}
+	
 	// Access methods
 	
 	public Date getTime() {

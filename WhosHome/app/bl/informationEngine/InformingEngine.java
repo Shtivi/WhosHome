@@ -7,10 +7,13 @@ import java.util.Map;
 
 import javax.inject.Singleton;
 
+import bl.identifiers.IdentificationCenter;
+import bl.sensors.EventType;
 import bl.sensors.ISensor;
 import bl.sensors.SensorEventData;
 import bl.sensors.SensorType;
 import bl.sensors.SensorsFactory;
+import models.Person;
 import utils.GsonParser;
 
 @Singleton
@@ -93,7 +96,13 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	
 	@Override
 	public void recieve(SensorEventData eventData) {
-
+		// Recieved an event from the sensor, now find out who it is
+		Person subject = IdentificationCenter.instance().identify(eventData.getIdentificationData());
+		
+		// TODO: add to db, log, etc...
+		
+		// Report the event to observers
+		this.report(new ActivityEvent(eventData, subject));
 	}
 
 	@Override
