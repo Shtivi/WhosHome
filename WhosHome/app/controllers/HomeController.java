@@ -23,6 +23,11 @@ public class HomeController extends Controller {
 	// API
 	
 	public Result getPresentEntities() {
-		return ok(Json.toJson(engine.getPresentEntities()));
+		// Build json
+		ObjectNode json = Json.newObject();
+		json.put("identified", Json.toJson(engine.getPresenceHolder().getIdentifiedEntities()));
+		json.put("unknown", Json.toJson(engine.getPresenceHolder().getUnknownEntities()));
+		
+		return ok(json);
 	}
 }

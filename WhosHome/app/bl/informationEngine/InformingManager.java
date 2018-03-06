@@ -10,6 +10,6 @@ import models.Person;
 public interface InformingManager {
 	void registerObserver(Hub<ActivityEvent> observer);
 	void ungisterObserver(Hub<ActivityEvent> observer);
-	Collection<ActivityEvent> getPresentEntities();
-	public void shutSensorsDown();
+	PresenceHolder getPresenceHolder();
+	void shutSensorsDown();
 }
