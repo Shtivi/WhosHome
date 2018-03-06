@@ -19,7 +19,7 @@ module.exports.addPerson = (person) => {
 
         personObject.save((err, data) => {
             if (err) reject(err);
-            else resolve(data.doc);
+            else resolve(data._doc);
         })
     })
 }

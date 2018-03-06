@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
+var validate = require("mongoose-validator");
 
+// Schema
 var person = new mongoose.Schema({
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
@@ -7,6 +9,6 @@ var person = new mongoose.Schema({
     facebookID: String,
     phoneNo: String,
     MAC: String
-})
+});
 
-mongoose.model = person;
+module.exports = person;
