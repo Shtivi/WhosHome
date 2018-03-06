@@ -7,6 +7,7 @@ app.controller("homeCtrl", function($scope, notificationsServiceUrl, presentEnti
         
         // Init the websocket
         ws = new WebSocket(notificationsServiceUrl);
+        
         ws.onopen =() => {
             console.log("Socket connected");
         }
