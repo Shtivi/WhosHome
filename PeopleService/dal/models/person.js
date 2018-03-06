@@ -3,12 +3,12 @@ var validate = require("mongoose-validator");
 
 // Schema
 var person = new mongoose.Schema({
+    ID: Number,
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
-    idNo: Number,
     facebookID: String,
     phoneNo: String,
-    MAC: String
+    macAddress: String
 });
 
 module.exports = person;

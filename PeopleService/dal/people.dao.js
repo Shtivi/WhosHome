@@ -11,10 +11,10 @@ module.exports.addPerson = (person) => {
         var personObject = new models.Person({
             firstname: person.firstname,
             lastname: person.lastname,
-            idNo: person.idNo,
+            ID: person.ID,
             facebookID: person.facebookID,
             phoneNo: person.phoneNo,
-            MAC: person.MAC
+            macAddress: person.macAddress
         });
 
         personObject.save((err, data) => {
@@ -30,5 +30,40 @@ module.exports.getPeople = () => {
             if (err) reject(err);
             else resolve(data);
         })
+    })
+}
+
+module.exports.getPerson = (_id) => {
+    return new Promise((resolve, reject) => {
+        models.Person.findById(_id, (err, data) => {
+            if (err) reject(err);
+            else {
+                if (data) resolve(data._doc)
+                else resolve(null);
+            };
+        })
+    })
+}
+
+module.exports.deletePerson = (_id) => {
+    return new Promise((resolve, reject) => {
+        models.Person.findByIdAndRemove(_id, (err, data) => {
+            if (err) reject(err);
+            else resolve(data._doc);
+        });
+    })
+}
+
+module.exports.search = (params) => {
+    return new Promise((resolve, reject) => {
+        // Convert to OR expression
+        var findExpression = [];
+
+        params.map(p => {
+            console.log(p);
+            return p;
+        })
+
+        
     })
 }
