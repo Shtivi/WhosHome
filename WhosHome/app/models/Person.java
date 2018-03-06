@@ -3,8 +3,8 @@ package models;
 public class Person {
 	// Data members
 	private String ID;
-	private String firstName;
-	private String lastName;
+	private String firstname;
+	private String lastname;
 	private String macAddress;
 	private String facebookID;
 	
@@ -12,11 +12,11 @@ public class Person {
 	public Person() {
 	}
 	
-	public Person(String ID, String firstName, String lastName, String macAddress, String facebookID) {
+	public Person(String ID, String firstname, String lastname, String macAddress, String facebookID) {
 		this.setID(ID);
 		this.setFacebookID(facebookID);
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
+		this.setFirstname(firstname);
+		this.setLastname(lastname);
 		this.setMacAddress(macAddress);
 	}
 	
@@ -28,17 +28,17 @@ public class Person {
 	public void setID(String iD) {
 		ID = iD;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstName) {
+		this.firstname = firstName;
 	}
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastName) {
+		this.lastname = lastName;
 	}
 	public String getMacAddress() {
 		return macAddress;

@@ -8,7 +8,13 @@ import play.Application;
 import play.GlobalSettings;
 
 public class Global extends GlobalSettings {
+	// Settings
+	public static final String PEOPLE_SERVICE_URL = "http://localhost:5020";
+	
+	// Data members
 	private NotificationsService notificationsService; 
+	
+	// Methods
 	
 	@Override
 	public void onStart(Application app) {
