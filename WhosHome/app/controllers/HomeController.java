@@ -23,20 +23,6 @@ public class HomeController extends Controller {
 	// API
 	
 	public Result getPresentEntities() {
-//		ArrayNode result = Json.newArray();
-//		
-//		// Run over the present entities
-//		for (IdentificationData id : engine.getPresentEntities().keySet()) {
-//			// Convert the current entity to json object
-//			ObjectNode currentEntity = Json.newObject();
-//			currentEntity.put("identificationData", Json.toJson(id));
-//			currentEntity.put("person", Json.toJson(engine.getPresentEntities().get(id)));
-//			
-//			result.add(currentEntity);
-//		}
-//		
-//		return ok(result);
-		
 		return ok(Json.toJson(engine.getPresentEntities()));
 	}
 }

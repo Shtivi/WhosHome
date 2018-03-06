@@ -2,3 +2,9 @@ body {
     font-family: calibri;
     background: #eee;
 }
+
+#body-content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}

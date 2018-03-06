@@ -10,11 +10,10 @@ import models.Person;
 public class ActivityEvent extends InformingEvent {
 	// Data members
 	private Person subject;
-	private ISensor sensor;
 	private int sensorID;
 	private String sensorName;
 	private SensorType sensorType;
-	private IdentificationData identificationData;
+	private String identificationData;
 	
 	// Ctor
 	
@@ -24,7 +23,7 @@ public class ActivityEvent extends InformingEvent {
 		this.setSensorName(sourceEvent.getSensor().getName());
 		this.setSensorType(sourceEvent.getSensor().getSensorType());
 		this.setSubject(subject);
-		this.setIdentificationData(sourceEvent.getIdentificationData());
+		this.setIdentificationData(sourceEvent.getIdentificationData().toString());
 	}
 	
 	// Access methods
@@ -37,11 +36,11 @@ public class ActivityEvent extends InformingEvent {
 		this.subject = subject;
 	}
 	
-	public IdentificationData getIdentificationData() {
+	public String getIdentificationData() {
 		return this.identificationData;
 	}
 	
-	public void setIdentificationData(IdentificationData data) {
+	public void setIdentificationData(String data) {
 		this.identificationData = data;
 	}
 	
