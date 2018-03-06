@@ -8,9 +8,13 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.gson.Gson;
+
 import bl.informationEngine.ActivityEvent;
 import bl.informationEngine.Hub;
 import bl.informationEngine.InformingManager;
+import play.libs.Json;
 import utils.GsonParser;
 
 public class NotificationsService extends WebSocketServer implements Hub<ActivityEvent> {
@@ -55,6 +59,7 @@ public class NotificationsService extends WebSocketServer implements Hub<Activit
 
 	@Override
 	public void recieve(ActivityEvent eventData) {
-		//this.broadcast(GsonParser.instance().toJson(eventData));
+		// Broadcast event to all sockets
+		this.broadcast(Json.toJson(eventData).toString());
 	}
 }

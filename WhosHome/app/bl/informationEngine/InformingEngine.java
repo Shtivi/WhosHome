@@ -1,6 +1,7 @@
 package bl.informationEngine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	private List<Hub<ActivityEvent>> observers;
 	private Map<Integer, ISensor> sensors;
 	private SensorsFactory sensorsFactory;
-	private Map<IdentificationData, Person> presentEntities;
+	private Map<IdentificationData, ActivityEvent> presentEntities;
 	
 	// Ctor
 	public InformingEngine() {
@@ -31,7 +32,7 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 		this.setObservers(new ArrayList<Hub<ActivityEvent>>());
 		this.setSensors(new HashMap<Integer, ISensor>());
 		this.setSensorsFactory(new SensorsFactory());
-		this.setPresentEntities(new HashMap<IdentificationData, Person>());
+		this.setPresentEntities(new HashMap<IdentificationData, ActivityEvent>());
 		
 		// Create sensors
 		this.attachSensor(this.getSensorsFactory().createSensor(SensorType.NETWORK, this));
@@ -72,8 +73,12 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 		this.sensorsFactory = factory;
 	}
 	
-	private void setPresentEntities(Map<IdentificationData, Person> presentEntities) {
+	private void setPresentEntities(Map<IdentificationData, ActivityEvent> presentEntities) {
 		this.presentEntities = presentEntities;
+	}
+	
+	public Map<IdentificationData, ActivityEvent> presentEntities() {
+		return this.presentEntities;
 	}
 	
 	// Methods
@@ -103,20 +108,19 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	
 	@Override
 	public void recieve(SensorEventData eventData) {
-		// Received an event from the sensor, now find out who it is
+		// Received an event from the sensor, now find out who it is and create an activity event
 		Person subject = IdentificationCenter.instance().identify(eventData.getIdentificationData());
+		ActivityEvent event = new ActivityEvent(eventData, subject);
 		
 		// Update present entities holder
 		if (eventData.getEventType() == EventType.IN) {
-			this.getPresentEntities().put(eventData.getIdentificationData(), subject);
+			this.presentEntities().put(eventData.getIdentificationData(), event);
 		} else {
-			this.getPresentEntities().remove(eventData.getIdentificationData());
+			this.presentEntities().remove(eventData.getIdentificationData());
 		}
 		
 		// Report the event to observers
-		this.report(new ActivityEvent(eventData, subject));
-		
-		System.out.println(GsonParser.instance().toJson(eventData));
+		this.report(event);
 	}
 
 	@Override
@@ -130,7 +134,12 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	}
 	
 	@Override
-	public Map<IdentificationData, Person> getPresentEntities() {
-		return this.presentEntities;
+	public Collection<ActivityEvent> getPresentEntities() {
+		return this.presentEntities().values();
+	}
+	
+	@Override
+	public void shutSensorsDown() {
+		this.getSensors().values().forEach((sensor) -> sensor.stop());
 	}
 }

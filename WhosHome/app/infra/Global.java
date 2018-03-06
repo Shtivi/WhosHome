@@ -19,6 +19,7 @@ public class Global extends GlobalSettings {
 	
 	@Override
 	public void onStop(Application app) {
+		// Stop notification service
 		System.out.println("Stopping notification websocket service");
 		try {
 			notificationsService.stop();
@@ -26,5 +27,9 @@ public class Global extends GlobalSettings {
 			System.out.println("Notifications service wasnt closed properly");
 			e.printStackTrace();
 		}
+		
+		// Stop sensors
+		System.out.println("Shutting down sensors");
+		app.injector().instanceOf(InformingManager.class).shutSensorsDown();
 	}
 }

@@ -1,4 +1,4 @@
-var app = angular.module("WhosHome", ['ngMaterial', 'ngRoute']);
+var app = angular.module("WhosHome", ['ngMaterial', 'ngRoute', 'WhosHomeServices']);
 
 app.config(function($routeProvider, $mdThemingProvider) {
     // Theming
@@ -31,13 +31,5 @@ app.config(function($routeProvider, $mdThemingProvider) {
 })
 
 app.run(function() {
-    var ws = new WebSocket("ws://localhost:5001");
     
-    ws.onopen =() => {
-        console.log("Socket connected");
-    }
-
-    ws.onmessage = (msg) => {
-        console.log(msg);
-    }
 })

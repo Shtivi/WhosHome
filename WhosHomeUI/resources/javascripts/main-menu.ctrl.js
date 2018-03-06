@@ -2,7 +2,7 @@ app.controller("mainMenuCtrl", function($scope, $location) {
     $scope.mainMenuItems = [{
         href: 'home',
         icon: 'users',
-        description: "Present"
+        description: "Home"
     }, {
         href: 'history',
         icon: 'history',

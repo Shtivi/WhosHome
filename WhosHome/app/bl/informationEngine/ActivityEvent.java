@@ -1,30 +1,34 @@
 package bl.informationEngine;
 
+import bl.identifiers.IdentificationData;
 import bl.sensors.EventType;
 import bl.sensors.ISensor;
 import bl.sensors.SensorEventData;
+import bl.sensors.SensorType;
 import models.Person;
 
 public class ActivityEvent extends InformingEvent {
 	// Data members
 	private Person subject;
-	private ISensor sensor; 
+	private ISensor sensor;
+	private int sensorID;
+	private String sensorName;
+	private SensorType sensorType;
+	private IdentificationData identificationData;
 	
 	// Ctor
 	
 	public ActivityEvent(SensorEventData sourceEvent, Person subject) {
 		super(sourceEvent.getEventType(), sourceEvent.getTime());
-		this.setSensor(sourceEvent.getSensor());
+		this.setSensorID(sourceEvent.getSensor().getID());
+		this.setSensorName(sourceEvent.getSensor().getName());
+		this.setSensorType(sourceEvent.getSensor().getSensorType());
 		this.setSubject(subject);
-	}
-	
-	public ActivityEvent(EventType eventType, Person subject, ISensor sensor) {
-		super(eventType);
-		this.setSubject(subject);
-		this.setSensor(sensor);
+		this.setIdentificationData(sourceEvent.getIdentificationData());
 	}
 	
 	// Access methods
+	
 	public Person getSubject() {
 		return this.subject;
 	}
@@ -32,12 +36,36 @@ public class ActivityEvent extends InformingEvent {
 	private void setSubject(Person subject) {
 		this.subject = subject;
 	}
-
-	public ISensor getSensor() {
-		return this.sensor;
+	
+	public IdentificationData getIdentificationData() {
+		return this.identificationData;
 	}
 	
-	private void setSensor(ISensor sensor) {
-		this.sensor = sensor;
+	public void setIdentificationData(IdentificationData data) {
+		this.identificationData = data;
+	}
+	
+	public int getSensorID() {
+		return sensorID;
+	}
+	
+	public void setSensorID(int sensorID) {
+		this.sensorID = sensorID;
+	}
+	
+	public String getSensorName() {
+		return sensorName;
+	}
+	
+	public void setSensorName(String sensorName) {
+		this.sensorName = sensorName;
+	}
+	
+	public SensorType getSensorType() {
+		return sensorType;
+	}
+	
+	public void setSensorType(SensorType type) {
+		this.sensorType = type;
 	}
 }
