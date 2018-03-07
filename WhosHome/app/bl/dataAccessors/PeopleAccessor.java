@@ -1,5 +1,7 @@
 package bl.dataAccessors;
 
+import java.util.List;
+
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -34,5 +36,15 @@ public class PeopleAccessor {
 					.getBody();
 		
 		return null;
+	}
+	
+	// TODO: think of good params structure and implement!
+	public List<Person> search(Object params) {
+		return null;
+	}
+	
+	// Search params inner class
+	public class SearchParams {
+		
 	}
 }

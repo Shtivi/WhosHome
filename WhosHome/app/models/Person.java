@@ -7,17 +7,19 @@ public class Person {
 	private String lastname;
 	private String macAddress;
 	private String facebookID;
+	private String phoneNo;
 	
 	// Ctor
 	public Person() {
 	}
 	
-	public Person(String ID, String firstname, String lastname, String macAddress, String facebookID) {
+	public Person(String ID, String firstname, String lastname, String macAddress, String facebookID, String phoneNo) {
 		this.setID(ID);
 		this.setFacebookID(facebookID);
 		this.setFirstname(firstname);
 		this.setLastname(lastname);
 		this.setMacAddress(macAddress);
+		this.setPhoneNo(phoneNo);
 	}
 	
 	// Access methods
@@ -52,4 +54,10 @@ public class Person {
 	public void setFacebookID(String facebookID) {
 		this.facebookID = facebookID;
 	}	
+	public String getPhoneNo() {
+		return this.phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
 }
