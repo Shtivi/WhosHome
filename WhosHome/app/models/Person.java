@@ -2,6 +2,7 @@ package models;
 
 public class Person {
 	// Data members
+	private String _id;
 	private String ID;
 	private String firstname;
 	private String lastname;
@@ -13,7 +14,7 @@ public class Person {
 	public Person() {
 	}
 	
-	public Person(String ID, String firstname, String lastname, String macAddress, String facebookID, String phoneNo) {
+	public Person(String _id, String ID, String firstname, String lastname, String macAddress, String facebookID, String phoneNo) {
 		this.setID(ID);
 		this.setFacebookID(facebookID);
 		this.setFirstname(firstname);
@@ -24,6 +25,12 @@ public class Person {
 	
 	// Access methods
 	
+	public String get_Id() {
+		return this._id;
+	}
+	public void set_Id(String _id) {
+		this._id = _id;
+	}
 	public String getID() {
 		return ID;
 	}

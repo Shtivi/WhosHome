@@ -57,15 +57,15 @@ module.exports.deletePerson = (_id) => {
 module.exports.search = (params) => {
     return new Promise((resolve, reject) => {
         // Convert the params to query AND expression
-        var queryParams = [];
+        var queryParams = {};
 
-        params.forEach((pName) => {
+        for (var pName in params) {
             if (params[pName]) {
-                queryParams.push({ pName: params[pName] });
+                queryParams[pName] = params[pName];
             }
-        })
+        }
         
-        models.Person.find().and(queryParams).exec((err, data) => {
+        models.Person.find(queryParams).exec((err, data) => {
             if (err) reject(err);
             else resolve(data);
         })

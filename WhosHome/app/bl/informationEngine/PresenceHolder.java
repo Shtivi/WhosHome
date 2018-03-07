@@ -41,7 +41,7 @@ public class PresenceHolder {
 		if (event.getSubject() == null) {
 			this.getUnknownEntities().put(event.getIdentificationData(), event);
 		} else {
-			this.getIdentifiedEntities().put(event.getSubject().getID(), event);
+			this.getIdentifiedEntities().put(event.getSubject().get_Id(), event);
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class PresenceHolder {
 		if (event.getSubject() == null) {
 			this.getUnknownEntities().remove(event.getIdentificationData());
 		} else {
-			this.getIdentifiedEntities().remove(event.getSubject().getID());
+			this.getIdentifiedEntities().remove(event.getSubject().get_Id());
 		}
 	}
 	

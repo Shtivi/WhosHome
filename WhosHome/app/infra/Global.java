@@ -2,6 +2,8 @@ package infra;
 
 import java.io.IOException;
 
+import com.mashape.unirest.http.Unirest;
+
 import bl.informationEngine.InformingManager;
 import controllers.NotificationsService;
 import play.Application;

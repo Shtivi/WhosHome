@@ -18,13 +18,13 @@ app.controller("homeCtrl", function($scope, notificationsServiceUrl, presentEnti
 
             if (data.eventType == 'IN') {
                 if (data.subject) {
-                    $scope.entities.identified[data.subject._id] = data;
+                    $scope.entities.identified[data.subject._Id] = data;
                 } else {
                     $scope.entities.unknown[data.identificationData] = data;
                 }
             } else if (data.eventType == 'OUT') {
                 if (data.subject) {
-                    delete $scope.entities.identified[data.subject._id];
+                    delete $scope.entities.identified[data.subject._Id];
                 } else {
                     delete $scope.entities.unknown[data.identificationData];
                 }
