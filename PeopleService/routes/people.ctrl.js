@@ -39,7 +39,18 @@ router.delete('/:id', (req, res, next) => {
 })
 
 router.post('/search', (req, res, next) => {
-  res.send("Not implemented yet");
+  peopleDao.search({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    ID: req.body.ID,
+    facebookID: req.body.ID,
+    phoneNo: req.body.phoneNo,
+    macAddress: req.body.macAddress
+  }).then((results) => {
+    res.send(results);
+  }, (err) => {
+    res.status(500).send(err);
+  })
 })
 
 module.exports = router;
