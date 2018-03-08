@@ -1,4 +1,4 @@
-var app = angular.module("WhosHome", ['ngMaterial', 'ngRoute', 'WhosHomeServices']);
+var app = angular.module("WhosHome", ['ngMaterial', 'ngRoute', 'WhosHomeServices', 'WhosHomeDirectives']);
 
 app.config(function($routeProvider, $mdThemingProvider) {
     // Theming

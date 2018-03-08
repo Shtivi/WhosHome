@@ -34,9 +34,9 @@ public abstract class BaseSensor implements ISensor {
 		this.hub = hub;
 		
 		if (hub != null) {
-			this.setSensorState(SensorState.READY);
+			this.setSensorState(SensorState.READY, null);
 		} else {
-			this.setSensorState(SensorState.NOT_READY);
+			this.setSensorState(SensorState.NOT_READY, null);
 		}
 	}
 	
@@ -48,7 +48,12 @@ public abstract class BaseSensor implements ISensor {
 		return this.state;
 	}
 	
-	protected void setSensorState(SensorState state) {
+	protected void setSensorState(SensorState state, String reason) {
+		// If this is the first init
+		if (this.state != null) {
+			this.getHub().sensorStateChanged(new SensorStateChangedEvent(this, state, this.getSensorState(), reason));
+		}
+		
 		this.state = state;
 	}
 	

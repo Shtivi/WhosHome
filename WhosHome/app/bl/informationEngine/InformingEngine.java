@@ -1,7 +1,6 @@
 package bl.informationEngine;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,14 +8,14 @@ import java.util.Map;
 import javax.inject.Singleton;
 
 import bl.identifiers.IdentificationCenter;
-import bl.identifiers.IdentificationData;
 import bl.sensors.EventType;
 import bl.sensors.ISensor;
 import bl.sensors.SensorEventData;
+import bl.sensors.SensorState;
+import bl.sensors.SensorStateChangedEvent;
 import bl.sensors.SensorType;
 import bl.sensors.SensorsFactory;
 import models.Person;
-import utils.GsonParser;
 
 @Singleton
 public class InformingEngine implements Hub<SensorEventData>, InformingManager {
@@ -117,6 +116,27 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 		
 		// Report the event to observers
 		this.report(event);
+	}
+	
+	@Override
+	public void sensorStateChanged(SensorStateChangedEvent stateEvent) {
+		// Log
+		System.out.println(String.format("Sensor state changed: [#%d %s] from '%s' to '%s'. Reason: '%s'", 
+				stateEvent.getSensorID(), 
+				stateEvent.getSensorName(), 
+				stateEvent.getOldState().toString(), 
+				stateEvent.getNewState().toString(),
+				stateEvent.getReason() == null ? "null" : stateEvent.getReason()));
+		
+		// Look what is the new state
+		if (stateEvent.getNewState() == SensorState.READY ||
+			stateEvent.getNewState() == SensorState.ERROR || 
+			stateEvent.getNewState() == SensorState.ACTIVE) {
+			// Report to observers
+			this.getObservers().forEach((observer) -> {
+				observer.sensorStateChanged(stateEvent);
+			});
+		}
 	}
 
 	@Override

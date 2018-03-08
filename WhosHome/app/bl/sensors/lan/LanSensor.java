@@ -35,7 +35,7 @@ public class LanSensor extends BaseSensor {
 				
 				@Override
 				public void onOpen(ServerHandshake arg0) {
-					setSensorState(SensorState.ACTIVE);
+					setSensorState(SensorState.ACTIVE, null);
 				}
 				
 				@Override
@@ -51,15 +51,16 @@ public class LanSensor extends BaseSensor {
 				
 				@Override
 				public void onError(Exception arg0) {
-					setSensorState(SensorState.ERROR);
+					setSensorState(SensorState.ERROR, arg0.getMessage());
 				}
 				
 				@Override
 				public void onClose(int arg0, String arg1, boolean arg2) {
-					setSensorState(SensorState.READY);
+					setSensorState(SensorState.READY, "Connection with the sensor service closed");
 				}
 			};
 		} catch (URISyntaxException e) {
+			this.setSensorState(SensorState.ERROR, e.getMessage());
 			System.out.println("Error creating lan sensor client");
 		}
 	}
@@ -87,5 +88,4 @@ public class LanSensor extends BaseSensor {
 	public String getName() {
 		return ("Lan Scanner");
 	}
-
 }

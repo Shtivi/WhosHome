@@ -14,6 +14,9 @@ import com.google.gson.Gson;
 import bl.informationEngine.ActivityEvent;
 import bl.informationEngine.Hub;
 import bl.informationEngine.InformingManager;
+import bl.sensors.ISensor;
+import bl.sensors.SensorState;
+import bl.sensors.SensorStateChangedEvent;
 import play.libs.Json;
 import utils.GsonParser;
 
@@ -61,5 +64,10 @@ public class NotificationsService extends WebSocketServer implements Hub<Activit
 	public void recieve(ActivityEvent eventData) {
 		// Broadcast event to all sockets
 		this.broadcast(Json.toJson(eventData).toString());
+	}
+
+	@Override
+	public void sensorStateChanged(SensorStateChangedEvent event) {
+		this.broadcast(Json.toJson(event).toString());
 	}
 }

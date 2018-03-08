@@ -52,12 +52,4 @@ public class PresenceHolder {
 			this.getIdentifiedEntities().remove(event.getSubject().get_Id());
 		}
 	}
-	
-//	public Collection<ActivityEvent> identifiedEntities() {
-//		return this.getIdentifiedEntities().values();
-//	}
-//	
-//	public Collection<ActivityEvent> unknownEntities() {
-//		return this.getUnknownEntities().values();
-//	}
 }

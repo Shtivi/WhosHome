@@ -2,10 +2,17 @@ var WebSocket = require("ws");
 var arpMonitor = require("arp-monitor");
 
 // Start web-socket service
-var wss = new WebSocket.Server({ port: 5010 });
+console.log("Starting the sensor service...")
+var wss = new WebSocket.Server({ port: 5010 }, () => {
+    console.log("Sensor websocket server started at :" + wss.address().port);
+});
 
-wss.on("connection", (socket) => {
-    console.log("connection");
+wss.on("error", (err) => {
+    console.error(err);
+})
+
+wss.on("connection", (socket, req) => {
+    console.log(req.connection.remoteAddress + " connected");
 
     var IN = {
         "eventType": "IN",
@@ -30,4 +37,9 @@ wss.on("connection", (socket) => {
                 socket.send(JSON.stringify(OUT));
         }, 6000);
     }, 3000);
+
+    socket.on("close", (code, reason) => {
+        console.log("disconnection");
+    })
 })
+
