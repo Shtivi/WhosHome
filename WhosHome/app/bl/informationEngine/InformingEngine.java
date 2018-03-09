@@ -1,6 +1,7 @@
 package bl.informationEngine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -127,16 +128,11 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 				stateEvent.getOldState().toString(), 
 				stateEvent.getNewState().toString(),
 				stateEvent.getReason() == null ? "null" : stateEvent.getReason()));
-		
-		// Look what is the new state
-		if (stateEvent.getNewState() == SensorState.READY ||
-			stateEvent.getNewState() == SensorState.ERROR || 
-			stateEvent.getNewState() == SensorState.ACTIVE) {
-			// Report to observers
-			this.getObservers().forEach((observer) -> {
-				observer.sensorStateChanged(stateEvent);
-			});
-		}
+	
+		// Report to observers
+		this.getObservers().forEach((observer) -> {
+			observer.sensorStateChanged(stateEvent);
+		});
 	}
 
 	@Override
@@ -157,5 +153,10 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	@Override
 	public PresenceHolder getPresenceHolder() {
 		return this.presenceHolder;
+	}
+
+	@Override
+	public Collection<ISensor> getAttachedSensors() {
+		return this.getSensors().values();
 	}
 }

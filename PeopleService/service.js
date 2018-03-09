@@ -10,6 +10,7 @@ var app = express();
 
 // Setup
 app.set('port', 5020);
+var server = app.listen(app.get('port'));
 
 var api = require("./routes/api");
 
@@ -35,6 +36,6 @@ app.use(function(req, res, next) {
   res.status(404).send("404 - not found");
 });
 
-app.listen(app.get('port'));
+console.log("Server listening on port " + server.address().port);
 
 module.exports = app;

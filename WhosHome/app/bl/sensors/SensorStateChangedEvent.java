@@ -14,7 +14,7 @@ public class SensorStateChangedEvent extends InformingEvent {
 	// Ctor
 	
 	public SensorStateChangedEvent(ISensor source, SensorState newState, SensorState oldState, String reason) {
-		super(EventType.SYSTEM_EVENT);
+		super(EventType.SENSOR_STATE_CHANGE);
 		
 		this.setSensorID(source.getID());
 		this.setSensorName(source.getName());

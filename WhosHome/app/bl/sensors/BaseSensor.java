@@ -1,5 +1,7 @@
 package bl.sensors;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import bl.identifiers.IdentificationData;
 import bl.informationEngine.Hub;
 
@@ -26,18 +28,19 @@ public abstract class BaseSensor implements ISensor {
 		this.ID = ID;
 	}
 	
+	@JsonIgnore
 	public Hub<SensorEventData> getHub() {
 		return this.hub;
 	}
 	
-	public void setHub(Hub<SensorEventData> hub) {
-		this.hub = hub;
-		
+	public void setHub(Hub<SensorEventData> hub) {		
 		if (hub != null) {
 			this.setSensorState(SensorState.READY, null);
 		} else {
-			this.setSensorState(SensorState.NOT_READY, null);
+			this.setSensorState(SensorState.NOT_READY, "Hub detached");
 		}
+		
+		this.hub = hub;
 	}
 	
 	public boolean isReady() {

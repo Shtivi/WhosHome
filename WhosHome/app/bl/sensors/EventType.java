@@ -1,7 +1,7 @@
 package bl.sensors;
 
 public enum EventType {
-	SYSTEM_EVENT,
+	SENSOR_STATE_CHANGE,
 	IN,
 	OUT,
 }

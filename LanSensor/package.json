@@ -2,9 +2,10 @@
   "name": "lan-sensor",
   "version": "1.0.0",
   "description": "Monitors connections to the LAN by scanning the entries in the arp table.",
-  "main": "index.js",
+  "main": "service.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node service.js"
   },
   "author": "Shtivi",
   "license": "ISC",
