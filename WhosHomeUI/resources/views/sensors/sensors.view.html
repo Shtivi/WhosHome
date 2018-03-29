@@ -1,0 +1,16 @@
+<div layout-padding>
+    <md-grid-list md-cols="2" md-row-height="1:1">
+        <md-grid-tile 
+            style="cursor:pointer"
+            ng-repeat="sensor in sensors"
+            md-rowspan="1" md-colspan="1"
+            md-colors="{'background': statusColors[sensor.sensorState]+'-800'}">
+            <i class="{{sensorIcons[sensor.sensorType]}}" style="font-size:100px"></i>
+            <md-grid-tile-footer>
+                <h3>
+                    <strong>{{sensor.id}}</strong> &nbsp; {{sensor.name}}
+                </h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
