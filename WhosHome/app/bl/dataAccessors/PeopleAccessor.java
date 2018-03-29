@@ -41,7 +41,12 @@ public class PeopleAccessor {
 		// Convert to Person instance
 		Person result = GsonParser.instance().fromJson(personJson.toString(), Person.class);
 		
-		return (result);
+		// Check if found, else return null
+		if (result.get_Id() == null) {
+			return null;
+		} else {
+			return result;
+		}
 	}
 	
 	public Person[] search(SearchParams params) throws Exception {

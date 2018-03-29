@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import bl.informationEngine.InformingManager;
+import exceptions.InvalidSensorActionException;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -24,15 +25,16 @@ public class SensorsController extends Controller {
 	// API
 		
 	public Result getSensors() {
-//		engine.getAttachedSensors().stream().map((sensor) -> {
-//			ObjectNode sensorJson = Json.newObject();
-//			sensorJson
-//				.put("ID", sensor.getID())
-//				.put("sensorType", sensor.getSensorType().toString())
-//				.put("sensorName", sensor.getName())
-//				.put("getSensorType", v)
-//		}).collect(Collectors.toList());
 		return ok(Json.toJson(engine.getAttachedSensors()));
+	}
+	
+	public Result toggleSensor(int sensorID) {
+		try {
+			engine.toggleSensor(sensorID);
+			return ok();
+		} catch (InvalidSensorActionException e) {
+			return badRequest(e.getMessage());
+		}
 	}
 	
 }

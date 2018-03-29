@@ -19,6 +19,7 @@
         <script src="./javascripts/app.js"></script>
         <script src="./javascripts/services/services.js"></script>
         <script src="./javascripts/services/presentEntities.srv.js"></script>
+        <script src="./javascripts/services/sensors.srv.js"></script>
         
         <script src="./javascripts/directives/directives.js"></script>
         <script src="./javascripts/directives/user-card/user-card.js"></script>
@@ -26,6 +27,7 @@
         <script src="./javascripts/main-menu.ctrl.js"></script>
         <script src="./views/home/home.ctrl.js"></script>
         <script src="./views/history/history.ctrl.js"></script>
+        <script src="./views/sensors/sensors.ctrl.js"></script>
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="./stylesheets/main.css">
@@ -35,11 +37,11 @@
     <body>
         <div layout="column">
             <!-- Body content -->
-            <div ng-view flex="80" id="body-content"></div>
+            <div ng-view flex="85" id="body-content"></div>
 
             <!-- Main Menu -->
             <div ng-controller="mainMenuCtrl" id="main-menu"
-                flex="20" layout="row" layout-align="center stretch" 
+                flex="15" layout="row" layout-align="center stretch" 
                 md-colors="{'border-color': 'accent-400'}">
                 <div ng-repeat="menuItem in mainMenuItems" flex="grow" class="menu-item" layout="column" ng-click="navigate(menuItem)"
                     md-colors="currentPath == menuItem.href ? {'background': 'accent-400'} : {'background': 'primary'}">

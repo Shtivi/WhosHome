@@ -1,12 +1,13 @@
 package bl.sensors;
 
 import bl.informationEngine.Hub;
+import exceptions.InvalidSensorActionException;
 
 public interface ISensor {
 	/**
 	 * Starts the sensor activity
 	 */
-	public void start() throws Exception;
+	public void start() throws InvalidSensorActionException;
 	
 	/**
 	 * Stops the sensor activity

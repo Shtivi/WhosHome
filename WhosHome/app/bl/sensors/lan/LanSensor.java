@@ -6,6 +6,7 @@ import bl.sensors.EventType;
 import bl.sensors.SensorEventData;
 import bl.sensors.SensorState;
 import bl.sensors.SensorType;
+import exceptions.InvalidSensorActionException;
 import utils.GsonParser;
 
 import java.net.URI;
@@ -28,48 +29,54 @@ public class LanSensor extends BaseSensor {
 	// Ctor
 	public LanSensor(int ID, Hub<SensorEventData> hub) {
 		super(ID, hub);
-		
-		try {
-			// Create a web socket client to communicate with the sensor service
-			sensorWs = new WebSocketClient(new URI(SENSOR_URI)) {
+	}
+	
+	private WebSocketClient createSensorClient(String uri) throws URISyntaxException {
+		return new WebSocketClient(new URI(uri)) {
+			
+			@Override
+			public void onOpen(ServerHandshake arg0) {
+				setSensorState(SensorState.ACTIVE, null);
+			}
+			
+			@Override
+			public void onMessage(String msg) {
+				// Parse the message to event and report it
+				JsonObject json = GsonParser.instance().fromJson(msg, JsonObject.class);
+				NetworkIdentificationData data = 
+						new NetworkIdentificationData(json.get("ip").getAsString(), json.get("mac").getAsString());
+				EventType eventType = EventType.valueOf(json.get("eventType").getAsString().toUpperCase());
 				
-				@Override
-				public void onOpen(ServerHandshake arg0) {
-					setSensorState(SensorState.ACTIVE, null);
-				}
-				
-				@Override
-				public void onMessage(String msg) {
-					// Parse the message to event and report it
-					JsonObject json = GsonParser.instance().fromJson(msg, JsonObject.class);
-					NetworkIdentificationData data = 
-							new NetworkIdentificationData(json.get("ip").getAsString(), json.get("mac").getAsString());
-					EventType eventType = EventType.valueOf(json.get("eventType").getAsString().toUpperCase());
-					
-					report(createEventData(eventType, data));
-				}
-				
-				@Override
-				public void onError(Exception arg0) {
-					setSensorState(SensorState.ERROR, arg0.getMessage());
-				}
-				
-				@Override
-				public void onClose(int arg0, String arg1, boolean arg2) {
+				report(createEventData(eventType, data));
+			}
+			
+			@Override
+			public void onError(Exception arg0) {
+				setSensorState(SensorState.ERROR, arg0.getMessage());
+			}
+			
+			@Override
+			public void onClose(int arg0, String arg1, boolean arg2) {	
+				if (arg0 != -1) {
 					setSensorState(SensorState.READY, "Connection with the sensor service closed");
 				}
-			};
-		} catch (URISyntaxException e) {
-			this.setSensorState(SensorState.ERROR, e.getMessage());
-			System.out.println("Error creating lan sensor client");
-		}
+			}
+		};
 	}
 	
 	// API
 
 	@Override
-	public void start() throws Exception {
+	public void start() throws InvalidSensorActionException {
 		super.start();
+		
+		try {
+			// Create a web socket client to communicate with the sensor service
+			sensorWs = createSensorClient(SENSOR_URI);
+		} catch (URISyntaxException e) {
+			this.setSensorState(SensorState.ERROR, e.getMessage());
+			System.out.println("Error creating lan sensor client");
+		}
 		
 		sensorWs.connect();
 	}
@@ -77,6 +84,7 @@ public class LanSensor extends BaseSensor {
 	@Override
 	public void stop() {
 		sensorWs.close(0);
+		sensorWs = null;
 	}
 
 	@Override

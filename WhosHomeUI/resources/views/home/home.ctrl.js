@@ -1,4 +1,4 @@
-app.controller("homeCtrl", function($scope, notificationsServiceUrl, presentEntitiesService) {
+app.controller("homeCtrl", function($scope, notificationsServiceUrl, presentEntitiesService, $mdToast) {
     var ws = null;
 
     // Initialization - web the current presence
@@ -9,7 +9,7 @@ app.controller("homeCtrl", function($scope, notificationsServiceUrl, presentEnti
         ws = new WebSocket(notificationsServiceUrl);
         
         ws.onopen =() => {
-            console.log("Socket connected");
+            console.log("Connected to the notifications center");
         }
 
         ws.onmessage = (msg) => {
@@ -33,6 +33,7 @@ app.controller("homeCtrl", function($scope, notificationsServiceUrl, presentEnti
             $scope.$digest();
         }
     }, (err) => {
-        
+        $mdToast.showSimple("Error fetching the present entities.");
+        console.log(err);
     })
 })

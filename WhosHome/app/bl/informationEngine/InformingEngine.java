@@ -16,6 +16,7 @@ import bl.sensors.SensorState;
 import bl.sensors.SensorStateChangedEvent;
 import bl.sensors.SensorType;
 import bl.sensors.SensorsFactory;
+import exceptions.InvalidSensorActionException;
 import models.Person;
 
 @Singleton
@@ -158,5 +159,54 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 	@Override
 	public Collection<ISensor> getAttachedSensors() {
 		return this.getSensors().values();
+	}
+
+	@Override
+	public void startSensor(int sensorID) throws InvalidSensorActionException {
+		// Get sensor
+		ISensor sensor = this.getSensors().get(sensorID);
+		
+		if (sensor == null) {
+			throw new InvalidSensorActionException("Sensor not exist");
+		} else {
+			// If not ready, an exception with a message will be thrown
+			sensor.start();
+		}
+	}
+
+	@Override
+	public void stopSensor(int sensorID) throws InvalidSensorActionException {
+		// Get sensor
+		ISensor sensor = this.getSensors().get(sensorID);
+		
+		if (sensor == null) {
+			throw new InvalidSensorActionException("Sensor not exist");
+		} else {
+			// Check if sensor is active
+			if (sensor.getSensorState() == SensorState.ACTIVE) {
+				sensor.stop();
+			} else {
+				throw new InvalidSensorActionException("Sensor is not active, so it can't be stopped");
+			}
+		}
+	}
+
+	@Override
+	public void toggleSensor(int sensorID) throws InvalidSensorActionException {
+		// Get sensor
+		ISensor sensor = this.getSensors().get(sensorID);
+		
+		if (sensor == null) {
+			throw new InvalidSensorActionException("Sensor not exist");
+		} else {
+			// Toggle
+			if (sensor.getSensorState() == SensorState.ACTIVE) {
+				this.stopSensor(sensorID);
+			} else if (sensor.getSensorState() == SensorState.READY) {
+				this.startSensor(sensorID);
+			} else {
+				throw new InvalidSensorActionException("Sensor current state is " + sensor.getSensorState() + ", therefore no action can be performed.");
+			}
+		}
 	}
 }

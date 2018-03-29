@@ -43,3 +43,23 @@ wss.on("connection", (socket, req) => {
     })
 })
 
+
+// Catch program exit
+function cleanUp() {
+    // Close connections
+    wss.clients.forEach(function each(client) {
+        if (client.readyState === WebSocket.OPEN) {
+          client.terminate();
+        }
+    });
+}
+
+process.on("beforeExit", (code) => {
+    console.log("Disconnecting all clients before exiting...");
+    cleanUp();    
+});
+
+process.on('SIGINT', () => {
+    console.log("Disconnecting all clients before exiting...");
+    cleanUp();    
+})

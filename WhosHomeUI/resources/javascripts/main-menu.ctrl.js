@@ -11,6 +11,10 @@ app.controller("mainMenuCtrl", function($scope, $location) {
         href: "chat",
         icon: "comments",
         description: "Chat"
+    }, {
+        href: "sensors", 
+        icon: "signal",
+        description: "Sensors"
     }]
 
     $scope.$on("$locationChangeSuccess", (event, to, from) => {

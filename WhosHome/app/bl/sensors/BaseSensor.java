@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import bl.identifiers.IdentificationData;
 import bl.informationEngine.Hub;
+import exceptions.InvalidSensorActionException;
 
 public abstract class BaseSensor implements ISensor {
 	// Data members
@@ -72,9 +73,9 @@ public abstract class BaseSensor implements ISensor {
 	}
 	
 	@Override
-	public void start() throws Exception {
+	public void start() throws InvalidSensorActionException {
 		if (!this.ready()) {
-			throw new Exception("Sensor is not ready yet");
+			throw new InvalidSensorActionException("Sensor is not ready yet");
 		}
 	}
 	

@@ -25,6 +25,9 @@ app.config(function($routeProvider, $mdThemingProvider) {
     }).when("/history", {
         templateUrl: "./views/history/history.view.html",
         controller: "historyCtrl"
+    }).when("/sensors", {
+        templateUrl: "./views/sensors/sensors.view.html",
+        controller: "sensorsCtrl"
     }).otherwise({
         redirectTo: "/home"
     })
