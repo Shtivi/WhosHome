@@ -1,4 +1,4 @@
-app.controller("sensorsCtrl", function($scope, sensorsService, $mdToast, notificationsServiceUrl) {
+app.controller("sensorsCtrl", function($scope, sensorsService, $mdToast, notificationsServiceUrl, $mdDialog) {
     // Fetch sensors data
     $scope.fetchSesnors = () => {
         sensorsService.getAttachedSensors().then((res) => {
@@ -46,8 +46,36 @@ app.controller("sensorsCtrl", function($scope, sensorsService, $mdToast, notific
         'NOT_READY': 'yellow'
     }
 
-    // Sensor info dialog
-    $scope.showSensorInfoDialog = (ev, sensor) => {
-
+    // Sensor context menu
+    function dialogController($scope, $mdDialog, sensorData, statusColors, sensorIcons) {
+        $scope.sensor = sensorData;
+        $scope.statusColors = statusColors;
+        $scope.sensorIcons = sensorIcons;
     }
+
+    $scope.contextMenuItems = [{
+        icon: 'fa fa-power-off',
+        description: 'Turn on / off',
+        execute: (sensor) => {
+            sensorsService.toggleSensor(sensor.id).then((res) => {
+                $mdToast.showSimple("Toggling sensor...");
+            }, (err) => {
+                $mdToast.showSimple(err.message);
+            })
+        }
+    }, {
+        icon: 'fa fa-exclamation-circle',
+        description: 'View more details',
+        execute: (sensor) => {
+            $mdDialog.show({
+                templateUrl: './views/sensors/sensors.dialog.html',
+                controller: dialogController,
+                locals: {
+                    sensorData: sensor,
+                    statusColors: $scope.statusColors,
+                    sensorIcons: $scope.sensorIcons
+                }
+            })
+        }
+    }]
 })

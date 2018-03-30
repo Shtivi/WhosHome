@@ -202,10 +202,8 @@ public class InformingEngine implements Hub<SensorEventData>, InformingManager {
 			// Toggle
 			if (sensor.getSensorState() == SensorState.ACTIVE) {
 				this.stopSensor(sensorID);
-			} else if (sensor.getSensorState() == SensorState.READY) {
-				this.startSensor(sensorID);
 			} else {
-				throw new InvalidSensorActionException("Sensor current state is " + sensor.getSensorState() + ", therefore no action can be performed.");
+				this.startSensor(sensorID);
 			}
 		}
 	}

@@ -1,0 +1,24 @@
+<md-dialog flex="80">
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <h1>{{sensor.name}}</h1>
+            
+            <div layout="column"  style="font-size:18px; font-family:calibri">
+                <div layout="row">
+                    <div flex="35">Sensor ID:</div>
+                    <div flex="65">{{sensor.id}}</div>
+                </div>
+
+                <div layout="row">
+                    <div flex="35">Sensor Type:</div>
+                    <div flex="65">{{sensor.sensorType}} &nbsp; <i class="{{sensorIcons[sensor.sensorType]}}"></i></div>
+                </div>
+
+                <div layout="row">
+                    <div flex="35">Status:</div>
+                    <div flex="65">{{sensor.sensorState}}</div>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+</md-dialog>

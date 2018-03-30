@@ -69,7 +69,7 @@ public abstract class BaseSensor implements ISensor {
 	}
 	
 	public boolean ready() {
-		return (this.state == SensorState.READY);
+		return (this.state == SensorState.READY || this.state == SensorState.ERROR);
 	}
 	
 	@Override
