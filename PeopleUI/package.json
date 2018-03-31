@@ -1,0 +1,17 @@
+{
+  "name": "people-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.8.4"
+  },
+  "devDependencies": {
+    "electron": "^1.8.4"
+  }
+}
