@@ -1,6 +1,6 @@
 var app = angular.module("people", ['ngMaterial', 'ngRoute', 'peopleServices']);
 
-app.config(function($routeProvider, $mdThemingProvider) {
+app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     // Theming
     var darkBlueGrey = $mdThemingProvider.extendPalette("blue-grey", {
         '800': "#022C36",
@@ -16,7 +16,16 @@ app.config(function($routeProvider, $mdThemingProvider) {
         .warnPalette("red")
         .backgroundPalette("grey");
 
+    $mdThemingProvider.theme('darkdocs')
+        .primaryPalette('amber')
+        .dark();
+
     $mdThemingProvider.setDefaultTheme("WhosHome");    
+
+    // Icons
+    $mdIconProvider
+        .defaultFontSet('fa')
+        .defaultIconSet('./libs/font-awsome/fontawesome-webfont.svg')
 
     // Routing
     // $routeProvider.when("/home", {

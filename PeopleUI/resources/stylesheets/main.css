@@ -1,0 +1,9 @@
+body {
+    font-family: calibri;
+    background: #eee;
+}
+
+#display-people {
+    word-wrap: break-word;
+    overflow-x: hidden;
+}
