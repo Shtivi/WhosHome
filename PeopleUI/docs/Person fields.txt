@@ -1,0 +1,6 @@
+ID - personal id number
+firstname
+lastname
+macAddress
+facebookID
+phoneNo

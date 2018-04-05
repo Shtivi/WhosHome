@@ -18,6 +18,9 @@
         <!-- Javascripts -->
         <script src="./javascripts/app.js"></script>
         <script src="./javascripts/services/services.js"></script>
+        <script src="./javascripts/services/people.srv.js"></script>
+        
+        <script src="./views/add-person/add-person.ctrl.js"></script>
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="./stylesheets/main.css">
@@ -25,8 +28,7 @@
 
     <body layout="row">
         <!-- Left side: adding a new person -->
-        <div flex="30" md-colors="{'background': 'primary-800'}" layout-align="none center" layout="column" layout-padding>
-            <h2 class="md-headline" style="margin:0">Add Person</h2>
+        <div flex="30" ng-include="'./views/add-person/add-person.html'" ng-controller="addPersonCtrl"></div>
         </div>
 
         <!-- Right side: searching people -->

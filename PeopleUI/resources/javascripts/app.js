@@ -1,6 +1,6 @@
 var app = angular.module("people", ['ngMaterial', 'ngRoute', 'peopleServices']);
 
-app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
+app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider, $mdToastProvider) {
     // Theming
     var darkBlueGrey = $mdThemingProvider.extendPalette("blue-grey", {
         '800': "#022C36",
@@ -18,6 +18,8 @@ app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
 
     $mdThemingProvider.theme('darkdocs')
         .primaryPalette('amber')
+        .accentPalette('dark-blue-grey')
+        .backgroundPalette('grey')
         .dark();
 
     $mdThemingProvider.setDefaultTheme("WhosHome");    
@@ -25,7 +27,7 @@ app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     // Icons
     $mdIconProvider
         .defaultFontSet('fa')
-        .defaultIconSet('./libs/font-awsome/fontawesome-webfont.svg')
+        .defaultIconSet('./libs/font-awsome/fontawesome-webfont.svg');
 
     // Routing
     // $routeProvider.when("/home", {
@@ -42,6 +44,4 @@ app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider) {
     // })
 })
 
-app.run(function() {
-    
-})
+app.constant('serverUrl', 'http://localhost:5020')

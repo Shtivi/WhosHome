@@ -7,3 +7,11 @@ body {
     word-wrap: break-word;
     overflow-x: hidden;
 }
+
+.no-margin {
+    margin:0
+}
+
+#add-person-form md-input-container {
+    margin:0
+}

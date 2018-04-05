@@ -1,0 +1,42 @@
+<div md-theme="darkdocs" md-colors="{'background': 'accent-900'}" layout-fill
+    layout-align="none center" layout="column" layout-padding id="add-person-form">
+    <h2 class="md-headline" style="margin:0" md-colors="{color: 'grey-50'}">Add Person</h2>
+
+    <div layout="row">
+        <md-input-container class="md-block">
+            <label>First name</label>
+            <input type="text" ng-model="person.firstname">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Last name</label>
+            <input type="text" ng-model="person.lastname">
+        </md-input-container>
+    </div>
+
+    <md-input-container class="md-block" md-no-float>
+        <input type="text" placeholder="ID number" ng-model="person.ID">
+    </md-input-container>             
+
+    <md-input-container class="md-block" md-no-float>
+        <input type="text" placeholder="MAC address" ng-model="person.macAddress">
+    </md-input-container>
+
+    <md-input-container class="md-block" md-no-float>
+        <input type="text" placeholder="Facebook ID" ng-model="person.facebookID">
+    </md-input-container>
+
+    <md-input-container class="md-block" md-no-float>
+        <input type="text" placeholder="Phone number" ng-model="person.phoneNo">
+    </md-input-container>            
+
+    <div class="md-block" layout-align="space-around center" layout="row">
+        <div>
+            <md-button class="md-accent md-hue-1 md-raised" ng-click="submitPerson()" ng-disabled="processing">Submit</md-button>
+        </div>
+
+        <div>
+            <md-progress-circular md-mode="indeterminate" ng-show="processing"></md-progress-circular>
+        </div>
+    </div>
+</div>
