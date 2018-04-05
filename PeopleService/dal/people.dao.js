@@ -8,19 +8,26 @@ var ObjectId = mongoose.Types.ObjectId;
 
 module.exports.addPerson = (person) => {
     return new Promise((resolve, reject) => {
-        var personObject = new models.Person({
-            firstname: person.firstname,
-            lastname: person.lastname,
-            ID: person.ID,
-            facebookID: person.facebookID,
-            phoneNo: person.phoneNo,
-            macAddress: person.macAddress
-        });
-
-        personObject.save((err, data) => {
-            if (err) reject(err);
-            else resolve(data._doc);
-        })
+        // Validate
+        if (!person.firstname || !person.lastname) {
+            reject({ message: "A person must have a first name and a last name" });
+        } else {
+            var personObject = new models.Person({
+                firstname: person.firstname,
+                lastname: person.lastname,
+                ID: person.ID,
+                facebookID: person.facebookID,
+                phoneNo: person.phoneNo,
+                macAddress: person.macAddress,
+                insertionDate: new Date().getTime()
+            });
+    
+    
+            personObject.save((err, data) => {
+                if (err) reject(err);
+                else resolve(data._doc);
+            })
+        }
     })
 }
 
