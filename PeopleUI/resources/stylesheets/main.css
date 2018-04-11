@@ -15,3 +15,7 @@ body {
 #add-person-form md-input-container {
     margin:0
 }
+
+.md-fab.md-mini md-icon {
+    font-size: 22px!important;
+}

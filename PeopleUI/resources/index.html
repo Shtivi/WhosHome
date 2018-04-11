@@ -21,6 +21,7 @@
         <script src="./javascripts/services/people.srv.js"></script>
         
         <script src="./views/add-person/add-person.ctrl.js"></script>
+        <script src="./views/view-people/view-people.ctrl.js"></script>
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="./stylesheets/main.css">
@@ -29,19 +30,8 @@
     <body layout="row">
         <!-- Left side: adding a new person -->
         <div flex="30" ng-include="'./views/add-person/add-person.html'" ng-controller="addPersonCtrl"></div>
-        </div>
 
         <!-- Right side: searching people -->
-        <div flex="70" id="display-people" layout="column">
-            <md-whiteframe class="md-whiteframe-2dp" flex="10"  md-theme="darkdocs" md-colors="{'background': 'background-900'}">
-                <md-input-container md-no-float class="md-block" style="margin:4px;">
-                    <md-icon style="font-size:20px">&#xf002</md-icon>
-                    <input type="text" placeholder="Search a person...">
-                </md-input-container>
-            </md-whiteframe>
-            <div flex="90" layout-padding>
-                Results
-            </div>
-        </div>
+        <div flex="70" id="display-people" layout="column" ng-controller="viewPeopleCtrl" ng-include="'./views/view-people/view-people.html'"></div>
     </body>
 </html>

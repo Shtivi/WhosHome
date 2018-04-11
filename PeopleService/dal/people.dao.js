@@ -78,3 +78,12 @@ module.exports.search = (params) => {
         })
     })
 }
+
+module.exports.getLimited = (limit) => {
+    return new Promise((resolve, reject) => {
+        models.Person.find({}).limit(limit).exec((err, data) => {
+            if (err) reject(err);
+            else resolve(data);
+        })
+    })
+}

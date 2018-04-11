@@ -18,6 +18,14 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.get('/limit/:limit', (req, res, next) => {
+  peopleDao.getLimited(Number(req.params.limit)).then((results) => {
+    res.send(results)
+  }, (err) => {
+    res.status(500).send(err)
+  });
+})
+
 router.post('/', (req, res, next) => {
   peopleDao.addPerson(req.body).then((data) => {
     res.send(data);
