@@ -1,14 +1,16 @@
-<!-- Top menu - search & settings -->
+<!-- Search bar -->
 <md-whiteframe class="md-whiteframe-2dp" flex="10"  md-theme="darkdocs" md-colors="{'background': 'background-900'}">
     <md-input-container md-no-float class="md-block" style="margin:4px;">
         <md-icon style="font-size:20px">&#xf002</md-icon>
-        <input type="text" placeholder="Search a person...">
+        <input type="text" placeholder="Search a person..." ng-model="$parent.searchText" ng-keyup="searchInputKeyUp()" ng-keydown="searchInputKeyDown($event)">
     </md-input-container>
 </md-whiteframe>
 <div flex="90" layout-padding>
+    <!-- Buttons menu -->
+    <md-button class="md-fab md-mini md-fab-top-right md-hue-3" ng-click="getPeople()"><md-icon>&#xf021</md-icon></md-button>
+    
     <!-- Display a card for each person -->
-    <md-button class="md-fab md-mini md-fab-top-right md-hue-3"><md-icon>&#xf021</md-icon></md-button>
-    <md-grid-list md-cols="3" md-row-height="1:1" ng-click="">
+    <md-grid-list md-cols="3" md-row-height="1:1" ng-click="" layout-margin>
         <md-grid-tile
             ng-click=""
             ng-repeat="person in people"

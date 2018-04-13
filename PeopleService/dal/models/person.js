@@ -3,7 +3,7 @@ var validate = require("mongoose-validator");
 
 // Schema
 var person = new mongoose.Schema({
-    ID: Number,
+    ID: String,
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
     facebookID: String,

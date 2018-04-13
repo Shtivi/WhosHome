@@ -6,4 +6,8 @@ services.service("peopleService", function(serverUrl, $http) {
     this.getPeopleLimited = (limit) => {
         return $http.get(serverUrl + '/api/people/limit/' + limit);
     }
+
+    this.searchPeople = (searchQuery) => {
+        return $http.get(serverUrl + '/api/people/search/' + searchQuery);
+    }
 })

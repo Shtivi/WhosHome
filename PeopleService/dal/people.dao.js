@@ -61,7 +61,7 @@ module.exports.deletePerson = (_id) => {
     })
 }
 
-module.exports.search = (params) => {
+module.exports.findPeople = (params) => {
     return new Promise((resolve, reject) => {
         // Convert the params to query AND expression
         var queryParams = {};
@@ -77,6 +77,29 @@ module.exports.search = (params) => {
             else resolve(data);
         })
     })
+}
+
+module.exports.search = (params) => {
+    return new Promise((resolve, reject) => {
+        // Convert the params to OR experssions
+        var query = [];
+        
+        for (var paramName in params) {
+            var currentField = {};
+            currentField[paramName] = {
+                $regex: new RegExp(params[paramName], 'i')
+            }
+
+            // Add the current field to the query
+            query.push(currentField);
+        }
+
+        // Execute query
+        models.Person.find().or(query).exec((err, data) => {
+            if (err) reject(err);
+            else resolve(data);
+        })
+    });
 }
 
 module.exports.getLimited = (limit) => {

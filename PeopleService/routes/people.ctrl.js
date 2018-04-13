@@ -47,13 +47,30 @@ router.delete('/:id', (req, res, next) => {
 })
 
 router.post('/search', (req, res, next) => {
-  peopleDao.search({
+  peopleDao.findPeople({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     ID: req.body.ID,
     facebookID: req.body.ID,
     phoneNo: req.body.phoneNo,
     macAddress: req.body.macAddress
+  }).then((results) => {
+    res.send(results);
+  }, (err) => {
+    res.status(500).send(err);
+  })
+})
+
+router.get('/search/:query', (req, res, next) => {
+  var asNumber = (isNaN(req.params.query) ? undefined : req.params.query);
+
+  peopleDao.search({
+    firstname: req.params.query,
+    lastname: req.params.query,
+    ID: req.params.query,
+    facebookID: req.params.query,
+    phoneNo: req.params.query,
+    macAddress: req.params.query
   }).then((results) => {
     res.send(results);
   }, (err) => {
