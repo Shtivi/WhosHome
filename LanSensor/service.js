@@ -58,7 +58,7 @@ if (process.argv.indexOf('--debug') != -1) {
     // Start the monitor
     var monitor = new ArpMonitor();
 
-    ArpMonitor.on("in", (data) => {
+    monitor.on("in", (data) => {
         console.log("[" + new Date() + "] IN: " + data.ip + " " + data.mac);
         broadcastEvent({
             eventType: 'IN',
@@ -67,7 +67,7 @@ if (process.argv.indexOf('--debug') != -1) {
         })
     })
 
-    ArpMonitor.on("out", (data) => {
+    monitor.on("out", (data) => {
         console.log("[" + new Date() + "] OUT: " + data.ip + " " + data.mac);
         broadcastEvent({
             eventType: 'OUT',
