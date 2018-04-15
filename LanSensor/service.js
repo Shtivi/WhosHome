@@ -3,9 +3,18 @@ var ArpMonitor = require('arp-monitor');
 
 // Start web-socket service
 console.log("Starting the sensor service...")
+
 var wss = new WebSocket.Server({ port: 5010 }, () => {
     console.log("Sensor websocket server started at :" + wss.address().port);
 });
+
+wss.broadcast = (data) => {
+    wss.clients.forEach((socket) => {
+        if (socket.readyState == WebSocket.OPEN) {
+            socket.send(JSON.stringify(data));
+        }
+    })
+}
 
 wss.on("error", (err) => {
     console.error(err);
@@ -19,37 +28,28 @@ wss.on("connection", (socket, req) => {
     })
 })
 
-function broadcastEvent(event, clients) {
-    clients.forEach((socket) => {
-        if (socket.readyState == WebSocket.OPEN) {
-            socket.send(JSON.stringify(event));
-        }
-    })
+function broadcastEvent(eventType, eventData) {
+    eventData.eventType = eventType.toUpperCase();
+
+    wss.broadcast(eventData);
 }
 
 // Start the montor
 if (process.argv.indexOf('--debug') != -1) {
     console.log("starting in debug mode...");
 
-    var IN = {
-        "eventType": "IN",
-        "mac": "94-e9-79-67-68-54",
-        "ip": "172.20.10.7"
-    }
-
-    var OUT = {
-        "eventType": "OUT",
+    var data = {
         "mac": "94-e9-79-67-68-54",
         "ip": "172.20.10.7"
     }
 
     setInterval(() => {
-        broadcastEvent(wss.clients, IN);
+        broadcastEvent('in', data);
     }, 6000);
 
     setTimeout(() => {
         setInterval(() => {
-            broadcastEvent(wss.clients, OUT);
+            broadcastEvent('out', data);
         }, 6000);
     }, 3000);
 } else {
@@ -60,20 +60,12 @@ if (process.argv.indexOf('--debug') != -1) {
 
     monitor.on("in", (data) => {
         console.log("[" + new Date() + "] IN: " + data.ip + " " + data.mac);
-        broadcastEvent({
-            eventType: 'IN',
-            mac: data.mac,
-            ip: data.ip
-        })
+        broadcastEvent('in', data);
     })
 
     monitor.on("out", (data) => {
         console.log("[" + new Date() + "] OUT: " + data.ip + " " + data.mac);
-        broadcastEvent({
-            eventType: 'OUT',
-            mac: data.mac,
-            ip: data.ip
-        })
+        broadcastEvent('out', data);
     })
 }
 
