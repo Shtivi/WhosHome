@@ -1,5 +1,5 @@
 var WebSocket = require("ws");
-var arpMonitor = require("arp-monitor");
+var ArpMonitor = require('arp-monitor');
 
 // Start web-socket service
 console.log("Starting the sensor service...")
@@ -14,6 +14,23 @@ wss.on("error", (err) => {
 wss.on("connection", (socket, req) => {
     console.log(req.connection.remoteAddress + " connected");
 
+    socket.on("close", (code, reason) => {
+        console.log("disconnection");
+    })
+})
+
+function broadcastEvent(event, clients) {
+    clients.forEach((socket) => {
+        if (socket.readyState == WebSocket.OPEN) {
+            socket.send(JSON.stringify(event));
+        }
+    })
+}
+
+// Start the montor
+if (process.argv.indexOf('--debug') != -1) {
+    console.log("starting in debug mode...");
+
     var IN = {
         "eventType": "IN",
         "mac": "94-e9-79-67-68-54",
@@ -27,22 +44,38 @@ wss.on("connection", (socket, req) => {
     }
 
     setInterval(() => {
-        if (socket.readyState == WebSocket.OPEN) 
-            socket.send(JSON.stringify(IN))
+        broadcastEvent(wss.clients, IN);
     }, 6000);
 
     setTimeout(() => {
         setInterval(() => {
-            if (socket.readyState == WebSocket.OPEN)
-                socket.send(JSON.stringify(OUT));
+            broadcastEvent(wss.clients, OUT);
         }, 6000);
     }, 3000);
+} else {
+    console.log("Starting monitor");
 
-    socket.on("close", (code, reason) => {
-        console.log("disconnection");
+    // Start the monitor
+    var monitor = new ArpMonitor();
+
+    ArpMonitor.on("in", (data) => {
+        console.log("[" + new Date() + "] IN: " + data.ip + " " + data.mac);
+        broadcastEvent({
+            eventType: 'IN',
+            mac: data.mac,
+            ip: data.ip
+        })
     })
-})
 
+    ArpMonitor.on("out", (data) => {
+        console.log("[" + new Date() + "] OUT: " + data.ip + " " + data.mac);
+        broadcastEvent({
+            eventType: 'OUT',
+            mac: data.mac,
+            ip: data.ip
+        })
+    })
+}
 
 // Catch program exit
 function cleanUp() {
@@ -54,12 +87,8 @@ function cleanUp() {
     });
 }
 
-process.on("beforeExit", (code) => {
-    console.log("Disconnecting all clients before exiting...");
-    cleanUp();    
-});
-
 process.on('SIGINT', () => {
     console.log("Disconnecting all clients before exiting...");
     cleanUp();    
+    process.exit(0);
 })
