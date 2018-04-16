@@ -1,4 +1,4 @@
-app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast) {
+app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDialog) {
     $scope.limit = 9;
     $scope.limitIncreasmentFactor = 12;
     $scope.searchText = '';
@@ -7,7 +7,7 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast) {
     // Methods
 
     $scope.getPeople = () => {
-        peopleService.getPeopleLimited($scope.limit).then((res) => {
+        peopleService.getAllPeople($scope.limit).then((res) => {
             $scope.people = res.data;
             console.log(res.data);
         }, (err) => {
@@ -51,6 +51,16 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast) {
                 }
             }, 1000);
         }
+    }
+
+    $scope.showPersonDialog = (person) => {
+        $mdDialog.show({
+            templateUrl: './views/person-dialog/person-dialog.html',
+            controller: 'personDialogCtrl',
+            locals: {
+                personData: person
+            }
+        })
     }
 
     // Run

@@ -19,3 +19,7 @@ body {
 .md-fab.md-mini md-icon {
     font-size: 22px!important;
 }
+
+.md-fab md-icon {
+    font-size:28px!important;
+}

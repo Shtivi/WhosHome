@@ -1,0 +1,59 @@
+<md-dialog flex="65">
+    <md-dialog-content>
+        <div class="md-dialog-content" layout="column">
+            <!-- Header: image & name -->
+            <div layout="row" flex="35">
+                <div flex="40">
+                    <img src="./images/unknown.png" style="height:100%; width:100%; object-fit:contain">
+                </div>
+                <div flex="60" layout-padding>
+                    <h1 class="md-display-3" style="margin-bottom:0!important">{{person.firstname + ' ' + person.lastname}}</h1>
+                    <md-button class="md-fab md-mini md-hue-3" ng-show="mode=='view'" ng-click="mode='edit'"><md-icon>&#xf044</md-icon></md-button>
+                    <md-button class="md-fab md-mini md-hue-2 md-primary" ng-show="mode=='edit'" ng-click="savePerson()"><md-icon>&#xf0c7</md-icon></md-button>
+                    <md-button class="md-fab md-mini md-warn md-hue-2" ng-click="deletePerson()"><md-icon>&#xf014</md-icon></md-button>
+                </div>
+            </div>
+
+            <!-- Person details -->
+            <div flex="60" layout="column" layout-padding layout-margin class="md-body" ng-show="mode=='view'">
+                <div layout="row">
+                    <div flex="35"><strong>ID</strong></div>
+                    <div>{{person.ID}}</div>
+                </div>
+                <div layout="row">
+                    <div flex="35"><strong>First name</strong></div>
+                    <div>{{person.firstname}}</div>
+                </div>           
+                <div layout="row">
+                    <div flex="35"><strong>Last name</strong></div>
+                    <div>{{person.lastname}}</div>
+                </div>                    
+                <div layout="row">
+                    <div flex="35"><strong>Facebook ID</strong></div>
+                    <div>{{person.facebookID}}</div>
+                </div>
+                <div layout="row">
+                    <div flex="35"><strong>Phone number</strong></div>
+                    <div>{{person.phoneNo}}</div>
+                </div>
+                <div layout="row">
+                    <div flex="35"><strong>MAC address</strong></div>
+                    <div>{{person.macAddress}}</div>
+                </div>                
+                <div layout="row">
+                    <div flex="35"><strong>Insertion date</strong></div>
+                    <div>{{person.insertionDate | date: 'dd/MM/yyyy hh:mm'}}</div>
+                </div>                
+                <div layout="row">
+                    <div flex="35"><strong>Hash Code</strong></div>
+                    <div>{{person._id}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit mode -->
+        <div flex="60" layout="column" layout-margin layout-padding class="md-body" ng-show="mode=='edit'">
+            Edit mode
+        </div>
+    </md-dialog-content>
+</md-dialog>
