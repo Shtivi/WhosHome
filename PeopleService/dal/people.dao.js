@@ -110,3 +110,12 @@ module.exports.getLimited = (limit) => {
         })
     })
 }
+
+module.exports.updatePerson = (personData) => {
+    return new Promise((resolve, reject) => {
+        models.Person.findByIdAndUpdate(personData._id, personData, {upsert: true}, (err, data) => {
+            if (err) reject(err);
+            else resolve(data);
+        })
+    })
+}

@@ -35,7 +35,19 @@ router.post('/', (req, res, next) => {
 })
 
 router.put('/', (req, res, next) => {
-  res.send("Not implemented yet");
+  peopleDao.updatePerson({
+    _id: req.body._id,
+    ID: req.body.ID,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    facebookID: req.body.facebookID,
+    phoneNo: req.body.phoneNo,
+    macAddress: req.body.macAddress
+  }).then((data) => {
+    res.send(data);
+  }, (err) => {
+    res.status(500).send(err);
+  })
 })
 
 router.delete('/:id', (req, res, next) => {
