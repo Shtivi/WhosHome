@@ -1,6 +1,8 @@
 var WebSocket = require("ws");
 var ArpMonitor = require('arp-monitor');
 
+var online = [];
+
 // Start web-socket service
 console.log("Starting the sensor service...")
 
@@ -22,6 +24,10 @@ wss.on("error", (err) => {
 
 wss.on("connection", (socket, req) => {
     console.log(req.connection.remoteAddress + " connected");
+    socket.send({
+        eventType: 'currentlyOnline',
+        data: online
+    });
 
     socket.on("close", (code, reason) => {
         console.log("disconnection");
@@ -45,11 +51,17 @@ if (process.argv.indexOf('--debug') != -1) {
 
     setInterval(() => {
         broadcastEvent('in', data);
+        online[data.mac] = {
+            mac: data.mac,
+            ip: data.ip,
+            time: new Date()
+        }
     }, 6000);
 
     setTimeout(() => {
         setInterval(() => {
             broadcastEvent('out', data);
+            delete online[data.mac];
         }, 6000);
     }, 3000);
 } else {
@@ -59,12 +71,18 @@ if (process.argv.indexOf('--debug') != -1) {
     var monitor = new ArpMonitor();
 
     monitor.on("in", (data) => {
-        console.log("[" + new Date() + "] IN: " + data.ip + " " + data.mac);
+        console.log("[" + new Date().toLocaleDateString() + "] IN: " + data.ip + " " + data.mac);
+        online[data.mac] = {
+            mac: data.mac,
+            ip: data.ip,
+            time: new Date()
+        }
         broadcastEvent('in', data);
     })
 
     monitor.on("out", (data) => {
         console.log("[" + new Date() + "] OUT: " + data.ip + " " + data.mac);
+        delete online[data.mac];
         broadcastEvent('out', data);
     })
 }
