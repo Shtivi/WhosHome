@@ -19,7 +19,8 @@ module.exports.addPerson = (person) => {
                 facebookID: person.facebookID,
                 phoneNo: person.phoneNo,
                 macAddress: person.macAddress,
-                insertionDate: new Date().getTime()
+                insertionDate: new Date().getTime(),
+                pictures: []
             });
     
     
@@ -31,7 +32,7 @@ module.exports.addPerson = (person) => {
     })
 }
 
-module.exports.getPeople = () => {
+module.exports.getAllPeople = () => {
     return new Promise((resolve, reject) => {
         models.Person.find({}, (err, data) => {
             if (err) reject(err);
@@ -40,14 +41,26 @@ module.exports.getPeople = () => {
     })
 }
 
+module.exports.getAllPeopleMinified = () => {
+    return new Promise((resolve, reject) => {
+        models.Person
+            .find({})
+            .select({
+                "firstname": 1,
+                "lastname": 1
+            })
+            .exec((err, data) => {
+                if (err) reject(err);
+                else resolve(data);
+            })
+    })
+}
+
 module.exports.getPerson = (_id) => {
     return new Promise((resolve, reject) => {
         models.Person.findById(_id, (err, data) => {
             if (err) reject(err);
-            else {
-                if (data) resolve(data._doc)
-                else resolve(null);
-            };
+            resolve(data);
         })
     })
 }

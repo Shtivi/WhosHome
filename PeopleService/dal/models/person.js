@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var validate = require("mongoose-validator");
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Schema
 var person = new mongoose.Schema({
@@ -9,7 +9,9 @@ var person = new mongoose.Schema({
     facebookID: String,
     phoneNo: String,
     macAddress: String,
-    insertionDate: Date
+    insertionDate: Date,
+    pictures: [ObjectId]
 });
+
 
 module.exports = person;

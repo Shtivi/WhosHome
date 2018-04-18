@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var peopleCtrl = require("./people.ctrl");
-
-router.use('/people', peopleCtrl);
+router.use('/people', require("./people.ctrl"));
+router.use('/pictures', require("./pictures.ctrl"));
 
 module.exports = router;
