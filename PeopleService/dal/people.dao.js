@@ -108,7 +108,7 @@ module.exports.search = (params) => {
         }
 
         // Execute query
-        models.Person.find().or(query).exec((err, data) => {
+        models.Person.find().or(query).select({'firstname': 1, 'lastname': 1}).exec((err, data) => {
             if (err) reject(err);
             else resolve(data);
         })
