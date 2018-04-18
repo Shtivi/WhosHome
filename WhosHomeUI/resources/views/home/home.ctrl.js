@@ -16,6 +16,8 @@ app.controller("homeCtrl", function($scope, notificationsServiceUrl, presentEnti
             // From string to objet
             data = JSON.parse(msg.data);
 
+            console.log(data);
+
             if (data.eventType == 'IN') {
                 if (data.subject) {
                     $scope.entities.identified[data.subject._Id] = data;
