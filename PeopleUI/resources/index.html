@@ -32,7 +32,7 @@
         <!-- Left side: adding a new person -->
         <div flex="30" ng-include="'./views/add-person/add-person.html'" ng-controller="addPersonCtrl"></div>
 
-        <!-- Right side: searching people -->
-        <div flex="70" id="display-people" layout="column" ng-controller="viewPeopleCtrl" ng-include="'./views/view-people/view-people.html'"></div>
+        <!-- Right side: Main view -->
+        <div flex="70" id="display-people" layout="column" ng-view></div>
     </body>
 </html>

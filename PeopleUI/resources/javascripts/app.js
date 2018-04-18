@@ -30,18 +30,15 @@ app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider, $mdToas
         .defaultIconSet('./libs/font-awsome/fontawesome-webfont.svg');
 
     // Routing
-    // $routeProvider.when("/home", {
-    //     templateUrl: "./views/home/home.view.html",
-    //     controller: "homeCtrl"
-    // }).when("/history", {
-    //     templateUrl: "./views/history/history.view.html",
-    //     controller: "historyCtrl"
-    // }).when("/sensors", {
-    //     templateUrl: "./views/sensors/sensors.view.html",
-    //     controller: "sensorsCtrl"
-    // }).otherwise({
-    //     redirectTo: "/home"
-    // })
+    $routeProvider.when("/people", {
+        templateUrl: "./views/view-people/view-people.html",
+        controller: "viewPeopleCtrl"
+    }).when("/people/:id", {
+        templateUrl: "./views/person-dialog/person-dialog.html",
+        controller: "personDialogCtrl"
+    }).otherwise({
+        redirectTo: "/people"
+    })
 })
 
 app.constant('serverUrl', 'http://localhost:5020')

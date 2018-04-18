@@ -2,7 +2,7 @@
 <md-whiteframe class="md-whiteframe-2dp" flex="10"  md-theme="darkdocs" md-colors="{'background': 'background-900'}">
     <md-input-container md-no-float class="md-block" style="margin:4px;">
         <md-icon style="font-size:20px">&#xf002</md-icon>
-        <input type="text" placeholder="Search a person..." ng-model="$parent.searchText" ng-keyup="searchInputKeyUp()" ng-keydown="searchInputKeyDown($event)">
+        <input type="text" placeholder="Search a person..." ng-model="searchText" ng-keyup="searchInputKeyUp()" ng-keydown="searchInputKeyDown($event)">
     </md-input-container>
 </md-whiteframe>
 <div flex="90" layout-padding>
@@ -10,7 +10,7 @@
     <md-button class="md-fab md-mini md-fab-top-right md-hue-3" ng-click="getPeople()"><md-icon>&#xf021</md-icon></md-button>
     
     <!-- Spinner -->
-    <div layout-align="center center" ng-if="loading" layout="column">
+    <div layout-align="center center" ng-show="loading" layout="column">
         <md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>
     </div>
 

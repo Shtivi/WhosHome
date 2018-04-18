@@ -1,4 +1,4 @@
-app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDialog) {
+app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDialog, $location) {
     $scope.limit = 9;
     $scope.limitIncreasmentFactor = 12;
     $scope.searchText = '';
@@ -13,6 +13,7 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDi
         peopleService.getAllPeople($scope.limit).then((res) => {
             $scope.people = res.data;
             console.log(res.data);
+            $scope.searchText = '';
             $scope.loading = false;
         }, (err) => {
             $scope.error = "Failed to load the people from the server, it's probably because the server is unavailable or offline.";
@@ -64,13 +65,7 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDi
     }
 
     $scope.showPersonDialog = (person) => {
-        $mdDialog.show({
-            templateUrl: './views/person-dialog/person-dialog.html',
-            controller: 'personDialogCtrl',
-            locals: {
-                personData: person
-            }
-        })
+        $location.path('/people/' + person._id);
     }
 
     // Run

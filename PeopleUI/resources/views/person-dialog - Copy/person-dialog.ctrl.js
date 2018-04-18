@@ -1,8 +1,8 @@
-app.controller("personDialogCtrl", function($scope, $routeParams, peopleService, $mdDialog, $mdToast) {
+app.controller("personDialogCtrl", function($scope, peopleService, personData, $mdDialog, $mdToast) {
     $scope.mode = 'view';
 
     $scope.loadPerson = () => {
-        peopleService.getPerson($routeParams.id).then((res) => {
+        peopleService.getPerson(personData._id).then((res) => {
             $scope.person = res.data;
         }, (err) => {
             $mdToast.showSimple('Error loading the person details');
