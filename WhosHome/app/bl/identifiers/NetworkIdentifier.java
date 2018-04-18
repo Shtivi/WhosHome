@@ -9,7 +9,18 @@ public class NetworkIdentifier implements Identifier<NetworkIdentificationData> 
 	@Override
 	public Person identify(NetworkIdentificationData identificationData) {
 		try {
-			return PeopleAccessor.instance().getByID("5a9f28e6ffb702e7786254b8");
+			Person[] results = 
+					PeopleAccessor.instance().search(
+							PeopleAccessor
+							.instance()
+							.createSearchParams()
+							.setMacAddress(identificationData.getMac())); 
+			
+			if (results == null || results.length == 0) {
+				return null;
+			} else {
+				return results[0];
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -21,7 +21,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class LanSensor extends BaseSensor {
-	private static final String SENSOR_URI = "ws://localhost:5010";  
+	private static final String SENSOR_URI = "ws://192.168.1.33:5010";  
 
 	// Data members
 	private WebSocketClient sensorWs;
