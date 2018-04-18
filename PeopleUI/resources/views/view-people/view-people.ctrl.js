@@ -2,17 +2,23 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDi
     $scope.limit = 9;
     $scope.limitIncreasmentFactor = 12;
     $scope.searchText = '';
+    $scope.loading = false;
     var lastKeypressTime = null;
 
     // Methods
 
     $scope.getPeople = () => {
+        $scope.loading = true;
+        
         peopleService.getAllPeople($scope.limit).then((res) => {
             $scope.people = res.data;
             console.log(res.data);
+            $scope.loading = false;
         }, (err) => {
-            $mdToast.showSimple('Failed to load people');
+            $scope.error = "Failed to load the people from the server, it's probably because the server is unavailable or offline.";
+            $scope.people = [];
             console.log(err);
+            $scope.loading = false;
         })
     }
 
@@ -21,12 +27,16 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDi
     }
 
     var search = (searchText) => {
+        $scope.loading = true;
+        
         peopleService.searchPeople($scope.searchText).then((res) => {
             $scope.people = res.data;
             console.log(res.data);
+            $scope.loading = false;
         }, (err) => {
             $mdToast.showSimple('Failed to search people');
             console.log(err);
+            $scope.loading = false;
         })
     }
 

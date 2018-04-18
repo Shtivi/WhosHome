@@ -3,6 +3,10 @@ services.service("peopleService", function(serverUrl, $http) {
         return $http.post(serverUrl + '/api/people', personData);
     }
 
+    this.getPerson = (_id) => {
+        return $http.get(serverUrl + '/api/people/' + _id);
+    }
+
     this.getPeopleLimited = (limit) => {
         return $http.get(serverUrl + '/api/people/limit/' + limit);
     }

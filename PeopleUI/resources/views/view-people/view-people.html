@@ -9,6 +9,19 @@
     <!-- Buttons menu -->
     <md-button class="md-fab md-mini md-fab-top-right md-hue-3" ng-click="getPeople()"><md-icon>&#xf021</md-icon></md-button>
     
+    <!-- Spinner -->
+    <div layout-align="center center" ng-if="loading" layout="column">
+        <md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+    </div>
+
+    <!-- If error... -->
+    <div ng-if="error">
+        <div layout-align="center center" md-colors="{color: 'warn-500'}" layout="column" style="font-size:24px;">
+            <div><md-icon style="font-size:120px; height:auto; width:auto">&#xf06a</md-icon></div>
+            <div style="text-align: center">{{error}}</div>
+        </div>
+    </div>
+
     <!-- Display a card for each person -->
     <md-grid-list md-cols="3" md-row-height="1:1" ng-click="" >
         <md-grid-tile

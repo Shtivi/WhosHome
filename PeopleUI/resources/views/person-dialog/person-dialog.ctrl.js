@@ -1,6 +1,13 @@
 app.controller("personDialogCtrl", function($scope, peopleService, personData, $mdDialog, $mdToast) {
-    $scope.person = personData;
     $scope.mode = 'view';
+
+    $scope.loadPerson = () => {
+        peopleService.getPerson(personData._id).then((res) => {
+            $scope.person = res.data;
+        }, (err) => {
+            $mdToast.showSimple('Error loading the person details');
+        });
+    }
 
     $scope.savePerson = () => {
         peopleService.updatePerson($scope.person).then((res) => {
@@ -29,4 +36,9 @@ app.controller("personDialogCtrl", function($scope, peopleService, personData, $
 
             });
     }
+
+    // Run
+    (() => {
+        $scope.loadPerson();
+    })();
 })
