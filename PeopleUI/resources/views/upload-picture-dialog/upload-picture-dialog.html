@@ -1,7 +1,9 @@
-<md-dialog>
+<link href="./views/upload-picture-dialog/upload-picture.css" rel="stylesheet">
+
+<md-dialog ng-init="init()" flex="60">
     <md-dialog-content>
         <div class="md-dialog-content">
-            Upload a picture dialog
+            <div id="dropzone" class="dropzone"></div>
         </div>
     </md-dialog-content>
 </md-dialog>
