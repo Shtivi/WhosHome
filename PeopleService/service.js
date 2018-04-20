@@ -4,15 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require("mongoose")
+var mongoose = require("mongoose");
 
 var app = express();
 
 // Setup
+app.set('root', __dirname);
 app.set('port', 5020);
 var server = app.listen(app.get('port'));
 
-var api = require("./routes/api");
+var api = require("./routes/api")(app);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

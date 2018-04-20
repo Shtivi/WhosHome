@@ -11,6 +11,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "express-fileupload": "^0.4.0",
     "face-recognition": "^0.8.1",
     "jade": "~1.11.0",
     "mongoose": "^5.0.9",

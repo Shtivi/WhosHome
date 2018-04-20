@@ -1,7 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var fileUpload = require('express-fileupload');
 
-router.use('/people', require("./people.ctrl"));
-router.use('/pictures', require("./pictures.ctrl"));
+module.exports = (app) => {
+    app.use(fileUpload());
 
-module.exports = router;
+    router.use('/people', require("./people.ctrl"));
+    router.use('/pictures', require("./pictures.ctrl"));
+
+    return router;
+};
