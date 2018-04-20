@@ -1,6 +1,6 @@
 var app = angular.module("people", ['ngMaterial', 'ngRoute', 'peopleServices']);
 
-app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider, $mdToastProvider) {
+app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider, $mdToastProvider, $mdDialogProvider) {
     // Theming
     var darkBlueGrey = $mdThemingProvider.extendPalette("blue-grey", {
         '800': "#022C36",
@@ -38,6 +38,16 @@ app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider, $mdToas
         controller: "personDialogCtrl"
     }).otherwise({
         redirectTo: "/people"
+    })
+
+    // Dialogs
+    $mdDialogProvider.addPreset('uploadPicture', {
+        options: function() {
+            return {
+                templateUrl: './views/upload-picture-dialog/upload-picture-dialog.html',
+                controller: 'uploadPictureCtrl'
+            }
+        }
     })
 })
 

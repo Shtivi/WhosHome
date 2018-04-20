@@ -7,7 +7,10 @@
 </md-whiteframe>
 <div flex="90" layout-padding>
     <!-- Buttons menu -->
-    <md-button class="md-fab md-mini md-fab-top-right md-hue-3" ng-click="getPeople()"><md-icon>&#xf021</md-icon></md-button>
+    <div style="position: absolute; top:20px; right:20px; bottom: auto; left: auto">
+            <md-button class="md-fab md-mini md-hue-3" ng-click="getPeople()" style="margin: 0"><md-icon>&#xf021</md-icon></md-button>
+        <md-button class="md-fab md-mini md-hue-3" ng-click="uploadPictureDialog()" style="margin: 0"><md-icon>&#xf03e</md-icon></md-button>
+    </div>
     
     <!-- Spinner -->
     <div layout-align="center center" ng-show="loading" layout="column">

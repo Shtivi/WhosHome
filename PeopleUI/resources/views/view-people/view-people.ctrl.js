@@ -68,6 +68,10 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDi
         $location.path('/people/' + person._id);
     }
 
+    $scope.uploadPictureDialog = () => {
+        $mdDialog.show($mdDialog.uploadPicture());
+    }
+
     // Run
     (() => {
         $scope.getPeople();
