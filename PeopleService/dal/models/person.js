@@ -13,5 +13,4 @@ var person = new mongoose.Schema({
     pictures: [ObjectId]
 });
 
-
 module.exports = person;

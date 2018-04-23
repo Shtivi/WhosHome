@@ -5,9 +5,12 @@ var ObjectId = mongoose.Types.ObjectId;
 
 // API
 
-module.exports.addPicture = (path, tagged) => {
+module.exports.addPicture = (picture) => {
     return new Promise((resolve, reject) => {
-        reject("not implemeted");
+        picture.save((err, data) => {
+            if (err) reject(err);
+            else resolve(data);
+        })
     });
 }
 

@@ -1,0 +1,12 @@
+.people-picture img.picture-element {
+    width:100%;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.people-picture .face {
+    cursor: pointer;
+    border: 2px dotted yellow;
+    box-shadow: 0 0 6px rgba(0,0,0,0.7);
+    position: absolute;
+}

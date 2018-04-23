@@ -15,6 +15,7 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDi
             console.log(res.data);
             $scope.searchText = '';
             $scope.loading = false;
+            $scope.error = null;
         }, (err) => {
             $scope.error = "Failed to load the people from the server, it's probably because the server is unavailable or offline.";
             $scope.people = [];

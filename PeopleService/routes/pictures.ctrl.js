@@ -7,8 +7,8 @@ router.post('/upload', (req, res, next) => {
     if (!req.files) {
         res.status(400).send("No files uploaded");
     } else {
-        picturesBL.uploadPicture(req.files.file).then(() => {
-            res.send();
+        picturesBL.uploadPicture(req.files.file).then((pictureData) => {
+            res.send(pictureData);
         }, (err) => {
             res.status(500).send(err);
         })

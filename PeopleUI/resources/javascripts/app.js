@@ -1,4 +1,4 @@
-var app = angular.module("people", ['ngMaterial', 'ngRoute', 'peopleServices']);
+var app = angular.module("people", ['ngMaterial', 'ngRoute', 'peopleServices', 'peopleDirectives']);
 
 app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider, $mdToastProvider, $mdDialogProvider) {
     // Theming

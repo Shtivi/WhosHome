@@ -1,9 +1,19 @@
 <link href="./views/upload-picture-dialog/upload-picture.css" rel="stylesheet">
 
-<md-dialog ng-init="init()" flex="60">
+<md-dialog ng-init="init()" flex="70">
     <md-dialog-content>
         <div class="md-dialog-content">
-            <div id="dropzone" class="dropzone"></div>
+            <!-- Step 1 -->
+            <div ng-show="step == '1'">
+                <div id="dropzone" class="dropzone"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div ng-if="step == '2'">
+                <div style="position: relative;">
+                    <people-picture img-src='fileURL' faces='picture.faces'></people-picture>
+                </div>
+            </div>
         </div>
     </md-dialog-content>
 </md-dialog>
