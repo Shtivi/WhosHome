@@ -24,7 +24,8 @@ directives.directive("peoplePicture", function($peoplePicture) {
                         x: face.x * xRatio,
                         y: face.y * yRatio,
                         width: face.width * xRatio,
-                        height: face.height * yRatio
+                        height: face.height * yRatio,
+                        _id: face._id
                     }
                 })
 

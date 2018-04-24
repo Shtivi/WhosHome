@@ -15,4 +15,20 @@ router.post('/upload', (req, res, next) => {
     }
 })
 
+router.get('/:pictureID', (req, res, next) => {
+    picturesBL.getPicture(req.params.pictureID).then(data => {
+        res.send(data);
+    }, err => {
+        res.status(500).send(data);
+    })
+})
+
+router.post('/faces', (req, res, next) => {
+    picturesBL.attachFaceToPerson(req.body.pictureID, req.body.faceID, req.body.personID).then((data) => {
+        res.send(data);
+    }, (err) => {
+        res.status(500).send(data);
+    })
+})
+
 module.exports = router;

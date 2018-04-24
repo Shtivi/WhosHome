@@ -37,6 +37,12 @@ app.controller("uploadPictureCtrl", function($scope, $mdToast, picturesService, 
             })
         })
 
-        $peoplePicture.on("faceClicked", (face) => console.log(face));
+        $peoplePicture.on("faceClicked", (face) => {
+           picturesService.attachFaceToPerson($scope.picture._id, face._id, '5ad09a80f5a773a4844de289').then((data) => {
+               console.log(data);
+           }, (err) => {
+               console.log(err);
+           })
+        });
     };
 })

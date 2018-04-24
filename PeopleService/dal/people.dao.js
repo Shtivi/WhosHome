@@ -132,3 +132,18 @@ module.exports.updatePerson = (personData) => {
         })
     })
 }
+
+module.exports.attachPicture = (personID, pictureID) => {
+    return new Promise((resolve, reject) => {
+        models.Person.findById(personID, (err, personDoc) => {
+            if (err) reject(err);
+            else {
+                personDoc._doc.pictures.push(pictureID);
+                personDoc.save((err, data) => {
+                    if (err) reject(err);
+                    else resolve(data._doc);
+                })
+            }
+        });
+    })
+}

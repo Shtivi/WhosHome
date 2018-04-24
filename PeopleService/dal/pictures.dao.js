@@ -18,7 +18,7 @@ module.exports.getPicture = (id) => {
     return new Promise((resolve, reject) => {
         models.Picture.findById(id, (err, data) => {
             if (err) reject(err);
-            else resolve(data);
+            else resolve(data._doc);
         });
     });
 }
@@ -29,5 +29,22 @@ module.exports.getPicturesByIds = (idsArray) => {
             if (err) reject(err);
             else resolve(data);
         });
+    })
+}
+
+module.exports.attachFace = (pictureID, faceID, personID) => {
+    return new Promise((resolve, reject) => {
+        models.Picture.findById(pictureID, (err, data) => {
+            if (err) reject(err);
+            else {
+                var pictureDoc = data._doc;
+                var requestedFace = pictureDoc.faces.find(face => face._id == faceID);
+                requestedFace.personID = personID;
+                data.save((err, data) => {
+                    if (err) reject(err);
+                    else resolve(data);
+                })
+            }
+        })
     })
 }

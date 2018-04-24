@@ -3,8 +3,8 @@ const detector = fr.FaceDetector();
 const asyncDetector = fr.AsyncFaceDetector();
 const Promise = require("promise");
 const path = require('path');
-const fs = require('fs');
 const picturesDB = require('../dal/pictures.dao');
+const peopleDB = require('../dal/people.dao');
 const models = require('../dal/models/models');
 
 var picsDir = null;
@@ -54,3 +54,50 @@ module.exports.uploadPicture = (file) => {
     })
 }
 
+module.exports.attachFaceToPerson = (pictureID, faceID, personID) => {
+    return new Promise((resolve, reject) => {
+        Promise.all([
+            picturesDB.attachFace(pictureID, faceID, personID), 
+            peopleDB.attachPicture(personID, pictureID)
+        ]).then((results) => {
+            this.getPicture(pictureID).then(resolve, reject);
+        }, err => {
+            reject(err);
+        })
+    })
+}
+
+module.exports.getPersonByFaceId = (pictureID, faceID) => {
+    return new Promise((resolve, reject) => {
+        picturesDB.getPicture(pictureID).then((pictureDoc) => {
+            var face = pictureDoc.faces.find(f => f._id == faceID);
+            if (!face) {
+                reject("No such face");
+            } else {
+                peopleDB.getPerson(face._doc.personID).then(resolve, reject);
+            }
+        }, err => reject(err))
+    })
+}
+
+module.exports.getPicture = (pictureID) => {
+    return new Promise((resolve, reject) => {
+        picturesDB.getPicture(pictureID).then((data) => {
+            var recognizedFaces = data.faces.filter(f => {
+                return f._doc.personID
+            });
+
+            Promise.all(recognizedFaces.map(f => peopleDB.getPerson(f._doc.personID))).then(results => {
+                for (var i = 0; i < results.length; i++) {
+                    var currentPerson = results[i]._doc;
+                    var faceDoc = data.faces.find(face => face._doc.personID.equals(currentPerson._id));
+                    faceDoc._doc.person = currentPerson;
+                }
+
+                resolve(data);
+            }, err => reject(err));
+        }, (err) => {
+            reject(err);
+        })
+    })
+}
