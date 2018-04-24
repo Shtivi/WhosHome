@@ -1,6 +1,8 @@
 const fr = require('face-recognition');
+const Rect = fr.Rect;
 const detector = fr.FaceDetector();
 const asyncDetector = fr.AsyncFaceDetector();
+const recognizer = fr.FaceRecognizer();
 const Promise = require("promise");
 const path = require('path');
 const picturesDB = require('../dal/pictures.dao');
@@ -8,6 +10,7 @@ const peopleDB = require('../dal/people.dao');
 const models = require('../dal/models/models');
 
 var picsDir = null;
+var frDataFile = null;
 
 // Methods
 
@@ -24,10 +27,16 @@ function rectAdapter(rect) {
     }
 }
 
+function toRectAdapter(positions) {
+    return new Rect(positions.x, positions.y, Math.round(Math.abs(positions.x + positions.height)), Math.round(Math.abs(positions.y + positions.width)));
+}
+
 // API
 
-module.exports = (picsDirPath) => {
+module.exports = (picsDirPath, faceRecgonitionDataFile) => {
     picsDir = picsDirPath;
+    frDataFile = faceRecgonitionDataFile;
+
     return module.exports;
 };
 
@@ -60,7 +69,14 @@ module.exports.attachFaceToPerson = (pictureID, faceID, personID) => {
             picturesDB.attachFace(pictureID, faceID, personID), 
             peopleDB.attachPicture(personID, pictureID)
         ]).then((results) => {
-            this.getPicture(pictureID).then(resolve, reject);
+            var pictureDoc = results[0]._doc;
+            var picturePath = path.join(picsDir, pictureDoc.filename);
+            var imageRGB = fr.loadImage(picturePath);
+            var face = pictureDoc.faces.find(f => f._doc._id == faceID);
+            var faceRGB = detector.getFacesFromLocations(imageRGB, [toRectAdapter(face._doc)]);
+            recognizer.addFaces(faceRGB, personID);
+
+            module.exports.getPicture(pictureID).then(resolve, reject);
         }, err => {
             reject(err);
         })
@@ -90,7 +106,7 @@ module.exports.getPicture = (pictureID) => {
             Promise.all(recognizedFaces.map(f => peopleDB.getPerson(f._doc.personID))).then(results => {
                 for (var i = 0; i < results.length; i++) {
                     var currentPerson = results[i]._doc;
-                    var faceDoc = data.faces.find(face => face._doc.personID.equals(currentPerson._id));
+                    var faceDoc = data.faces.find(face => face._doc.personID && face._doc.personID.equals(currentPerson._id));
                     faceDoc._doc.person = currentPerson;
                 }
 

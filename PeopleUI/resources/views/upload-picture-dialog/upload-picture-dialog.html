@@ -12,6 +12,22 @@
             <div ng-if="step == '2'">
                 <div style="position: relative;">
                     <people-picture img-src='fileURL' faces='picture.faces'></people-picture>
+                    
+                    <md-autocomplete
+                        ng-show="selectedFace != null"
+                        md-selected-item="selectedPerson"
+                        md-search-text="searchText"
+                        md-item-text="item.firstname"
+                        md-items="item in searchPeople(searchText)"
+                        md-selected-item-change="selectPerson(selectedPerson)"
+                        placeholder="Start typing a person name...">
+                        <md-item-template>
+                            <span md-highlight-text="searchText">{{item.firstname + ' ' + item.lastname}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No results found...
+                        </md-not-found>
+                    </md-autocomplete>    
                 </div>
             </div>
         </div>

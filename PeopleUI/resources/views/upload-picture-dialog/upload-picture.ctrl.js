@@ -17,6 +17,13 @@ app.controller("uploadPictureCtrl", function($scope, $mdToast, picturesService, 
         })
     }
 
+    $scope.searchPeople = (queryText) => {
+        return peopleService
+                    .searchPeople(queryText)
+                    .then(res => res.data, 
+                          err => $mdToast.showSimple('Error search people'));
+    }
+
     $scope.init = () => {
         // Wait for the dropzone div to load, them create the drop zone object
         angular.element(document.getElementById('#dropzone')).ready(() => {
@@ -32,17 +39,27 @@ app.controller("uploadPictureCtrl", function($scope, $mdToast, picturesService, 
                 $scope.fileURL = file.dataURL;
                 $scope.picture = res;
                 $scope.step = 2;
+                $scope.selectedFace = null;
 
                 $scope.$digest();
             })
         })
 
         $peoplePicture.on("faceClicked", (face) => {
-           picturesService.attachFaceToPerson($scope.picture._id, face._id, '5ad09a80f5a773a4844de289').then((data) => {
-               console.log(data);
-           }, (err) => {
-               console.log(err);
-           })
+            if (!face.personID) {
+                $scope.selectedFace = face;
+            }
         });
+
+        $scope.selectPerson = (person) => {
+            if (person != null && $scope.picture != null && $scope.selectedFace != null) {
+                picturesService.attachFaceToPerson($scope.picture._id, $scope.selectedFace._id, person._id).then(res => {
+                    $scope.picture.faces = res.data.faces;
+                    $scope.selectedFace = null;
+                }, err => {
+                    console.log(err);
+                })
+            }
+        }
     };
 })

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path')
-var picturesBL = require("../bl/picturesManager")(path.join(__dirname, '../', '/pics'));
+var picturesBL = require("../bl/picturesManager")(path.join(__dirname, '../', '/pics'), 'face-recognition.data.json');
 
 router.post('/upload', (req, res, next) => {
     if (!req.files) {
