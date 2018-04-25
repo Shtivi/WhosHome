@@ -8,15 +8,12 @@ const path = require('path');
 const picturesDB = require('../dal/pictures.dao');
 const peopleDB = require('../dal/people.dao');
 const models = require('../dal/models/models');
+const fs = require("fs");
 
 var picsDir = null;
 var frDataFile = null;
 
 // Methods
-
-function extractExtension(filename) {
-    return filename.substring(filename.lastIndexOf('.') + 1);
-}
 
 function rectAdapter(rect) {
     return {
@@ -31,18 +28,43 @@ function toRectAdapter(positions) {
     return new Rect(positions.x, positions.y, Math.round(Math.abs(positions.x + positions.height)), Math.round(Math.abs(positions.y + positions.width)));
 }
 
+function saveRecognitionModel() {
+    console.log("Saving recognition model...");
+
+    return new Promise((resolve, reject) => {
+        var modelState = recognizer.serialize();
+        
+        fs.writeFile(frDataFile, JSON.stringify(modelState), err => {
+            if (err) reject (err);
+            else {
+                console.log("Recognition model saved at: " + frDataFile);
+                resolve();
+            }
+        });
+    });
+}
+
+function loadRecognitionModelSync() {
+    if (fs.existsSync(frDataFile)) {
+        var modelState = require(frDataFile);
+        recognizer.load(modelState);
+    }
+}
+
 // API
 
 module.exports = (picsDirPath, faceRecgonitionDataFile) => {
     picsDir = picsDirPath;
     frDataFile = faceRecgonitionDataFile;
 
+    loadRecognitionModelSync();
+
     return module.exports;
 };
 
 module.exports.uploadPicture = (file) => {
     return new Promise((resolve, reject) => {
-        var pictureFileName = new Date().getTime() + '.' + extractExtension(file.name);
+        var pictureFileName = new Date().getTime() + '.' + path.extname(file.name);
         var pictureFullPath = path.join(picsDir, pictureFileName);
         file.mv(pictureFullPath, (err) => {
             if (err) reject(err);
@@ -75,6 +97,8 @@ module.exports.attachFaceToPerson = (pictureID, faceID, personID) => {
             var face = pictureDoc.faces.find(f => f._doc._id == faceID);
             var faceRGB = detector.getFacesFromLocations(imageRGB, [toRectAdapter(face._doc)]);
             recognizer.addFaces(faceRGB, personID);
+
+            saveRecognitionModel();
 
             module.exports.getPicture(pictureID).then(resolve, reject);
         }, err => {
