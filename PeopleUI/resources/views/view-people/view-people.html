@@ -8,8 +8,11 @@
 <div flex="90" layout-padding>
     <!-- Buttons menu -->
     <div style="position: absolute; top:20px; right:20px; bottom: auto; left: auto">
-            <md-button class="md-fab md-mini md-hue-3" ng-click="getPeople()" style="margin: 0"><md-icon>&#xf021</md-icon></md-button>
-        <md-button class="md-fab md-mini md-hue-3" ng-click="uploadPictureDialog()" style="margin: 0"><md-icon>&#xf03e</md-icon></md-button>
+        <md-button class="md-fab md-mini" md-colors="{background: 'grey-50'}" style="margin:0" ng-click="openPictureRecognitionDialog()">
+            <md-icon>&#xf03e</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini md-hue-3" ng-click="getPeople()" style="margin: 0"><md-icon>&#xf021</md-icon></md-button>
+        <md-button class="md-fab md-mini md-hue-3" ng-click="uploadPictureDialog()" style="margin: 0"><md-icon>&#xf0ee</md-icon></md-button>
     </div>
     
     <!-- Spinner -->

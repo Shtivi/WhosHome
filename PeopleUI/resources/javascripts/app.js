@@ -49,6 +49,15 @@ app.config(function($routeProvider, $mdThemingProvider, $mdIconProvider, $mdToas
             }
         }
     })
+
+    $mdDialogProvider.addPreset('recognize', {
+        options: function() {
+            return {
+                templateUrl: './views/recognize-dialog/recognize-picture-dialog.html',
+                controller: 'recognizeCtrl'
+            }
+        }
+    })
 })
 
 app.constant('serverUrl', 'http://localhost:5020')

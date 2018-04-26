@@ -92,6 +92,15 @@ module.exports.findPeople = (params) => {
     })
 }
 
+module.exports.getPeopleByIds = (idsList) => {
+    return new Promise((resolve, reject) => {
+        models.Person.find({'_id': {$in: idsList}}, (err, data) => {
+            if (err) reject(err);
+            else resolve(data);
+        })
+    });
+}
+
 module.exports.search = (params) => {
     return new Promise((resolve, reject) => {
         // Convert the params to OR experssions

@@ -3,6 +3,7 @@ const Rect = fr.Rect;
 const detector = fr.FaceDetector();
 const asyncDetector = fr.AsyncFaceDetector();
 const recognizer = fr.FaceRecognizer();
+const asyncRecognizer = fr.AsyncFaceRecognizer();
 const Promise = require("promise");
 const path = require('path');
 const picturesDB = require('../dal/pictures.dao');
@@ -10,10 +11,20 @@ const peopleDB = require('../dal/people.dao');
 const models = require('../dal/models/models');
 const fs = require("fs");
 
-var picsDir = null;
-var frDataFile = null;
+var conf = {};
 
 // Methods
+
+function savePictureFile(dir, uploadedFile) {
+    return new Promise((resolve, reject) => {
+        var pictureFileName = new Date().getTime() + path.extname(uploadedFile.name);
+        var fileNewPath = path.join(dir, pictureFileName);
+        uploadedFile.mv(fileNewPath, (err) => {
+            if (err) reject(err);
+            else resolve(fileNewPath);
+        });
+    })
+}
 
 function rectAdapter(rect) {
     return {
@@ -34,10 +45,10 @@ function saveRecognitionModel() {
     return new Promise((resolve, reject) => {
         var modelState = recognizer.serialize();
         
-        fs.writeFile(frDataFile, JSON.stringify(modelState), err => {
+        fs.writeFile(conf.frDataFile, JSON.stringify(modelState), err => {
             if (err) reject (err);
             else {
-                console.log("Recognition model saved at: " + frDataFile);
+                console.log("Recognition model saved at: " + conf.frDataFile);
                 resolve();
             }
         });
@@ -45,43 +56,40 @@ function saveRecognitionModel() {
 }
 
 function loadRecognitionModelSync() {
-    if (fs.existsSync(frDataFile)) {
-        var modelState = require(frDataFile);
+    if (fs.existsSync(conf.frDataFile)) {
+        var modelState = require(conf.frDataFile);
         recognizer.load(modelState);
+        asyncRecognizer.load(modelState);
     }
 }
 
 // API
 
-module.exports = (picsDirPath, faceRecgonitionDataFile) => {
-    picsDir = picsDirPath;
-    frDataFile = faceRecgonitionDataFile;
-
+module.exports = (opts) => {
+    conf = opts;
+    
     loadRecognitionModelSync();
 
     return module.exports;
-};
+}
 
+// needs testing
 module.exports.uploadPicture = (file) => {
     return new Promise((resolve, reject) => {
-        var pictureFileName = new Date().getTime() + '.' + path.extname(file.name);
-        var pictureFullPath = path.join(picsDir, pictureFileName);
-        file.mv(pictureFullPath, (err) => {
-            if (err) reject(err);
-            else {
-                var img = fr.loadImage(pictureFullPath);
-                var faces = detector.locateFaces(img).map((face) => rectAdapter(face.rect));
-                
-                picturesDB.addPicture(new models.Picture({
-                    filename: pictureFileName,
-                    faces: faces
-                })).then((doc) => {
-                    resolve(doc);
-                }, (err) => {
-                    reject(err);
-                })
-            }
-        });
+        savePictureFile(conf.picsDir, file).then((pictureFullPath) => {
+            var img = fr.loadImage(pictureFullPath);
+            var faces = detector.locateFaces(img).map((face) => rectAdapter(face.rect));
+            var pictureFileName = path.basename(pictureFullPath);
+            
+            picturesDB.addPicture(new models.Picture({
+                filename: pictureFileName,
+                faces: faces
+            })).then((doc) => {
+                resolve(doc);
+            }, (err) => {
+                reject(err);
+            })            
+        }, reject);
     })
 }
 
@@ -92,7 +100,7 @@ module.exports.attachFaceToPerson = (pictureID, faceID, personID) => {
             peopleDB.attachPicture(personID, pictureID)
         ]).then((results) => {
             var pictureDoc = results[0]._doc;
-            var picturePath = path.join(picsDir, pictureDoc.filename);
+            var picturePath = path.join(conf.picsDir, pictureDoc.filename);
             var imageRGB = fr.loadImage(picturePath);
             var face = pictureDoc.faces.find(f => f._doc._id == faceID);
             var faceRGB = detector.getFacesFromLocations(imageRGB, [toRectAdapter(face._doc)]);
@@ -139,5 +147,42 @@ module.exports.getPicture = (pictureID) => {
         }, (err) => {
             reject(err);
         })
+    })
+}
+
+module.exports.recognizeFace = (imageRGB, faceRect) => {
+    return new Promise((resolve, reject) => {
+        var faceImageRGB = detector.getFacesFromLocations(imageRGB, [faceRect]);
+
+        asyncRecognizer.predictBest(faceImageRGB[0]).then(prediction => {
+            var result = rectAdapter(faceRect);
+            result.personID = prediction.className;
+            result.precision = 1 - prediction.distance;
+
+            peopleDB.getPerson(prediction.className).then(doc => {
+                result.person = doc._doc;
+                resolve(result);
+            }, reject);
+        }).catch(reject);
+    });
+}
+
+module.exports.recognizePeopleInPicture = (picFile) => {
+    return new Promise((resolve, reject) => {
+        savePictureFile(conf.tempPicsDir, picFile).then((picPath) => {
+            var imageRGB = fr.loadImage(picPath);
+            var faceRects = detector.locateFaces(imageRGB);
+
+            if (faceRects.length == 0) {
+                fs.unlinkSync(picPath);
+                reject("No faces found");
+            } else {
+                Promise.all(faceRects.map(face => module.exports.recognizeFace(imageRGB, face.rect))).then(results => {
+                    resolve(results);
+                }, err => {
+                    reject(err);
+                })
+            }
+        }, reject);
     })
 }

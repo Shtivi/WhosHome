@@ -73,6 +73,14 @@ app.controller('viewPeopleCtrl', function($scope, peopleService, $mdToast, $mdDi
         $mdDialog.show($mdDialog.uploadPicture());
     }
 
+    $scope.openPictureRecognitionDialog = () => {
+        $mdDialog.show($mdDialog.recognize()).then(res => {
+            console.log(res);
+        }, reason => {
+            console.log(reason);
+        });
+    }
+
     // Run
     (() => {
         $scope.getPeople();

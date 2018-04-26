@@ -1,7 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path')
-var picturesBL = require("../bl/picturesManager")(path.join(__dirname, '../', '/pics'), path.join(__dirname, '../bl', 'face-recognition.data.json'));
+var picturesBL = require('../bl/picturesManager')({
+    picsDir: path.join(__dirname, '../', '/pics'),
+    frDataFile: path.join(__dirname, '../bl', 'face-recognition.data.json'),
+    tempPicsDir: path.join(__dirname, '../', '/temps')
+})
 
 router.post('/upload', (req, res, next) => {
     if (!req.files) {
@@ -29,6 +33,18 @@ router.post('/faces', (req, res, next) => {
     }, (err) => {
         res.status(500).send(data);
     })
+})
+
+router.post('/recognize', (req, res, next) => {
+    if (!req.files) {
+        res.status(400).send("No files uploaded");
+    } else {
+        picturesBL.recognizePeopleInPicture(req.files.file).then(results => {
+            res.send(results);
+        }, (err) => {
+            res.status(500).send(err);
+        })
+    }
 })
 
 module.exports = router;
