@@ -18,6 +18,7 @@ module.exports.getPicture = (id) => {
     return new Promise((resolve, reject) => {
         models.Picture.findById(id, (err, data) => {
             if (err) reject(err);
+            else if (!data) resolve(null);
             else resolve(data._doc);
         });
     });

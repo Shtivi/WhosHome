@@ -19,6 +19,14 @@ router.post('/upload', (req, res, next) => {
     }
 })
 
+router.get('/base64/:pictureID', (req, res, next) => {
+    picturesBL.getPictureBase64(req.params.pictureID).then(data => {
+        res.send(data);
+    }, err => {
+        res.status(500).send(err);
+    })
+})
+
 router.get('/:pictureID', (req, res, next) => {
     picturesBL.getPicture(req.params.pictureID).then(data => {
         res.send(data);

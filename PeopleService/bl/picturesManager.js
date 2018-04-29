@@ -2,7 +2,6 @@ const fr = require('face-recognition');
 const Rect = fr.Rect;
 const detector = fr.FaceDetector();
 const asyncDetector = fr.AsyncFaceDetector();
-const recognizer = fr.FaceRecognizer();
 const asyncRecognizer = fr.AsyncFaceRecognizer();
 const Promise = require("promise");
 const path = require('path');
@@ -10,6 +9,7 @@ const picturesDB = require('../dal/pictures.dao');
 const peopleDB = require('../dal/people.dao');
 const models = require('../dal/models/models');
 const fs = require("fs");
+// const image2base64 = require('image-to-base64');
 
 var conf = {};
 
@@ -43,7 +43,7 @@ function saveRecognitionModel() {
     console.log("Saving recognition model...");
 
     return new Promise((resolve, reject) => {
-        var modelState = recognizer.serialize();
+        var modelState = asyncRecognizer.serialize();
         
         fs.writeFile(conf.frDataFile, JSON.stringify(modelState), err => {
             if (err) reject (err);
@@ -58,7 +58,6 @@ function saveRecognitionModel() {
 function loadRecognitionModelSync() {
     if (fs.existsSync(conf.frDataFile)) {
         var modelState = require(conf.frDataFile);
-        recognizer.load(modelState);
         asyncRecognizer.load(modelState);
     }
 }
@@ -73,12 +72,12 @@ module.exports = (opts) => {
     return module.exports;
 }
 
-// needs testing
 module.exports.uploadPicture = (file) => {
     return new Promise((resolve, reject) => {
         savePictureFile(conf.picsDir, file).then((pictureFullPath) => {
             var img = fr.loadImage(pictureFullPath);
-            var faces = detector.locateFaces(img).map((face) => rectAdapter(face.rect));
+            var rawFaces = detector.locateFaces(img);
+            var faces = rawFaces.map((face) => rectAdapter(face.rect));
             var pictureFileName = path.basename(pictureFullPath);
             
             picturesDB.addPicture(new models.Picture({
@@ -104,7 +103,7 @@ module.exports.attachFaceToPerson = (pictureID, faceID, personID) => {
             var imageRGB = fr.loadImage(picturePath);
             var face = pictureDoc.faces.find(f => f._doc._id == faceID);
             var faceRGB = detector.getFacesFromLocations(imageRGB, [toRectAdapter(face._doc)]);
-            recognizer.addFaces(faceRGB, personID);
+            asyncRecognizer.addFaces(faceRGB, personID);
 
             saveRecognitionModel();
 
@@ -184,5 +183,25 @@ module.exports.recognizePeopleInPicture = (picFile) => {
                 })
             }
         }, reject);
+    })
+}
+
+module.exports.getPictureBase64 = (pictureID) => {
+    return new Promise((resolve, reject) => {
+        picturesDB.getPicture(pictureID).then(doc => {
+            if (!doc) {
+                reject("No such image")
+            } else {
+                var pathToPic = path.join(conf.picsDir, doc.filename);
+                fs.readFile(pathToPic, (err, data) => {
+                    if (err) reject(err);
+                    else {
+                        var buffer = Buffer.from(data);
+                        var base64 = buffer.toString('base64');
+                        resolve('data:image/png;base64, ' + base64);
+                    }
+                })
+            }
+        }, err => reject(err));
     })
 }

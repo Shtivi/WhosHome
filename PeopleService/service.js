@@ -12,6 +12,7 @@ var app = express();
 app.set('root', __dirname);
 app.set('port', 5020);
 var server = app.listen(app.get('port'));
+server.timeout = 240000;
 
 var api = require("./routes/api")(app);
 
