@@ -9,8 +9,8 @@ import java.net.InetAddress;
 import java.util.Date;
 
 public class NetScanner implements Runnable {
-    private IScannerListener _listener;
-    private ScanningTask _task;
+    protected IScannerListener _listener;
+    protected ScanningTask _task;
 
     public NetScanner(IScannerListener listener, ScanningTask task) {
         if (listener == null) {

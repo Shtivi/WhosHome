@@ -43,18 +43,18 @@ public class ScanningWorkersContractor implements IContractor<ScanningTask> {
 
     private class WrapperScannerListener implements IScannerListener {
         @Override
-        public void onScanStarted(NetScanner source, ScanningTask task) {
+        public void onScanStarted(Runnable source, ScanningTask task) {
             _listener.onScanStarted(source, task);
         }
 
         @Override
-        public void onScanCompleted(NetScanner source, ScanningTask task, ScanningTaskResult result) {
+        public void onScanCompleted(Runnable source, ScanningTask task, ScanningTaskResult result) {
             removeWorker(source);
             _listener.onScanCompleted(source, task, result);
         }
 
         @Override
-        public void onScanFailed(NetScanner source, ScanningTask task, Exception error) {
+        public void onScanFailed(Runnable source, ScanningTask task, Exception error) {
             removeWorker(source);
             _listener.onScanFailed(source, task, error);
         }

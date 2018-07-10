@@ -16,8 +16,8 @@ public class ArpTable {
     private static String MAC_PATTERN = "(([0-9a-f]{2}[-]){5}([0-9a-f]{2}))";
     private static String ARP_ENTRY_PATTERN = String.format("(%s([ ]+)%s)", LAN_IP_PATTERN, MAC_PATTERN);
 
-    private Map<String, String> _entries;
-    private Map<String, List<Consumer<String>>> _ipListeners;
+    protected Map<String, String> _entries;
+    protected Map<String, List<Consumer<String>>> _ipListeners;
 
     /**
      * Creates a new ArpTable instance and initializes it with the current entries in the arp cache.
@@ -26,7 +26,6 @@ public class ArpTable {
     public ArpTable() throws IOException {
         _entries = new ConcurrentHashMap<>();
         _ipListeners = new ConcurrentHashMap<>();
-        this.refresh();
     }
 
     /**
@@ -68,7 +67,7 @@ public class ArpTable {
         }
     }
 
-    private void addEntry(String ip, String mac) {
+    protected void addEntry(String ip, String mac) {
         _entries.put(ip, mac);
         this.resolveDetection(ip, mac);
     }

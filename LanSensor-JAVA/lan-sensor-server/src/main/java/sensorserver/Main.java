@@ -10,12 +10,20 @@ import sensorserver.engine.ArpTable;
 import sensorserver.engine.Engine;
 import sensorserver.engine.events.EntityEventArgs;
 import sensorserver.engine.entities.LanEntitiesHolder;
+import sensorserver.engine.tasks.ITasksSupplier;
 import sensorserver.engine.tasks.NetScanTasksSupplier;
+import sensorserver.engine.tasks.ScanningTask;
+import sensorserver.engine.workers.IScannerListener;
+import sensorserver.engine.workers.IWorkersFactory;
+import sensorserver.utils.mocks.ArpTableMock;
+import sensorserver.utils.mocks.NetScannerMock;
 import sensorserver.engine.workers.WorkersFactory;
 import sensorserver.server.*;
 import sensorserver.utils.NetworkUtils;
+import sensorserver.utils.mocks.VendorsProviderMock;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -25,25 +33,45 @@ public class Main {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-
-        // TODO: add a debug mode which mocking the workers contractor
-
         logger.info("Initializing...");
         Config config = ConfigFactory.load();
 
+        SensorRuntimeContext.RunEnvironment runEnvironment = extractRunEnvironment(args);
+        logger.info("environment: " + runEnvironment);
+
         // Arp table
         ArpTable arpTable = null;
-        try {
-            arpTable = new ArpTable();
-        } catch (IOException e) {
-            logger.error("startup error: initializing arp table produces an error", e);
-            System.exit(1);
+        if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
+            try {
+                arpTable = new ArpTable();
+                arpTable.refresh();
+            } catch (IOException e) {
+                logger.error("startup error: initializing arp table produces an error", e);
+                System.exit(1);
+            }
+        } else if (runEnvironment == SensorRuntimeContext.RunEnvironment.DEBUG) {
+            try {
+                arpTable = new ArpTableMock();
+            } catch (IOException e) {
+                logger.error("startup error: initializing mocked arp table produces an error", e);
+                System.exit(1);
+            }
         }
 
         // Tasks & workers managers
         int pingTimeout = config.getInt("network.ping-timeout");
-        NetScanTasksSupplier tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);
-        WorkersFactory workersFactory = new WorkersFactory();
+        IWorkersFactory<Runnable, ScanningTask> workersFactory = null;
+        ITasksSupplier<ScanningTask> tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);;
+        if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
+            workersFactory = new WorkersFactory();
+        } else if (runEnvironment == SensorRuntimeContext.RunEnvironment.DEBUG) {
+            workersFactory = new IWorkersFactory<Runnable, ScanningTask>() {
+                @Override
+                public Runnable create(IScannerListener listener, ScanningTask task) {
+                    return new NetScannerMock(listener, task);
+                }
+            };
+        }
 
         // Lan entities holder
         LanEntitiesHolder entitiesHolder = new LanEntitiesHolder();
@@ -51,7 +79,12 @@ public class Main {
         entitiesHolder.entityOut().listen(Main::onEntityOut);
 
         // Providers
-        IVendorsProvider vendorsProvider = new MacVendorsComProvider(config.getString("vendorsProvider.url"));
+        IVendorsProvider vendorsProvider;
+        if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
+            vendorsProvider = new MacVendorsComProvider(config.getString("vendorsProvider.url"));
+        }  else {
+            vendorsProvider = new VendorsProviderMock();
+        }
 
         // Engine object
         int numOfWorkers = config.getInt("engine.workers");
@@ -71,7 +104,7 @@ public class Main {
         server.onClientConnection().listen(Main::clientConnectionHook);
 
         // Create the context object
-        context = new SensorRuntimeContext(config, engine, server);
+        context = new SensorRuntimeContext(config, engine, server, runEnvironment);
         commandExecutor = new CommandsManager(context);
         server.onMessageReceived().listen(Main::commandsHandler);
 
@@ -79,10 +112,11 @@ public class Main {
         Runtime.getRuntime().addShutdownHook(new Thread(Main::shutdownHook));
 
         logger.info("initialization completed.");
+        System.out.println("Press ENTER to shutdown.");
+        System.out.println("============================================================\n");
 
         // ****** Start *******
         context.start();
-        System.out.println("Press ENTER to shutdown.");
         input.nextLine();
 
         System.exit(0);
@@ -123,5 +157,12 @@ public class Main {
             logger.error("Error shutting down the server", e);
         }
     }
-}
 
+    private static SensorRuntimeContext.RunEnvironment extractRunEnvironment(String[] args) {
+        if (Arrays.asList(args).contains("--debug")) {
+            return SensorRuntimeContext.RunEnvironment.DEBUG;
+        } else {
+            return SensorRuntimeContext.RunEnvironment.PROD;
+        }
+    }
+}

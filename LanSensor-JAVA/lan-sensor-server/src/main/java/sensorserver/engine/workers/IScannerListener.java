@@ -4,7 +4,7 @@ import sensorserver.engine.tasks.ScanningTask;
 import sensorserver.engine.tasks.ScanningTaskResult;
 
 public interface IScannerListener {
-    void onScanStarted(NetScanner source, ScanningTask task);
-    void onScanCompleted(NetScanner source, ScanningTask task, ScanningTaskResult result);
-    void onScanFailed(NetScanner source, ScanningTask task, Exception error);
+    void onScanStarted(Runnable source, ScanningTask task);
+    void onScanCompleted(Runnable source, ScanningTask task, ScanningTaskResult result);
+    void onScanFailed(Runnable source, ScanningTask task, Exception error);
 }

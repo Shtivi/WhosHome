@@ -157,12 +157,12 @@ public class Engine {
     // NetScannerListener internal class
     private class NetScannerListener implements IScannerListener {
         @Override
-        public void onScanStarted(NetScanner source, ScanningTask task) {
+        public void onScanStarted(Runnable source, ScanningTask task) {
             _logger.info("scanning ip: " + task.getIP());
         }
 
         @Override
-        public void onScanCompleted(NetScanner source, ScanningTask task, ScanningTaskResult result) {
+        public void onScanCompleted(Runnable source, ScanningTask task, ScanningTaskResult result) {
             _tasksSupplier.pushTask(task);
 
             LanEntity.LanEntityBuilder entityBuilder = new LanEntity.LanEntityBuilder(result.getIP(), result.getHostname());
@@ -194,7 +194,7 @@ public class Engine {
         }
 
         @Override
-        public void onScanFailed(NetScanner source, ScanningTask task, Exception error) {
+        public void onScanFailed(Runnable source, ScanningTask task, Exception error) {
             _tasksSupplier.pushTask(task);
 
             if (error != null) {
