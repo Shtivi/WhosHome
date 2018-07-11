@@ -2,6 +2,7 @@ package sensorserver;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import sensorserver.commandExecutors.CommandsManager;
 import sensorserver.dataProviders.IVendorsProvider;
@@ -23,7 +24,6 @@ import sensorserver.utils.NetworkUtils;
 import sensorserver.utils.mocks.VendorsProviderMock;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.Executors;
 
@@ -36,8 +36,17 @@ public class Main {
     public static void main(String[] args) {
         logger.info("Initializing...");
         Config config = ConfigFactory.load();
+        CommandLine cli = null;
 
-        SensorRuntimeContext.RunEnvironment runEnvironment = extractRunEnvironment(args);
+        try {
+            cli = parseArgs(args);
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
+
+        SensorRuntimeContext.RunEnvironment runEnvironment =
+                SensorRuntimeContext.RunEnvironment.valueOf(cli.getOptionValue("environment").toUpperCase());
         logger.info("environment: " + runEnvironment);
 
         ArpTable arpTable = null;
@@ -55,7 +64,8 @@ public class Main {
 
         if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
             try {
-                arpTable = new ArpTable();
+                String opeartionSysetem = cli.getOptionValue("os", "windows");
+                arpTable = new ArpTable(config.getString(String.format("network.arp-command.%s", opeartionSysetem)));
                 arpTable.refresh();
             } catch (IOException e) {
                 logger.error("startup error: initializing arp table produces an error", e);
@@ -97,7 +107,7 @@ public class Main {
         server.onClientConnection().listen(Main::clientConnectionHook);
 
         // Create the context object
-        context = new SensorRuntimeContext(config, engine, server, runEnvironment);
+        context = new SensorRuntimeContext(config, engine, server, runEnvironment, cli);
         commandExecutor = new CommandsManager(context);
         server.onMessageReceived().listen(Main::commandsHandler);
 
@@ -151,11 +161,23 @@ public class Main {
         }
     }
 
-    private static SensorRuntimeContext.RunEnvironment extractRunEnvironment(String[] args) {
-        if (Arrays.asList(args).contains("--debug")) {
-            return SensorRuntimeContext.RunEnvironment.DEBUG;
-        } else {
-            return SensorRuntimeContext.RunEnvironment.PROD;
-        }
+    private static CommandLine parseArgs(String[] args) throws ParseException {
+        Option environmentOption = Option.builder("environment")
+                .desc("Set the environment configuration [prod / debug}")
+                .hasArg()
+                .required()
+                .build();
+        Option osOption = Option.builder("os")
+                .desc("Set the operation system name you are currently running [windows / linux]")
+                .hasArg()
+                .build();
+
+        Options cliOptions = new Options()
+                .addOption(environmentOption)
+                .addOption(osOption);
+
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse(cliOptions, args);
+        return cmd;
     }
 }

@@ -6,7 +6,6 @@ import sensorserver.utils.NetworkUtils;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ArpTableMock extends ArpTable {
     private Random _random;
@@ -17,7 +16,7 @@ public class ArpTableMock extends ArpTable {
      * @throws IOException
      */
     public ArpTableMock() throws IOException {
-        super();
+        super("");
         _random = new Random();
         this.refresh();
     }
