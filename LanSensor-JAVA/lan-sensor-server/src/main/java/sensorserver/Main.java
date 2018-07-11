@@ -25,6 +25,7 @@ import sensorserver.utils.mocks.VendorsProviderMock;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
 
 public class Main {
     private static Logger logger = Logger.getLogger("LanSensorLogger");
@@ -39,8 +40,19 @@ public class Main {
         SensorRuntimeContext.RunEnvironment runEnvironment = extractRunEnvironment(args);
         logger.info("environment: " + runEnvironment);
 
-        // Arp table
         ArpTable arpTable = null;
+        IVendorsProvider vendorsProvider = null;
+        IWorkersFactory<Runnable, ScanningTask> workersFactory = null;
+
+        // Tasks & workers managers
+        int pingTimeout = config.getInt("network.ping-timeout");
+        ITasksSupplier<ScanningTask> tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);;
+
+        // Lan entities holder
+        LanEntitiesHolder entitiesHolder = new LanEntitiesHolder();
+        entitiesHolder.entityIn().listen(Main::onEntityIn);
+        entitiesHolder.entityOut().listen(Main::onEntityOut);
+
         if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
             try {
                 arpTable = new ArpTable();
@@ -49,6 +61,8 @@ public class Main {
                 logger.error("startup error: initializing arp table produces an error", e);
                 System.exit(1);
             }
+            vendorsProvider = new MacVendorsComProvider(config.getString("vendorsProvider.url"), Executors.newSingleThreadScheduledExecutor());
+            workersFactory = new WorkersFactory();
         } else if (runEnvironment == SensorRuntimeContext.RunEnvironment.DEBUG) {
             try {
                 arpTable = new ArpTableMock();
@@ -56,34 +70,13 @@ public class Main {
                 logger.error("startup error: initializing mocked arp table produces an error", e);
                 System.exit(1);
             }
-        }
-
-        // Tasks & workers managers
-        int pingTimeout = config.getInt("network.ping-timeout");
-        IWorkersFactory<Runnable, ScanningTask> workersFactory = null;
-        ITasksSupplier<ScanningTask> tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);;
-        if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
-            workersFactory = new WorkersFactory();
-        } else if (runEnvironment == SensorRuntimeContext.RunEnvironment.DEBUG) {
+            vendorsProvider = new VendorsProviderMock();
             workersFactory = new IWorkersFactory<Runnable, ScanningTask>() {
                 @Override
                 public Runnable create(IScannerListener listener, ScanningTask task) {
                     return new NetScannerMock(listener, task);
                 }
             };
-        }
-
-        // Lan entities holder
-        LanEntitiesHolder entitiesHolder = new LanEntitiesHolder();
-        entitiesHolder.entityIn().listen(Main::onEntityIn);
-        entitiesHolder.entityOut().listen(Main::onEntityOut);
-
-        // Providers
-        IVendorsProvider vendorsProvider;
-        if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
-            vendorsProvider = new MacVendorsComProvider(config.getString("vendorsProvider.url"));
-        }  else {
-            vendorsProvider = new VendorsProviderMock();
         }
 
         // Engine object

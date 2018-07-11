@@ -7,13 +7,18 @@ import org.apache.log4j.Logger;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class MacVendorsComProvider implements IVendorsProvider {
     private String _apiUrl;
-    private Logger _logger = Logger.getLogger("MacVendorsComProviderLogger");
-    private Map<String, String> _cache = new ConcurrentHashMap<>();
+    private Logger _logger;
+    private Map<String, String> _cache;
+    private ScheduledExecutorService _executorService;
 
-    public MacVendorsComProvider(String apiUrl) {
+    public MacVendorsComProvider(String apiUrl, ScheduledExecutorService executorService) {
+        _logger = Logger.getLogger("MacVendorsComProviderLogger");
+        _cache = new ConcurrentHashMap<>();
+        _executorService = executorService;
         _apiUrl = apiUrl;
     }
 
