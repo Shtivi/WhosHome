@@ -17,9 +17,4 @@ public class NetworkUtils {
 
         return ipsList;
     }
-
-    public static String getARPTable() throws IOException {
-        Scanner s = new Scanner(Runtime.getRuntime().exec("arp -a").getInputStream()).useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
-    }
 }

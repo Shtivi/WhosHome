@@ -1,11 +1,10 @@
 package sensorserver.engine;
 
-import sensorserver.utils.NetworkUtils;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
@@ -18,14 +17,21 @@ public class ArpTable {
 
     protected Map<String, String> _entries;
     protected Map<String, List<Consumer<String>>> _ipListeners;
+    protected String _arpCmd;
 
     /**
      * Creates a new ArpTable instance and initializes it with the current entries in the arp cache.
+     * @param arpCmd - name of command to run for fetching the arp entries (arp -a, arp...)
      * @throws IOException
      */
-    public ArpTable() throws IOException {
+    public ArpTable(String arpCmd) throws IOException {
         _entries = new ConcurrentHashMap<>();
         _ipListeners = new ConcurrentHashMap<>();
+
+        if (arpCmd == null) {
+            throw new IllegalArgumentException("arp command name cannot be null");
+        }
+        _arpCmd = arpCmd;
     }
 
     /**
@@ -33,9 +39,9 @@ public class ArpTable {
      * @throws IOException when fails to execute "arp -a"
      */
     public void refresh() throws IOException {
-        String rawArpOutput = NetworkUtils.getARPTable();
+        String rawArpOutput = this.readArpTableData();
         this._entries.clear();
-        this.parse(rawArpOutput);
+        this.parseRawArpData(rawArpOutput);
     }
 
     /**
@@ -80,7 +86,12 @@ public class ArpTable {
         }
     }
 
-    private void parse(String cmdOutput) {
+    private String readArpTableData() throws IOException {
+        Scanner s = new Scanner(Runtime.getRuntime().exec(_arpCmd).getInputStream()).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
+    }
+
+    private void parseRawArpData(String cmdOutput) {
         Pattern ipPattern = Pattern.compile(LAN_IP_PATTERN);
         Pattern macAddrPattern = Pattern.compile(MAC_PATTERN);
         Pattern filteredArpEntryPattern = Pattern.compile(ARP_ENTRY_PATTERN);

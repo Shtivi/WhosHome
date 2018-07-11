@@ -1,6 +1,7 @@
 package sensorserver;
 
 import com.typesafe.config.Config;
+import org.apache.commons.cli.CommandLine;
 import sensorserver.engine.Engine;
 import sensorserver.engine.EngineStatus;
 import sensorserver.server.ISensorService;
@@ -12,12 +13,14 @@ public class SensorRuntimeContext {
     private Engine _engine;
     private ISensorService _server;
     private RunEnvironment _runEnvironment;
+    private CommandLine _cmd;
 
-    public SensorRuntimeContext(Config config, Engine engine, ISensorService service, RunEnvironment runEnvironment) {
+    public SensorRuntimeContext(Config config, Engine engine, ISensorService service, RunEnvironment runEnvironment, CommandLine cmd) {
         this.setConfig(config);
         this.setEngine(engine);
         this.setServer(service);
         this._runEnvironment = runEnvironment;
+        this._cmd = cmd;
     }
 
     public Config getConfig() {
@@ -26,6 +29,10 @@ public class SensorRuntimeContext {
 
     public Engine getEngine() {
         return this._engine;
+    }
+
+    public CommandLine getCommandLine() {
+        return this._cmd;
     }
 
     public ISensorService getSensorService() {
