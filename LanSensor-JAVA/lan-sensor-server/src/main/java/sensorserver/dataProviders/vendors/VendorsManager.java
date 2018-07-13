@@ -1,5 +1,6 @@
 package sensorserver.dataProviders.vendors;
 
+import com.google.inject.Inject;
 import org.apache.log4j.Logger;
 import sensorserver.exceptions.MacAddressException;
 
@@ -12,6 +13,7 @@ public class VendorsManager {
     private IVendorsProvider _vendorsProvider;
     private IVendorsCache _cache;
 
+    @Inject
     public VendorsManager(IVendorsCache cache, IVendorsProvider vendorsProvider) {
         _logger = Logger.getLogger("VendorsManager");
         _cache = cache;
@@ -32,7 +34,7 @@ public class VendorsManager {
             promise.complete(vendor);
         } catch (ExecutionException e) {
             if (e.getCause() instanceof MacAddressException) {
-                promise.complete(e.getMessage());
+                promise.complete(e.getCause().getMessage());
             } else {
                 promise.completeExceptionally(e);
             }

@@ -1,5 +1,6 @@
 package sensorserver.dataProviders.vendors;
 
+import com.google.inject.Inject;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -9,15 +10,15 @@ import org.json.JSONObject;
 import sensorserver.exceptions.MacAddressException;
 import sensorserver.exceptions.SensorException;
 
-import java.util.Map;
+import javax.inject.Named;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
 
 public class Mac2VendorProvider implements IVendorsProvider {
     private String _apiUrl;
 
-    public Mac2VendorProvider(String apiUrl) {
+    @Inject
+    public Mac2VendorProvider(@Named("vendorsApiUrl") String apiUrl) {
         _apiUrl = apiUrl;
     }
 

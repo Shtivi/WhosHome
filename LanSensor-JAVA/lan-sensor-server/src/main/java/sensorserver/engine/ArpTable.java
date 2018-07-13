@@ -1,5 +1,8 @@
 package sensorserver.engine;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,6 @@ import java.util.regex.Pattern;
 public class ArpTable {
     private static String LAN_IP_PATTERN = "(192.168.1.([0-9]{1,3}))";
     private static String MAC_PATTERN = "(([0-9a-f]{2}[-]?){5}([0-9a-f]{2}))";
-    //private static String MAC_PATTERN = "([0-9a-f]{12})";
     private static String ARP_ENTRY_PATTERN = String.format("(%s(.+)%s)", LAN_IP_PATTERN, MAC_PATTERN);
 
     protected Map<String, String> _entries;
@@ -25,7 +27,8 @@ public class ArpTable {
      * @param arpCmd - name of command to run for fetching the arp entries (arp -a, arp...)
      * @throws IOException
      */
-    public ArpTable(String arpCmd) throws IOException {
+    @Inject
+    public ArpTable(@Named("arpCmd") String arpCmd) throws IOException {
         _entries = new ConcurrentHashMap<>();
         _ipListeners = new ConcurrentHashMap<>();
 

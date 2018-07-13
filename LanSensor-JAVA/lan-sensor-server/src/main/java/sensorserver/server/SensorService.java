@@ -1,6 +1,8 @@
 package sensorserver.server;
 
 import com.google.gson.*;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import org.apache.log4j.Logger;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
@@ -15,7 +17,8 @@ public class SensorService extends WebSocketServer implements ISensorService {
     private Event<MessageReceivedEventArgs> _messageReceivedEvent;
     private Event<ClientConnectionEventArgs> _clientConnectedEvent;
 
-    public SensorService(int port) {
+    @Inject
+    public SensorService(@Named("serverPort") int port) {
         super(new InetSocketAddress(port));
         this._messageReceivedEvent = new Event<>();
         this._clientConnectedEvent = new Event<>();

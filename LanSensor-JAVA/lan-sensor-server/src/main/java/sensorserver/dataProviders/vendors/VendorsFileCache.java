@@ -1,6 +1,8 @@
 package sensorserver.dataProviders.vendors;
 
 import com.google.gson.Gson;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import sensorserver.exceptions.SensorException;
 import sensorserver.utils.FileUtils;
 
@@ -15,7 +17,8 @@ public class VendorsFileCache implements IVendorsCache {
     private String _cachePath;
     private FileUtils _fileUtils;
 
-    public VendorsFileCache(String cacheFilePath, FileUtils fileUtils) throws FileNotFoundException {
+    @Inject
+    public VendorsFileCache(@Named("vendorsCachePath") String cacheFilePath, FileUtils fileUtils) throws FileNotFoundException {
         _cachePath = cacheFilePath;
         _fileUtils = fileUtils;
         this.readVendorsFile();
