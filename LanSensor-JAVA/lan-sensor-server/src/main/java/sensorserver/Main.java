@@ -50,7 +50,7 @@ public class Main {
         logger.info("environment: " + environment);
 
         ArpTable arpTable = null;
-        IVendorsProvider vendorsProvider = null;
+        VendorsManager vendorsManager = null;
         IWorkersFactory<Runnable, ScanningTask> workersFactory = null;
 
         // Tasks & workers managers
@@ -74,7 +74,7 @@ public class Main {
             String cachePath = config.getString("vendorsProvider.cachePath");
             IVendorsProvider mac2vendorProvider = new Mac2VendorProvider(config.getString("vendorsProvider.url"));
             try {
-                vendorsProvider = new VendorsManager(new VendorsFileCache(cachePath, new FileUtils()), mac2vendorProvider);
+                vendorsManager = new VendorsManager(new VendorsFileCache(cachePath, new FileUtils()), mac2vendorProvider);
             } catch (FileNotFoundException e) {
                 logger.error(e.getMessage(), e);
                 System.exit(1);
@@ -97,7 +97,7 @@ public class Main {
                 public void saveEntry(String mac, String vendor) {
                 }
             };
-            vendorsProvider = new VendorsManager(cache , new VendorsProviderMock());
+            vendorsManager = new VendorsManager(cache , new VendorsProviderMock());
             workersFactory = new IWorkersFactory<Runnable, ScanningTask>() {
                 @Override
                 public Runnable create(IScannerListener listener, ScanningTask task) {
@@ -114,7 +114,7 @@ public class Main {
                 workersFactory,
                 entitiesHolder,
                 arpTable,
-                vendorsProvider,
+                vendorsManager,
                 numOfWorkers,
                 arpRefreshInterval);
 

@@ -3,6 +3,7 @@ package sensorserver.engine;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import sensorserver.dataProviders.vendors.IVendorsProvider;
+import sensorserver.dataProviders.vendors.VendorsManager;
 import sensorserver.engine.entities.IEntitiesHolder;
 import sensorserver.engine.entities.LanEntity;
 import sensorserver.engine.events.ShutdownEventArgs;
@@ -27,7 +28,7 @@ public class Engine {
     private IContractor<ScanningTask> _contractor;
     private IEntitiesHolder<LanEntity> _entitiesHolder;
     private ArpTable _arpTable;
-    private IVendorsProvider _vendorsProvider;
+    private VendorsManager _vendorsProvider;
     private EngineStatus _status;
     private ExecutorService _engineRunnerExecutor;
     private ExecutorService _netScanningTasksExecutor;
@@ -42,7 +43,7 @@ public class Engine {
                   IWorkersFactory<Runnable, ScanningTask> workersFactory,
                   IEntitiesHolder<LanEntity> entitiesHolder,
                   ArpTable arpTable,
-                  IVendorsProvider vendorsProvider,
+                  VendorsManager vendorsProvider,
                   int parallelism,
                   int arpInterval) {
         this._logger = Logger.getLogger("EngineLogger");

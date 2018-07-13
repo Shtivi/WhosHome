@@ -2,14 +2,12 @@ package sensorserver.dataProviders.vendors;
 
 import org.apache.log4j.Logger;
 import sensorserver.exceptions.MacAddressException;
-import sensorserver.exceptions.SensorException;
 
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-public class VendorsManager implements IVendorsProvider {
+public class VendorsManager {
     private Logger _logger;
     private IVendorsProvider _vendorsProvider;
     private IVendorsCache _cache;
@@ -20,7 +18,6 @@ public class VendorsManager implements IVendorsProvider {
         this.setVendorsProvider(vendorsProvider);
     }
 
-    @Override
     public Future<String> getVendorByMac(String mac) {
         CompletableFuture<String> promise = new CompletableFuture<>();
 
