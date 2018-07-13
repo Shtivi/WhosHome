@@ -1,14 +1,17 @@
 package sensorserver;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import sensorserver.commandExecutors.CommandsManager;
-import sensorserver.dataProviders.IVendorsProvider;
-import sensorserver.dataProviders.MacVendorsComProvider;
+import sensorserver.dataProviders.vendors.*;
 import sensorserver.engine.ArpTable;
 import sensorserver.engine.Engine;
+import sensorserver.engine.entities.IEntitiesHolder;
+import sensorserver.engine.entities.LanEntity;
 import sensorserver.engine.events.EntityEventArgs;
 import sensorserver.engine.entities.LanEntitiesHolder;
 import sensorserver.engine.tasks.ITasksSupplier;
@@ -16,16 +19,15 @@ import sensorserver.engine.tasks.NetScanTasksSupplier;
 import sensorserver.engine.tasks.ScanningTask;
 import sensorserver.engine.workers.IScannerListener;
 import sensorserver.engine.workers.IWorkersFactory;
-import sensorserver.utils.mocks.ArpTableMock;
-import sensorserver.utils.mocks.NetScannerMock;
+import sensorserver.utils.FileUtils;
+import sensorserver.utils.mocks.*;
 import sensorserver.engine.workers.WorkersFactory;
 import sensorserver.server.*;
 import sensorserver.utils.NetworkUtils;
-import sensorserver.utils.mocks.VendorsProviderMock;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.concurrent.Executors;
 
 public class Main {
     private static Logger logger = Logger.getLogger("LanSensorLogger");
@@ -45,49 +47,26 @@ public class Main {
             System.exit(1);
         }
 
-        SensorRuntimeContext.RunEnvironment runEnvironment =
-                SensorRuntimeContext.RunEnvironment.valueOf(cli.getOptionValue("environment").toUpperCase());
-        logger.info("environment: " + runEnvironment);
+        SensorRuntimeContext.Environment environment =
+                SensorRuntimeContext.Environment.valueOf(cli.getOptionValue("environment").toUpperCase());
+        String operatingSystem = cli.getOptionValue("os");
+        logger.info("environment: " + environment);
+        logger.info("operating system configuration: " + operatingSystem);
 
-        ArpTable arpTable = null;
-        IVendorsProvider vendorsProvider = null;
-        IWorkersFactory<Runnable, ScanningTask> workersFactory = null;
+        Injector injector = Guice.createInjector(new SensorSeverModule(config, environment, operatingSystem));
 
         // Tasks & workers managers
         int pingTimeout = config.getInt("network.ping-timeout");
-        ITasksSupplier<ScanningTask> tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);;
+        ITasksSupplier<ScanningTask> tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);
 
         // Lan entities holder
-        LanEntitiesHolder entitiesHolder = new LanEntitiesHolder();
+        IEntitiesHolder<LanEntity> entitiesHolder = injector.getInstance(IEntitiesHolder.class);
         entitiesHolder.entityIn().listen(Main::onEntityIn);
         entitiesHolder.entityOut().listen(Main::onEntityOut);
 
-        if (runEnvironment == SensorRuntimeContext.RunEnvironment.PROD) {
-            try {
-                String opeartionSysetem = cli.getOptionValue("os", "windows");
-                arpTable = new ArpTable(config.getString(String.format("network.arp-command.%s", opeartionSysetem)));
-                arpTable.refresh();
-            } catch (IOException e) {
-                logger.error("startup error: initializing arp table produces an error", e);
-                System.exit(1);
-            }
-            vendorsProvider = new MacVendorsComProvider(config.getString("vendorsProvider.url"), Executors.newSingleThreadScheduledExecutor());
-            workersFactory = new WorkersFactory();
-        } else if (runEnvironment == SensorRuntimeContext.RunEnvironment.DEBUG) {
-            try {
-                arpTable = new ArpTableMock();
-            } catch (IOException e) {
-                logger.error("startup error: initializing mocked arp table produces an error", e);
-                System.exit(1);
-            }
-            vendorsProvider = new VendorsProviderMock();
-            workersFactory = new IWorkersFactory<Runnable, ScanningTask>() {
-                @Override
-                public Runnable create(IScannerListener listener, ScanningTask task) {
-                    return new NetScannerMock(listener, task);
-                }
-            };
-        }
+        ArpTable arpTable = injector.getInstance(ArpTable.class);
+        VendorsManager vendorsManager = injector.getInstance(VendorsManager.class);
+        IWorkersFactory<Runnable, ScanningTask> workersFactory = injector.getInstance(IWorkersFactory.class);
 
         // Engine object
         int numOfWorkers = config.getInt("engine.workers");
@@ -97,17 +76,16 @@ public class Main {
                 workersFactory,
                 entitiesHolder,
                 arpTable,
-                vendorsProvider,
+                vendorsManager,
                 numOfWorkers,
                 arpRefreshInterval);
 
         // Server object
-        int serverPort = config.getInt("server.port");
-        ISensorService server = new SensorService(serverPort);
+        ISensorService server = injector.getInstance(ISensorService.class);
         server.onClientConnection().listen(Main::clientConnectionHook);
 
         // Create the context object
-        context = new SensorRuntimeContext(config, engine, server, runEnvironment, cli);
+        context = new SensorRuntimeContext(config, engine, server, environment, cli);
         commandExecutor = new CommandsManager(context);
         server.onMessageReceived().listen(Main::commandsHandler);
 
