@@ -7,19 +7,19 @@ import sensorserver.engine.EngineStatus;
 import sensorserver.server.ISensorService;
 
 public class SensorRuntimeContext {
-    public enum RunEnvironment {DEBUG, PROD}
+    public enum Environment {DEBUG, PROD}
 
     private Config _config;
     private Engine _engine;
     private ISensorService _server;
-    private RunEnvironment _runEnvironment;
+    private Environment _Environment;
     private CommandLine _cmd;
 
-    public SensorRuntimeContext(Config config, Engine engine, ISensorService service, RunEnvironment runEnvironment, CommandLine cmd) {
+    public SensorRuntimeContext(Config config, Engine engine, ISensorService service, Environment environment, CommandLine cmd) {
         this.setConfig(config);
         this.setEngine(engine);
         this.setServer(service);
-        this._runEnvironment = runEnvironment;
+        this._Environment = environment;
         this._cmd = cmd;
     }
 
@@ -52,8 +52,8 @@ public class SensorRuntimeContext {
         }
     }
 
-    public RunEnvironment getRunEnvironment() {
-        return _runEnvironment;
+    public Environment getRunEnvironment() {
+        return _Environment;
     }
 
     private void setConfig(Config config) {

@@ -2,7 +2,7 @@ package sensorserver.engine;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.log4j.Logger;
-import sensorserver.dataProviders.IVendorsProvider;
+import sensorserver.dataProviders.vendors.IVendorsProvider;
 import sensorserver.engine.entities.IEntitiesHolder;
 import sensorserver.engine.entities.LanEntity;
 import sensorserver.engine.events.ShutdownEventArgs;
@@ -170,7 +170,12 @@ public class Engine {
             if (result.isAvailable()) {
                 _arpTable.onceDetected(result.getIP(), (mac) -> {
                     entityBuilder.setMAC(mac);
-                    String vendor = _vendorsProvider.getVendorByMac(mac);
+                    String vendor = null;
+                    try {
+                        vendor = _vendorsProvider.getVendorByMac(mac).get();
+                    } catch (Exception e) {
+                       _logger.error("error on vendors providing for " + mac, e);
+                    }
                     entityBuilder.setVendor(vendor == null ? "NOT_FOUND" : vendor);
 
                     LanEntity entity = entityBuilder.build();
