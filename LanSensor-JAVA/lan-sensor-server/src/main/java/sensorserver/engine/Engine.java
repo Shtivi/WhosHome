@@ -192,7 +192,9 @@ public class Engine {
             } else {
                 LanEntity presentEntity = _entitiesHolder.getEntityById(result.getIP());
                 if (presentEntity != null) {
-                    entityBuilder.setMAC(presentEntity.getMAC());
+                    entityBuilder
+                            .setMAC(presentEntity.getMAC())
+                            .setVendor(presentEntity.getVendor());
                     _entitiesHolder.remove(entityBuilder.build());
                 }
 
