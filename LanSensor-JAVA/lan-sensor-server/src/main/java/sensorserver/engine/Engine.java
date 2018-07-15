@@ -190,7 +190,11 @@ public class Engine {
                         result.getDuration()));
                 });
             } else {
-                _entitiesHolder.remove(entityBuilder.build());
+                LanEntity presentEntity = _entitiesHolder.getEntityById(result.getIP());
+                if (presentEntity != null) {
+                    entityBuilder.setMAC(presentEntity.getMAC());
+                    _entitiesHolder.remove(entityBuilder.build());
+                }
 
                 _logger.info(String.format(
                         "scan completed '%s' ['%s']: UNREACHABLE. started at %s, took %d ms.",

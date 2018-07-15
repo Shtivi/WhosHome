@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LanEntitiesHolder implements IEntitiesHolder<LanEntity> {
-    private Map<String, LanEntity> _holder = new ConcurrentHashMap<>();
+    private Map<String, LanEntity> _holder;
     private Event<EntityEventArgs> _entityInEvent;
     private Event<EntityEventArgs> _entityOutEvent;
 
@@ -31,6 +31,15 @@ public class LanEntitiesHolder implements IEntitiesHolder<LanEntity> {
         if (_holder.containsKey(entity.getIP())) {
             _holder.remove(entity.getIP());
             _entityInEvent.dispatch(new EntityEventArgs(entity, EntityStatus.OUT));
+        }
+    }
+
+    @Override
+    public LanEntity getEntityById(Object id) {
+        if (id instanceof String) {
+            return _holder.get(id);
+        } else {
+            throw new IllegalArgumentException("id not a string");
         }
     }
 
