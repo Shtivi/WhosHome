@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class ArpTable {
     private static String LAN_IP_PATTERN = "(192.168.1.([0-9]{1,3}))";
-    private static String MAC_PATTERN = "(([0-9a-f]{2}[-:]?){5}([0-9a-f]{2}))";
+    private static String MAC_PATTERN = "(([0-9a-f]{2}[-:]{1}){5}([0-9a-f]{2}))";
     private static String ARP_ENTRY_PATTERN = String.format("(%s(.+)%s)", LAN_IP_PATTERN, MAC_PATTERN);
 
     protected Map<String, String> _entries;
