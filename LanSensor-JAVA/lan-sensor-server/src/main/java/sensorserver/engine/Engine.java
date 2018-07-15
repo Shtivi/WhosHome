@@ -85,14 +85,14 @@ public class Engine {
         this._arpUpdateExecutor = Executors.newSingleThreadScheduledExecutor();
 
         this._engineRunnerExecutor.submit(this::scanNetworkTask);
-        this._arpUpdateExecutor.scheduleAtFixedRate(this::updateArpTask, 0, _arpInterval, TimeUnit.SECONDS);
+        this._arpUpdateExecutor.scheduleAtFixedRate(this::updateArpTask, 100, _arpInterval, TimeUnit.MILLISECONDS);
 
         this._logger.info("engine activity started");
         this._engineStartedEvent.dispatch(new StartupEventArgs());
     }
 
     public void stop() {
-        this._logger.info("stopping engine activity");
+        this._logger.debug("stopping engine activity");
 
         if (this._status != EngineStatus.RUNNING) {
             throw new InvalidOperationException("operation not allowed: engine status is " + this._status.name() + ". Excepted: " + EngineStatus.RUNNING.name());
@@ -129,7 +129,7 @@ public class Engine {
     }
 
     private void scanNetworkTask() {
-        _logger.info("starting network scanning...");
+        _logger.debug("starting network scanning...");
 
         this._status = EngineStatus.RUNNING;
 
@@ -150,6 +150,7 @@ public class Engine {
     private void updateArpTask() {
         try {
             _arpTable.refresh();
+            _logger.debug("updating arp table cache");
         } catch (IOException e) {
             _logger.error("error refreshing arp table", e);
         }
@@ -168,7 +169,7 @@ public class Engine {
 
             LanEntity.LanEntityBuilder entityBuilder = new LanEntity.LanEntityBuilder(result.getIP(), result.getHostname());
 
-            if (result.isAvailable()) {
+            if (result.isAvailable() || _arpTable.contains(result.getIP())) {
                 _arpTable.onceDetected(result.getIP(), (mac) -> {
                     entityBuilder.setMAC(mac);
                     String vendor = null;
@@ -183,7 +184,7 @@ public class Engine {
                     _entitiesHolder.add(entity);
 
                     _logger.info(String.format(
-                        "scan completed for ip '%s' [host: '%s', mac: '%s', vendor: '%s']. started at %s, took %d ms.",
+                        "scan completed '%s' [host: '%s', mac: '%s', vendor: '%s']. started at %s, took %d ms.",
                         entity.getIP(), entity.getHostname(), entity.getMAC(), entity.getVendor(),
                         DateFormatUtils.format(result.getTimeStarted(), "HH:mm:ss"),
                         result.getDuration()));
@@ -192,7 +193,7 @@ public class Engine {
                 _entitiesHolder.remove(entityBuilder.build());
 
                 _logger.info(String.format(
-                        "scan completed for ip '%s' ['%s']: UNREACHABLE. started at %s, took %d ms.",
+                        "scan completed '%s' ['%s']: UNREACHABLE. started at %s, took %d ms.",
                         result.getIP(), result.getHostname(),
                         DateFormatUtils.format(result.getTimeStarted(), "HH:mm:ss"),
                         result.getDuration()));

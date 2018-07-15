@@ -77,6 +77,24 @@ public class ArpTable {
         }
     }
 
+    /**
+     * Returns an Iterable of Strings contains the current known mac addresses
+     */
+    public Iterable<String> macAddresses() {
+        return this._entries.values();
+    }
+
+    /**
+     * @return an Iterable of Strings contains the current known ip addresses
+     */
+    public Iterable<String> ipAddresses() {
+        return this._entries.keySet();
+    }
+
+    public boolean contains(String ip) {
+        return _entries.containsKey(ip);
+    }
+
     protected void addEntry(String ip, String mac) {
         _entries.put(ip, mac);
         this.resolveDetection(ip, mac);
