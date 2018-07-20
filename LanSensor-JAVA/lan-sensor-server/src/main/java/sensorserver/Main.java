@@ -13,20 +13,14 @@ import sensorserver.engine.Engine;
 import sensorserver.engine.entities.IEntitiesHolder;
 import sensorserver.engine.entities.LanEntity;
 import sensorserver.engine.events.EntityEventArgs;
-import sensorserver.engine.entities.LanEntitiesHolder;
 import sensorserver.engine.tasks.ITasksSupplier;
 import sensorserver.engine.tasks.NetScanTasksSupplier;
 import sensorserver.engine.tasks.ScanningTask;
-import sensorserver.engine.workers.IScannerListener;
 import sensorserver.engine.workers.IWorkersFactory;
-import sensorserver.utils.FileUtils;
-import sensorserver.utils.mocks.*;
-import sensorserver.engine.workers.WorkersFactory;
+import sensorserver.utils.HibernateUtils;
 import sensorserver.server.*;
 import sensorserver.utils.NetworkUtils;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -34,6 +28,10 @@ public class Main {
     private static SensorRuntimeContext context;
     private static CommandsManager commandExecutor;
     private static Scanner input = new Scanner(System.in);
+
+    // TODO: 7/14/2018 add ignored devices list
+    // TODO: 7/16/2018 Fix engine main algo to stop when pressing enter
+    // TODO: 7/16/2018 add history of recognized and unknown devices
 
     public static void main(String[] args) {
         logger.info("Initializing...");
@@ -132,6 +130,7 @@ public class Main {
     private static void shutdownHook() {
         logger.info("Shutting down resources...");
         input.close();
+        HibernateUtils.getSessionFactory().getCurrentSession().close();
         try {
             context.shutdown();
         } catch (Exception e) {

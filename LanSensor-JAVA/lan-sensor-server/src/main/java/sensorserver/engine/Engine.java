@@ -2,7 +2,6 @@ package sensorserver.engine;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.log4j.Logger;
-import sensorserver.dataProviders.vendors.IVendorsProvider;
 import sensorserver.dataProviders.vendors.VendorsManager;
 import sensorserver.engine.entities.IEntitiesHolder;
 import sensorserver.engine.entities.LanEntity;

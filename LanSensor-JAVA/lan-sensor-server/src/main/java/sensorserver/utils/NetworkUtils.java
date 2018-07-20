@@ -17,4 +17,8 @@ public class NetworkUtils {
 
         return ipsList;
     }
+
+    public static boolean ping(String ip, long timeout) {
+        return false;
+    }
 }

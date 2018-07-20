@@ -1,18 +1,28 @@
 package sensorserver;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 import com.typesafe.config.Config;
+import org.hibernate.SessionFactory;
+import sensorserver.dataProviders.caching.DaoCache;
+import sensorserver.dataProviders.caching.ICache;
+import sensorserver.dataProviders.caching.MemoryCache;
+import sensorserver.dataProviders.dao.IDataAccessor;
+import sensorserver.dataProviders.dao.IVendorsDao;
+import sensorserver.dataProviders.dao.Identifiable;
+import sensorserver.dataProviders.mySql.MysqlVendorsDao;
 import sensorserver.dataProviders.vendors.*;
 import sensorserver.engine.ArpTable;
 import sensorserver.engine.entities.IEntitiesHolder;
 import sensorserver.engine.entities.LanEntitiesHolder;
 import sensorserver.engine.workers.IWorkersFactory;
 import sensorserver.engine.workers.WorkersFactory;
+import sensorserver.models.Vendor;
 import sensorserver.server.ISensorService;
 import sensorserver.server.SensorService;
+import sensorserver.utils.HibernateUtils;
 import sensorserver.utils.mocks.ArpTableMock;
-import sensorserver.utils.mocks.VendorsCacheMock;
 import sensorserver.utils.mocks.VendorsProviderMock;
 import sensorserver.utils.mocks.WorkersFactoryMock;
 
@@ -61,17 +71,22 @@ public class SensorSeverModule extends AbstractModule {
 
         bind(ISensorService.class).to(SensorService.class);
         bind(IEntitiesHolder.class).to(LanEntitiesHolder.class);
+
+        bind(SessionFactory.class).toInstance(HibernateUtils.getSessionFactory());
+        bind(new TypeLiteral<IDataAccessor<String, Vendor>>(){}).to(MysqlVendorsDao.class);
+
+        bind(new TypeLiteral<ICache>(){}).to(new TypeLiteral<MemoryCache>(){});
     }
 
     private void initializeDebug() {
         bind(ArpTable.class).to(ArpTableMock.class);
-        bind(IVendorsCache.class).to(VendorsCacheMock.class);
         bind(IVendorsProvider.class).to(VendorsProviderMock.class);
         bind(IWorkersFactory.class).to(WorkersFactoryMock.class);
     }
 
     private void initializeProd() {
-        bind(IVendorsCache.class).to(VendorsFileCache.class);
+        bind(new TypeLiteral<ICache<String, Vendor>>(){}).to(new TypeLiteral<DaoCache<String, Vendor>>(){});
+        bind(IVendorsDao.class).to(MysqlVendorsDao.class);
         bind(IVendorsProvider.class).to(Mac2VendorProvider.class);
         bind(IWorkersFactory.class).to(WorkersFactory.class);
     }
