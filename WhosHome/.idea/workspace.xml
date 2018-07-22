@@ -15,37 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SensorConnection.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/SensorConnection.java">
+      <file leaf-file-name="Hibernate.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/Hibernate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2562#2563#0" expanded="true" />
-                <element signature="e#2589#2590#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ISensorConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/ISensorConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="460">
+              <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/whos-home-common/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="853">
-              <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -96,6 +73,7 @@
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/messageDeserializers/AllEntitiesParser.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/messageDeserializers/DeviceConnectionParser.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/SensorConnection.java" />
+        <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/Hibernate.java" />
       </list>
     </option>
   </component>
@@ -216,53 +194,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="whosHome" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="sensors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="sensors" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="sensors" type="462c0819:PsiDirectoryNode" />
-              <item name="messageDeserializers" type="462c0819:PsiDirectoryNode" />
+              <item name="dataProviders" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -558,13 +490,6 @@
     <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/commands/SensorCommand.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/whos-home-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="853">
-          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/models/SensorTypeMetadata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -614,16 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/ISensorConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/exceptions/WhosHomeException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -660,12 +575,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/SensorConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="293">
           <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2562#2563#0" expanded="true" />
             <element signature="e#2589#2590#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whos-home-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="853">
+          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/ISensorConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/Hibernate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
