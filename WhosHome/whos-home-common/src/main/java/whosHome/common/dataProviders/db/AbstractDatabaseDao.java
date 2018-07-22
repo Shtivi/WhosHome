@@ -1,8 +1,9 @@
-package whosHome.common.dataProviders;
+package whosHome.common.dataProviders.db;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import whosHome.common.dataProviders.IDataProvider;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -11,12 +12,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractMysqlDao<I extends Serializable, T> implements IDataProvider<I, T> {
+public abstract class AbstractDatabaseDao<I extends Serializable, T> implements IDataProvider<I, T> {
     private SessionFactory _sessionFactory;
     private Class<I> _idType;
     private Class<T> _entityType;
 
-    public AbstractMysqlDao(SessionFactory sessionFactory) {
+    public AbstractDatabaseDao(SessionFactory sessionFactory) {
         this.setSession(sessionFactory);
 
         Type[] genericTypeArgs = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments();
