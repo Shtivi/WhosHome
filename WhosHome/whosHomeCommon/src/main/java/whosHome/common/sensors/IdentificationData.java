@@ -4,10 +4,19 @@ import whosHome.common.Identifiable;
 
 public abstract class IdentificationData implements Identifiable<String> {
     @Override
-    public abstract boolean equals(Object other);
+    public boolean equals(Object other) {
+        if (super.equals(other)) return true;
+        if (!this.getClass().equals(other.getClass())) return false;
+
+        IdentificationData castedOther = (IdentificationData) other;
+        if (getIdentificationData().equals(((IdentificationData) other).getIdentificationData())) return  true;
+        else return false;
+    }
 
     @Override
-    public abstract int hashCode();
+    public int hashCode() {
+        return getIdentificationData().hashCode();
+    }
 
     @Override
     public String toString() {

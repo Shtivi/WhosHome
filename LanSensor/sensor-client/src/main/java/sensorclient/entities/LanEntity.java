@@ -1,12 +1,19 @@
 package sensorclient.entities;
 
-public class LanEntity {
+import whosHome.common.sensors.IdentificationData;
+
+public class LanEntity extends IdentificationData {
     private String _ip;
     private String _mac;
     private String _hostname;
     private String _vendor;
 
     public LanEntity() {
+    }
+
+    @Override
+    public String getIdentificationData() {
+        return this.getMAC();
     }
 
     public String getIP() {
