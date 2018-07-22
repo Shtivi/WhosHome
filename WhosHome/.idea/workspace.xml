@@ -6,6 +6,8 @@
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/whos-home-common/target/" />
     <ignored path="$PROJECT_DIR$/whos-home-app/target/" />
+    <ignored path="$PROJECT_DIR$/whosHomeCommon/target/" />
+    <ignored path="$PROJECT_DIR$/whosHomeApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,28 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Hibernate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/db/Hibernate.java">
+      <file leaf-file-name="Hibernate.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/dataProviders/db/Hibernate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SensorTypesMetadataDbDao.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/db/SensorTypesMetadataDbDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#392#393#0" expanded="true" />
-                <element signature="e#429#430#0" expanded="true" />
-              </folding>
+              <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
             </state>
           </provider>
         </entry>
@@ -54,7 +39,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/Identifiable.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/events/IEventListener.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/IDataAccessor.java" />
@@ -87,15 +71,24 @@
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/messageDeserializers/AllEntitiesParser.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/messageDeserializers/DeviceConnectionParser.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/sensors/SensorConnection.java" />
-        <option value="$PROJECT_DIR$/whos-home-app/pom.xml" />
         <option value="$PROJECT_DIR$/whos-home-app/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/whos-home-app/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/Hibernate.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/ISensorConnectionsMetadataDao.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/MysqlSensorConnectionsMetadataDao.java" />
-        <option value="$PROJECT_DIR$/whos-home-app/src/main/java/whosHome/whosHomeApp/Application.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/ISensorTypesMetadataDao.java" />
         <option value="$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/db/SensorTypesMetadataDbDao.java" />
+        <option value="$PROJECT_DIR$/whos-home-app/src/main/java/whosHome/whosHomeApp/Application.java" />
+        <option value="$PROJECT_DIR$/whos-home-app/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/pom.xml" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorConnectionMetadata.java" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorTypeMetadata.java" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/src/main/resources/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/whosHomeApp/pom.xml" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/dataProviders/db/Hibernate.java" />
       </list>
     </option>
   </component>
@@ -105,6 +98,12 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="165" />
@@ -130,25 +129,25 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -156,7 +155,7 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -165,7 +164,7 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -175,18 +174,7 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
               <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="dataAccess" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -194,25 +182,25 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -220,7 +208,7 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -229,7 +217,7 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -239,7 +227,7 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -250,7 +238,7 @@
             <path>
               <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whos-home-common" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -259,6 +247,17 @@
               <item name="dataProviders" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -266,8 +265,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="run&#9;ACTION&#9;ActivateRunToolWindow" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="SearchEverywhereHistoryKey" value="maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;mave&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;run&#9;ACTION&#9;ActivateRunToolWindow" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -278,11 +277,11 @@
       <recent name="whosHome.common.dataProviders" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Ido\Projects\WhosHome\WhosHome\whosHomeCommon\src\main\resources" />
       <recent name="D:\Ido\Projects\WhosHome\WhosHome\whos-home-app\src\main\resources" />
       <recent name="D:\Ido\Projects\WhosHome\WhosHome\whos-home-common\src\main\java\whosHome\common\sensors" />
       <recent name="D:\Ido\Projects\WhosHome\WhosHome\whos-home-common\src\main\java\whosHome\common\sensors\events" />
       <recent name="D:\Ido\Projects\WhosHome\WhosHome\whos-home-common\src\main\java\whosHome\common\caching" />
-      <recent name="D:\Ido\Projects\WhosHome\WhosHome\whos-home-common\src\main\java\whosHome\common\events" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -300,7 +299,7 @@
   <component name="RunManager">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.Application" />
-      <module name="whos-home-app" />
+      <module name="whosHomeApp" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -380,8 +379,8 @@
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32943678" />
+      <window_info anchor="right" id="Maven Projects" weight="0.3296875" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32943678" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
@@ -393,7 +392,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
       <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3995749" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -404,6 +403,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/Identifiable.java">
@@ -419,9 +423,6 @@
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/events/Event.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -662,13 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whos-home-app/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whos-home-app/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -719,20 +713,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whos-home-app/src/main/java/whosHome/whosHomeApp/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/ISensorTypesMetadataDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="91" selection-start-line="4" selection-start-column="91" selection-end-line="4" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/db/SensorTypesMetadataDbDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -746,15 +742,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whos-home-common/src/main/java/whosHome/common/dataProviders/db/SensorTypesMetadataDbDao.java">
+    <entry file="file://$PROJECT_DIR$/whos-home-app/src/main/java/whosHome/whosHomeApp/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="100">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-            <element signature="e#429#430#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whos-home-app/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorConnectionMetadata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="26" selection-start-line="26" selection-end-line="34" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorTypeMetadata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="853">
+          <caret line="64" column="21" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/dataProviders/db/Hibernate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
         </state>
       </provider>
     </entry>
@@ -810,7 +877,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>whos-home-app</last-edited>
+          <last-edited>whosHomeCommon</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -12,11 +12,7 @@ public class Hibernate {
     private ServiceRegistry serviceRegistry;
 
     public Hibernate(String hibernateResourceFilename) {
-        Configuration conf = new Configuration()
-                .addResource(hibernateResourceFilename)
-                .addClass(SensorConnectionMetadata.class)
-                .addClass(SensorTypeMetadata.class);
-
+        Configuration conf = new Configuration().configure(hibernateResourceFilename).configure();
         serviceRegistry = new ServiceRegistryBuilder().applySettings(conf.getProperties()).buildServiceRegistry();
         try {
             sessionFactory = conf.buildSessionFactory(serviceRegistry);
