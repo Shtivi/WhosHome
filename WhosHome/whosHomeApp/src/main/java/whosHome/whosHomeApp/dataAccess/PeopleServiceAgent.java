@@ -23,7 +23,7 @@ public class PeopleServiceAgent implements IPeopleDao {
     @Override
     public Collection<Person> fetchAllDetailed() {
         ResponseEntity<ArrayList<Person>> exchange = _restTemplate.exchange(
-                _apiUrl + "/detailed",
+                _apiUrl + "/people/detailed",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ArrayList<Person>>() {});
@@ -43,7 +43,7 @@ public class PeopleServiceAgent implements IPeopleDao {
     @Override
     public Collection<Person> fetchAll() {
         ResponseEntity<ArrayList<Person>> exchange = _restTemplate.exchange(
-                _apiUrl,
+                _apiUrl + "/people/",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<ArrayList<Person>>() {});

@@ -1,13 +1,14 @@
 package whosHome.whosHomeApp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import whosHome.common.Identifiable;
 
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Person implements Identifiable<String> {
-    private String ID;
+    @JsonProperty(value = "_id") private String ID;
     private String firstname;
     private String lastname;
     private String facebookID;
