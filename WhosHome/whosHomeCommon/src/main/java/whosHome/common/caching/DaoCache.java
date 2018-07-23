@@ -2,6 +2,7 @@ package whosHome.common.caching;
 
 import whosHome.common.Identifiable;
 import whosHome.common.dataProviders.IDataProvider;
+import whosHome.common.events.Event;
 
 import java.util.Map;
 import java.util.Optional;
@@ -10,11 +11,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DaoCache<I, T extends Identifiable<I>> implements IDaoCache<I, T> {
     private Map<I, T> _cache;
     private IDataProvider<I, T> _dao;
-    // TODO: 7/19/2018 add event of reading / writing from the dao
+    private Event<cachedDataChangedEventArgs<T>> _itemCachedEvent;
 
     public DaoCache(IDataProvider<I, T> dao) {
         this.setDao(dao);
         _cache = new ConcurrentHashMap<>();
+        _itemCachedEvent = new Event<>();
     }
 
     @Override
@@ -42,6 +44,11 @@ public class DaoCache<I, T extends Identifiable<I>> implements IDaoCache<I, T> {
     @Override
     public synchronized void cache(T record) {
         this.cache(record.getID(), record);
+    }
+
+    @Override
+    public Event<cachedDataChangedEventArgs<T>> onItemCached() {
+        return _itemCachedEvent;
     }
 
     @Override

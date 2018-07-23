@@ -130,7 +130,7 @@ public class Main {
     private static void shutdownHook() {
         logger.info("Shutting down resources...");
         input.close();
-        HibernateUtils.getSessionFactory().getCurrentSession().close();
+        HibernateUtils.getSessionFactory().close();
         try {
             context.shutdown();
         } catch (Exception e) {

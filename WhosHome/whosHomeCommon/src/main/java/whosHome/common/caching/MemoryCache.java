@@ -1,6 +1,7 @@
 package whosHome.common.caching;
 
 import whosHome.common.Identifiable;
+import whosHome.common.events.Event;
 
 import java.util.Map;
 import java.util.Optional;
@@ -28,5 +29,10 @@ public class MemoryCache<I, T extends Identifiable<I>> implements ICache<I, T> {
     @Override
     public void cache(T record) {
 
+    }
+
+    @Override
+    public Event<cachedDataChangedEventArgs<T>> onItemCached() {
+        return null;
     }
 }

@@ -87,7 +87,7 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     }
 
     private void initializeMessageSerializers() {
-        _serverMessageDeserializers.put("entityEvent", new DeviceConnectionParser());
+        _serverMessageDeserializers.put("entityEvent", new DeviceConnectionParser(this.getConnectionMetadata()));
         _serverMessageDeserializers.put("allEntities", new AllEntitiesParser());
     }
 
