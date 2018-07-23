@@ -26,7 +26,7 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
     }
 
     @Override
-    public synchronized Iterable<T> fetchAll() {
+    public synchronized Collection<T> fetchAll() {
         Session session = this.getSessionFactory().openSession();
         Query query = session.createQuery(String.format("from %s", getEntityType().getName()));
         List<T> results = (List<T>) query.list();

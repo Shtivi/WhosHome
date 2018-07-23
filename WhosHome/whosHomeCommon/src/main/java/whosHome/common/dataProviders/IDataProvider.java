@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface IDataProvider<I, T> {
-    Iterable<T> fetchAll();
+    Collection<T> fetchAll();
     Optional<T> fetchById(I id);
     void add(T record);
     void add(Iterable<T> records);
