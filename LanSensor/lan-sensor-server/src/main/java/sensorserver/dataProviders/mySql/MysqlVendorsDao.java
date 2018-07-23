@@ -1,4 +1,4 @@
-package sensorserver.dataProviders.mySql;
+package sensorserver.dataProviders.mysql;
 
 import com.google.inject.Inject;
 import org.hibernate.SessionFactory;
