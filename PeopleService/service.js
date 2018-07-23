@@ -24,7 +24,7 @@ app.use(cookieParser());
 // TODO: When mongo fails, shut down th application
 
 // DB
-mongoose.connect('mongodb://localhost/people').then((db) => {
+mongoose.connect('mongodb://localhost:27017/people').then((db) => {
   console.log("Connected to db");
 }, (err) => {
   console.error(err);

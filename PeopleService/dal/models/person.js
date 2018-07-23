@@ -8,7 +8,7 @@ var person = new mongoose.Schema({
     lastname: { type: String, required: true },
     facebookID: String,
     phoneNo: String,
-    macAddress: String,
+    //macAddress: String,
     insertionDate: Date,
     pictures: [ObjectId]
 });

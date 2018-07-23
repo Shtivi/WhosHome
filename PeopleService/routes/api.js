@@ -6,7 +6,7 @@ module.exports = (app) => {
     app.use(fileUpload());
 
     router.use('/people', require("./people.ctrl"));
-    router.use('/pictures', require("./pictures.ctrl"));
+    //router.use('/pictures', require("./pictures.ctrl"));
 
     return router;
 };

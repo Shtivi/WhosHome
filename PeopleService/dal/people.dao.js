@@ -58,15 +58,23 @@ module.exports.getAllPeopleMinified = () => {
 
 module.exports.getPerson = (_id) => {
     return new Promise((resolve, reject) => {
+        if (!ObjectId.isValid(_id)) {
+            reject("Not a valid id");
+        }
+
         models.Person.findById(_id, (err, data) => {
             if (err) reject(err);
-            resolve(data);
+            else resolve(data);
         })
     })
 }
 
 module.exports.deletePerson = (_id) => {
     return new Promise((resolve, reject) => {
+        if (!ObjectId.isValid(_id)) {
+            reject("Not a valid id");
+        }
+
         models.Person.findByIdAndRemove(_id, (err, data) => {
             if (err) reject(err);
             else resolve(data._doc);

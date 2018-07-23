@@ -66,9 +66,6 @@ function loadRecognitionModelSync() {
 
 module.exports = (opts) => {
     conf = opts;
-    
-    loadRecognitionModelSync();
-
     return module.exports;
 }
 
