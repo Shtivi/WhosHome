@@ -17,6 +17,15 @@ public class Person implements Identifiable<String> {
 
     public Person() {}
 
+    public Person(Person other) {
+        this.setID(other.getID());
+        this.setInsertionDate(other.getInsertionDate());
+        this.setLastname(other.getLastname());
+        this.setFirstname(other.firstname);
+        this.setFacebookID(other.facebookID);
+        this.setPhoneNo(other.phoneNo);
+    }
+
     @Override
     public String getID() {
         return ID;
@@ -64,5 +73,61 @@ public class Person implements Identifiable<String> {
 
     public void setInsertionDate(Date insertionDate) {
         this.insertionDate = insertionDate;
+    }
+
+    @Override
+    public Person clone() {
+        return new Person(this);
+    }
+
+    public static class Builder {
+        private Person _person;
+
+        public Builder(String firstname, String lastname) {
+            _person = new Person();
+            this.withFirstname(firstname);
+            this.withLastname(lastname);
+            this.withInsertionDate(new Date());
+        }
+
+        public Builder withFirstname(String firstname) {
+            if (firstname == null || firstname.equals("")) {
+                throw new IllegalArgumentException("first name cannot be null");
+            }
+            _person.setFirstname(firstname);
+            return this;
+        }
+
+        public Builder withLastname(String lastname) {
+            if (lastname == null || lastname.equals("")) {
+                throw new IllegalArgumentException("first name cannot be null");
+            }
+            _person.setLastname(lastname);
+            return this;
+        }
+
+        public Builder withID(String ID) {
+            _person.setID(ID);
+            return this;
+        }
+
+        public Builder withFacebookID(String facebookID) {
+            _person.setFacebookID(facebookID);
+            return this;
+        }
+
+        public Builder withPhoneNo(String phoneNo) {
+            _person.setPhoneNo(phoneNo);
+            return this;
+        }
+
+        public Builder withInsertionDate(Date insertionDate) {
+            _person.setInsertionDate(insertionDate);
+            return this;
+        }
+
+        public Person build() {
+            return _person.clone();
+        }
     }
 }

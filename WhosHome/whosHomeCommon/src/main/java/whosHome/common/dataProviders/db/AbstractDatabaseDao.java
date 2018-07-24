@@ -43,12 +43,13 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
     }
 
     @Override
-    public synchronized void add(T record) {
+    public synchronized I add(T record) {
         Session session = getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(record);
+        I generatedID = (I) session.save(record); // TODO: 7/24/2018 check this
         session.getTransaction().commit();
         session.close();
+        return generatedID;
     }
 
     @Override

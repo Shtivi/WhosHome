@@ -59,7 +59,7 @@ module.exports.getAllPeopleMinified = () => {
 module.exports.getPerson = (_id) => {
     return new Promise((resolve, reject) => {
         if (!ObjectId.isValid(_id)) {
-            reject("Not a valid id");
+            reject({message: "Not a valid id"});
         }
 
         models.Person.findById(_id, (err, data) => {
@@ -72,7 +72,7 @@ module.exports.getPerson = (_id) => {
 module.exports.deletePerson = (_id) => {
     return new Promise((resolve, reject) => {
         if (!ObjectId.isValid(_id)) {
-            reject("Not a valid id");
+            reject({message: "Not a valid id"});
         }
 
         models.Person.findByIdAndRemove(_id, (err, data) => {
@@ -115,6 +115,10 @@ module.exports.search = (params) => {
         var query = [];
         
         for (var paramName in params) {
+            if (paramName == 'ID' && !ObjectId.isValid[params.ID]) {
+                continue;
+            }
+
             var currentField = {};
             currentField[paramName] = {
                 $regex: new RegExp(params[paramName], 'i')
