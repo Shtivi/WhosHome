@@ -1,11 +1,5 @@
 package whosHome.whosHomeApp.dataAccess.agents;
 
-import com.google.gson.Gson;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.async.Callback;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.lang.NotImplementedException;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -20,7 +14,6 @@ import whosHome.whosHomeApp.models.Person;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 
 public class PeopleServiceAgent implements IPeopleDao {
     private String _apiUrl;
@@ -51,7 +44,7 @@ public class PeopleServiceAgent implements IPeopleDao {
     public Collection<Person> search(String keyword) {
         try {
             ResponseEntity<ArrayList<Person>> peopleResponse = _restTemplate.exchange(
-                    _apiUrl + _peopleApiPath + "/search" + keyword,
+                    _apiUrl + _peopleApiPath + "/search/" + keyword,
                     HttpMethod.GET,
                     null,
                     new ParameterizedTypeReference<ArrayList<Person>>(){});
@@ -62,12 +55,12 @@ public class PeopleServiceAgent implements IPeopleDao {
     }
 
     @Override
-    public Collection<Person> search(SearchParams params) {
+    public Collection<Person> searchStrict(SearchParams params) {
         try {
             ResponseEntity<ArrayList<Person>> response = _restTemplate.exchange(
                     _apiUrl + _peopleApiPath + "/search",
                     HttpMethod.POST,
-                    new HttpEntity<>(params),
+                    new HttpEntity<>(params.asMap()),
                     new ParameterizedTypeReference<ArrayList<Person>>(){});
             return response.getBody();
         } catch (HttpServerErrorException e) {
@@ -112,21 +105,31 @@ public class PeopleServiceAgent implements IPeopleDao {
 
     @Override
     public void add(Iterable<Person> records) {
+        // TODO: 7/24/2018 Implement
         throw new NotImplementedException("need to add a new route in the people service");
     }
 
     @Override
     public void update(Person record) {
-
+        try {
+            _restTemplate.put(_apiUrl + _peopleApiPath, record);
+        } catch (HttpServerErrorException e) {
+            throw new OperationFailedException(e.getResponseBodyAsString(), e);
+        }
     }
 
     @Override
     public void delete(String id) {
-
+        try {
+            _restTemplate.delete(_apiUrl + _peopleApiPath + "/" + id);
+        } catch (HttpServerErrorException e) {
+            throw new OperationFailedException(e.getResponseBodyAsString(), e);
+        }
     }
 
     @Override
     public void delete(Collection<String> ids) {
+        // TODO: 7/24/2018 Implement
         throw new NotImplementedException("need to add a new route in the people service");
     }
 }
