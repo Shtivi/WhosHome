@@ -7,21 +7,12 @@ import java.security.acl.Owner;
 
 @Entity
 @Table(name = "devices")
-public class Device implements Identifiable<Integer> {
-    @Id @GeneratedValue @Column(name = "device_id") private int deviceID;
-    @Column(name = "mac_address") private String macAddress;
+public class Device implements Identifiable<String> {
+    @Id @Column(name = "mac_address") private String macAddress;
     @Column(name = "owner_id") private String ownerID;
     private Owner owner;
 
     public Device() {}
-
-    public int getDeviceID() {
-        return deviceID;
-    }
-
-    public void setDeviceID(int deviceID) {
-        this.deviceID = deviceID;
-    }
 
     public String getMacAddress() {
         return macAddress;
@@ -48,7 +39,7 @@ public class Device implements Identifiable<Integer> {
     }
 
     @Override
-    public Integer getID() {
-        return getDeviceID();
+    public String getID() {
+        return getMacAddress();
     }
 }
