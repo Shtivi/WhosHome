@@ -1,8 +1,8 @@
-package whosHome.common.sensors.events;
+package whosHome.common.sensors.client.events;
 
 import whosHome.common.events.AbstractEventArgs;
 import whosHome.common.models.SensorConnectionMetadata;
-import whosHome.common.sensors.IdentificationData;
+import whosHome.common.sensors.client.IdentificationData;
 
 public class ActivityDetectionEventArgs<T extends IdentificationData> extends AbstractEventArgs {
     public enum Type {

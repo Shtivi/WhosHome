@@ -78,6 +78,7 @@ public class SensorSeverModule extends AbstractModule {
     }
 
     private void initializeDebug() {
+        bind(new TypeLiteral<ICache<String, Vendor>>(){}).to(new TypeLiteral<MemoryCache<String, Vendor>>(){});
         bind(ArpTable.class).to(ArpTableMock.class);
         bind(IVendorsProvider.class).to(VendorsProviderMock.class);
         bind(IWorkersFactory.class).to(WorkersFactoryMock.class);

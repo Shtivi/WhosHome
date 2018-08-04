@@ -1,6 +1,6 @@
 package sensorclient.entities;
 
-import whosHome.common.sensors.IdentificationData;
+import whosHome.common.sensors.client.IdentificationData;
 
 public class LanEntity extends IdentificationData {
     private String _ip;

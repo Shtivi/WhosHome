@@ -1,4 +1,4 @@
-package whosHome.common.sensors;
+package whosHome.common.sensors.client;
 
 public enum SensorConnectionState {
     ERROR,

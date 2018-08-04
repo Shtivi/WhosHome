@@ -1,8 +1,8 @@
-package whosHome.common.sensors;
+package whosHome.common.sensors.client;
 
 
 import whosHome.common.models.SensorConnectionMetadata;
-import whosHome.common.sensors.commands.SensorCommand;
+import whosHome.common.sensors.client.commands.SensorCommand;
 
 /**
  *

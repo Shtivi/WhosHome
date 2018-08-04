@@ -1,4 +1,4 @@
-package whosHome.common.sensors.commands;
+package whosHome.common.sensors.client.commands;
 
 public abstract class SensorCommand {
     public abstract String getName();

@@ -1,4 +1,4 @@
-package whosHome.common.sensors.events;
+package whosHome.common.sensors.client.events;
 
 import whosHome.common.events.AbstractEventArgs;
 

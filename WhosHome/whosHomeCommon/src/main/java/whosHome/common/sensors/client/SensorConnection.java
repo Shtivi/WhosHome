@@ -1,4 +1,4 @@
-package whosHome.common.sensors;
+package whosHome.common.sensors.client;
 
 import com.google.gson.*;
 import org.java_websocket.client.WebSocketClient;
@@ -6,11 +6,11 @@ import org.java_websocket.handshake.ServerHandshake;
 import whosHome.common.exceptions.InvalidOperationException;
 import whosHome.common.exceptions.WhosHomeException;
 import whosHome.common.models.SensorConnectionMetadata;
-import whosHome.common.sensors.commands.SensorCommand;
-import whosHome.common.sensors.events.ErrorEventArgs;
-import whosHome.common.sensors.events.StatusChangeEventArgs;
-import whosHome.common.sensors.messageDeserializers.AllEntitiesParser;
-import whosHome.common.sensors.messageDeserializers.DeviceConnectionParser;
+import whosHome.common.sensors.client.commands.SensorCommand;
+import whosHome.common.sensors.client.events.ErrorEventArgs;
+import whosHome.common.sensors.client.events.StatusChangeEventArgs;
+import whosHome.common.sensors.client.messageDeserializers.AllEntitiesMessageDeserializer;
+import whosHome.common.sensors.client.messageDeserializers.ActivityDetectedMessageDeserializer;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -25,13 +25,15 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     private Map<String, BiConsumer<JsonElement, Iterable<ISensorListener<T>>>> _serverMessageDeserializers;
     private SensorConnectionState _status;
     private SensorConnectionMetadata _connectionMetadata;
+    private Class<T> _entityType;
 
-    public SensorConnection(SensorConnectionMetadata connectionMetadata) {
+    public SensorConnection(Class<T> entityType, SensorConnectionMetadata connectionMetadata) {
         String fullURI = connectionMetadata.getUrl() + ":" + connectionMetadata.getPort() + "/" + connectionMetadata.getPath();
         _client = new Client(URI.create(fullURI));
         _serverMessageDeserializers = new ConcurrentHashMap<>();
         _listeners = new ArrayList<>();
         _connectionMetadata = connectionMetadata;
+        _entityType = entityType;
 
         this.initializeMessageSerializers();
         this.setStatus(SensorConnectionState.READY, "sensor waiting to be connected");
@@ -71,12 +73,12 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     }
 
     @Override
-    public boolean listen(ISensorListener listener) {
+    public boolean listen(ISensorListener<T> listener) {
         return _listeners.add(listener);
     }
 
     @Override
-    public boolean removeListener(ISensorListener listener) {
+    public boolean removeListener(ISensorListener<T> listener) {
         return _listeners.remove(listener);
     }
 
@@ -87,8 +89,8 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     }
 
     private void initializeMessageSerializers() {
-        _serverMessageDeserializers.put("entityEvent", new DeviceConnectionParser(this.getConnectionMetadata()));
-        _serverMessageDeserializers.put("allEntities", new AllEntitiesParser());
+        _serverMessageDeserializers.put("entityEvent", new ActivityDetectedMessageDeserializer<>(_entityType, this.getConnectionMetadata()));
+        _serverMessageDeserializers.put("allEntities", new AllEntitiesMessageDeserializer<>(_entityType));
     }
 
     // Internal client class

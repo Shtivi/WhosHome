@@ -1,7 +1,7 @@
-package whosHome.common.sensors.events;
+package whosHome.common.sensors.client.events;
 
 import whosHome.common.events.AbstractEventArgs;
-import whosHome.common.sensors.SensorConnectionState;
+import whosHome.common.sensors.client.SensorConnectionState;
 
 public class StatusChangeEventArgs extends AbstractEventArgs {
     private SensorConnectionState _oldStatus;

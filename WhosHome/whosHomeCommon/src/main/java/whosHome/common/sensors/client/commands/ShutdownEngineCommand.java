@@ -1,4 +1,4 @@
-package whosHome.common.sensors.commands;
+package whosHome.common.sensors.client.commands;
 
 public class ShutdownEngineCommand extends SensorCommand {
     @Override

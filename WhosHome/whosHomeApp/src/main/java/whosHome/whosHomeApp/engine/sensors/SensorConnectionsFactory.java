@@ -1,11 +1,8 @@
 package whosHome.whosHomeApp.engine.sensors;
 
-import sensorclient.entities.LanEntity;
 import whosHome.common.dataProviders.ISensorConnectionsMetadataDao;
-import whosHome.common.exceptions.WhosHomeException;
 import whosHome.common.models.SensorConnectionMetadata;
-import whosHome.common.sensors.ISensorConnection;
-import whosHome.common.sensors.SensorConnection;
+import whosHome.common.sensors.client.ISensorConnection;
 import whosHome.whosHomeApp.engine.sensors.builders.LanSensorConnectionBuilder;
 import whosHome.whosHomeApp.engine.sensors.builders.SensorConnectionInstatiationException;
 

@@ -16,9 +16,4 @@ public class DevicesDbDao extends AbstractDatabaseDao<String, Device> implements
     public Collection<Device> fetchByOwnerID(String ownerID) {
         return null;
     }
-
-    @Override
-    public Device fetchByMacAddress(String macAddress) {
-        return null;
-    }
 }

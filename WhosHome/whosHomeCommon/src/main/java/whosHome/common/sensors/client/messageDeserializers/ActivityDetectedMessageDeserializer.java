@@ -1,20 +1,18 @@
-package whosHome.common.sensors.messageDeserializers;
+package whosHome.common.sensors.client.messageDeserializers;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import whosHome.common.models.SensorConnectionMetadata;
-import whosHome.common.sensors.ISensorListener;
-import whosHome.common.sensors.IdentificationData;
-import whosHome.common.sensors.events.ActivityDetectionEventArgs;
+import whosHome.common.sensors.client.ISensorListener;
+import whosHome.common.sensors.client.IdentificationData;
+import whosHome.common.sensors.client.events.ActivityDetectionEventArgs;
 
-import java.lang.reflect.ParameterizedType;
-import java.util.function.BiConsumer;
-
-public class DeviceConnectionParser<T extends IdentificationData> implements BiConsumer<JsonElement, Iterable<ISensorListener<T>>> {
+public class ActivityDetectedMessageDeserializer<T extends IdentificationData> extends AbstractMessageDeserializer<T> {
     private SensorConnectionMetadata _sensorConnectionMetadata;
 
-    public DeviceConnectionParser(SensorConnectionMetadata connectionMetadata) {
+    public ActivityDetectedMessageDeserializer(Class<T> entityType, SensorConnectionMetadata connectionMetadata) {
+        super(entityType);
         _sensorConnectionMetadata = connectionMetadata;
     }
 
@@ -23,8 +21,7 @@ public class DeviceConnectionParser<T extends IdentificationData> implements BiC
         JsonObject body = eventBody.getAsJsonObject();
         ActivityDetectionEventArgs.Type type = ActivityDetectionEventArgs.Type.valueOf(body.get("_status").getAsString());
         JsonObject lanEntityJson = body.get("_entity").getAsJsonObject();
-        Class<T> entityType = (Class<T>)((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        T lanEntity = new GsonBuilder().create().fromJson(lanEntityJson, entityType);
+        T lanEntity = new GsonBuilder().create().fromJson(lanEntityJson, _entityType);
         ActivityDetectionEventArgs eventArgs = new ActivityDetectionEventArgs(type, lanEntity, _sensorConnectionMetadata);
         listeners.forEach(listener -> listener.onActivityDetection(eventArgs));
     }

@@ -1,9 +1,9 @@
-package whosHome.common.sensors;
+package whosHome.common.sensors.client;
 
 
-import whosHome.common.sensors.events.ActivityDetectionEventArgs;
-import whosHome.common.sensors.events.ErrorEventArgs;
-import whosHome.common.sensors.events.StatusChangeEventArgs;
+import whosHome.common.sensors.client.events.ActivityDetectionEventArgs;
+import whosHome.common.sensors.client.events.ErrorEventArgs;
+import whosHome.common.sensors.client.events.StatusChangeEventArgs;
 
 public interface ISensorListener<T extends IdentificationData> {
     void onError(ErrorEventArgs args);
