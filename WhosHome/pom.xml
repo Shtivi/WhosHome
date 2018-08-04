@@ -12,8 +12,8 @@
         <module>whosHomeCommon</module>
         <module>whosHomeApp</module>
         <module>lanSensor</module>
-        <module>lanSensor/lanSensorClient</module>
-        <module>lanSensor/lanSensorServer</module>
+        <!--<module>lanSensor/lanSensorClient</module>-->
+        <!--<module>lanSensor/lanSensorServer</module>-->
     </modules>
 
 

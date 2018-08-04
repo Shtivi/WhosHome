@@ -16,58 +16,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/whosHome$_WhosHomeApp__Prod.ic" NAME="[WhosHomeApp] Prod Coverage Results" MODIFIED="1533366237676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>whosHome.whosHomeApp.*</FILTER>
+    </SUITE>
+  </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorClient/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lanSensor/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="154">
+              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeviceConnectionParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorClient/src/main/java/sensorclient/messageDeserializers/DeviceConnectionParser.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SensorSeverModule.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/SensorSeverModule.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="78">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="12" selection-end-line="15" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -75,13 +44,20 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/whosHomeCommon/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="220">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>cli</find>
+      <find>command</find>
+      <find>commandli</find>
+    </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -93,6 +69,10 @@
         <option value="$PROJECT_DIR$/whosHomeApp/pom.xml" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorClient/pom.xml" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/utils/mocks/NetScannerMock.java" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/dataAccess/agents/PeopleServiceAgent.java" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/AppModule.java" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/application.debug.conf" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/lanSensor/pom.xml" />
       </list>
@@ -106,8 +86,24 @@
     </option>
   </component>
   <component name="MavenProjectNavigator">
+    <option name="groupStructurally" value="true" />
     <treeState>
-      <expand />
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="whosHome" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="whosHome" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="whosHome" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Modules" type="87271259:MavenProjectsStructure$ModulesNode" />
+        </path>
+      </expand>
       <select />
     </treeState>
   </component>
@@ -137,46 +133,6 @@
             <path>
               <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
               <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="sensorserver" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
               <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -188,13 +144,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;project&#9;ACTION&#9;ActivateProjectToolWindow&#10;pro&#9;ACTION&#9;ActivateProjectToolWindow" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="SearchEverywhereHistoryKey" value="maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;applicatio&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.prod.conf&#10;application.conf&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.prod.conf&#10;sensorse&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/lanSensor/lanSensorServer/src/main/java/sensorserver/SensorSeverModule.java&#10;project&#9;ACTION&#9;ActivateProjectToolWindow&#10;proj&#9;ACTION&#9;ActivateProjectToolWindow&#10;pro&#9;ACTION&#9;ActivateProjectToolWindow" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Ido\Projects\WhosHome\whosHome\whosHomeApp\src\main\resources" />
       <recent name="D:\Ido\Projects\WhosHome\whosHome\lanSensor\lanSensorServer\src\main\java" />
       <recent name="D:\Ido\Projects\WhosHome\whosHome\lanSensor\lanSensorClient\src\main\java" />
       <recent name="D:\Ido\Projects\WhosHome\whosHome\whosHomeApp\src\main\java\whosHome" />
@@ -213,7 +170,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.[CLIENT] Run">
+  <component name="RunManager" selected="Application.[WhosHomeApp] Debug">
     <configuration name="[CLIENT] Run" type="Application" factoryName="Application" folderName="LanSensor">
       <option name="MAIN_CLASS_NAME" value="sensorclient.Main" />
       <module name="lanSensorClient" />
@@ -231,6 +188,24 @@
       <module name="lanSensorServer" />
       <option name="PROGRAM_PARAMETERS" value="-environment prod -os linux" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="[WhosHomeApp] Debug" type="Application" factoryName="Application" folderName="WhosHomeApp">
+      <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.Application" />
+      <module name="whosHomeApp" />
+      <option name="PROGRAM_PARAMETERS" value="--environment=debug" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="[WhosHomeApp] Prod" type="Application" factoryName="Application" folderName="WhosHomeApp" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.Application" />
+      <module name="whosHomeApp" />
+      <option name="PROGRAM_PARAMETERS" value="--environment=prod" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="whosHome.whosHomeApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -277,7 +252,14 @@
       <item itemvalue="Application.[SERVER] Debug" />
       <item itemvalue="Application.[SERVER] Prod (linux)" />
       <item itemvalue="Application.[CLIENT] Run" />
+      <item itemvalue="Application.[WhosHomeApp] Debug" />
+      <item itemvalue="Application.[WhosHomeApp] Prod" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.[WhosHomeApp] Prod" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -294,6 +276,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -302,19 +285,20 @@
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" weight="0.3294271" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4524138" />
+      <window_info anchor="right" id="Maven Projects" visible="true" weight="0.3294271" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.6110345" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3294271" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Learn" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
       <window_info anchor="right" id="Theme Preview" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -355,23 +339,34 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="cli.getOptionValue(&quot;environment&quot;)" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>cli.getOptionValue(&quot;environment&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="110" column="12" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/messageDeserializers/AbstractMessageDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/dataProviders/db/SensorTypesMetadataDbDao.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorConnectionMetadata.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorClient/lanSensorClient.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -465,18 +460,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeApp/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/NetScanner.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/utils/mocks/NetScannerMock.java">
       <provider selected="true" editor-type-id="text-editor" />
@@ -505,33 +490,16 @@
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/models/Device.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensor.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorClient/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
+        <state relative-caret-position="557">
           <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorClient/src/main/java/sensorclient/messageDeserializers/DeviceConnectionParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
+        <state relative-caret-position="460">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
@@ -543,17 +511,116 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/SensorSeverModule.java">
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensor.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="637">
+          <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="67" column="59" selection-start-line="67" selection-start-column="56" selection-end-line="67" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/server/SensorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/dataAccess/IPeopleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/resources/application.prod.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/dataAccess/agents/PeopleServiceAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/AppModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
+        <state relative-caret-position="637">
+          <caret line="80" column="33" lean-forward="true" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/SensorSeverModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
           <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/resources/application.debug.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/whosHomeCommon.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="12" selection-end-line="15" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -574,7 +641,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -609,11 +676,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>lanSensorClient</last-edited>
+          <last-edited>whosHomeApp</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -633,7 +701,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

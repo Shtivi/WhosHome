@@ -14,7 +14,6 @@
     <modules>
         <module>lanSensorClient</module>
         <module>lanSensorServer</module>
-        <module>../whosHomeCommon</module>
     </modules>
 
     <dependencies>

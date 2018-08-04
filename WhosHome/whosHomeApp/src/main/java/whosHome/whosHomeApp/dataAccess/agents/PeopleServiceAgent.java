@@ -1,5 +1,6 @@
 package whosHome.whosHomeApp.dataAccess.agents;
 
+import com.google.inject.Inject;
 import org.apache.commons.lang.NotImplementedException;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -11,16 +12,20 @@ import whosHome.common.SearchParams;
 import whosHome.whosHomeApp.dataAccess.IPeopleDao;
 import whosHome.whosHomeApp.models.Person;
 
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
+@Singleton
 public class PeopleServiceAgent implements IPeopleDao {
     private String _apiUrl;
     private String _peopleApiPath;
     private RestTemplate _restTemplate;
 
-    public PeopleServiceAgent(String serviceUrl, String peopleApiPath) {
+    @Inject
+    public PeopleServiceAgent(@Named("peopleServiceUrl") String serviceUrl, @Named("peopleApiPath") String peopleApiPath) {
         _apiUrl = serviceUrl;
         _peopleApiPath = peopleApiPath;
         _restTemplate = new RestTemplate();
