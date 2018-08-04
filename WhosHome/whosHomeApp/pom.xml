@@ -3,9 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>whosHome</groupId>
     <artifactId>whosHomeApp</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -74,8 +72,14 @@
             <version>4.2.0</version>
         </dependency>
         <dependency>
-            <groupId>whos-home</groupId>
-            <artifactId>sensor-client</artifactId>
+            <groupId>whosHome</groupId>
+            <artifactId>whosHomeCommon</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>whosHome</groupId>
+            <artifactId>lanSensorClient</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
@@ -106,6 +110,7 @@
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
+
 
 
 </project>

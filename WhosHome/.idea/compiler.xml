@@ -6,15 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lan-sensor-server" />
-        <module name="sensor-client" />
+        <module name="lanSensorClient" />
+        <module name="lanSensorServer" />
         <module name="whosHomeApp" />
         <module name="whosHomeCommon" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="sensor-client (1)" target="8" />
-      <module name="sensor-client (2)" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>

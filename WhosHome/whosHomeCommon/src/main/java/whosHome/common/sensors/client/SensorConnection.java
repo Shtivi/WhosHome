@@ -9,8 +9,8 @@ import whosHome.common.models.SensorConnectionMetadata;
 import whosHome.common.sensors.client.commands.SensorCommand;
 import whosHome.common.sensors.client.events.ErrorEventArgs;
 import whosHome.common.sensors.client.events.StatusChangeEventArgs;
-import whosHome.common.sensors.client.messageDeserializers.AllEntitiesMessageDeserializer;
 import whosHome.common.sensors.client.messageDeserializers.ActivityDetectedMessageDeserializer;
+import whosHome.common.sensors.client.messageDeserializers.AllEntitiesMessageDeserializer;
 
 import java.net.URI;
 import java.util.ArrayList;

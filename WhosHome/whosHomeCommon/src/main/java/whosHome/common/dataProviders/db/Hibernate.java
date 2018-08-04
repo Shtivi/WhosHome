@@ -4,8 +4,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import whosHome.common.models.SensorConnectionMetadata;
-import whosHome.common.models.SensorTypeMetadata;
 
 public class Hibernate {
     private SessionFactory sessionFactory;
