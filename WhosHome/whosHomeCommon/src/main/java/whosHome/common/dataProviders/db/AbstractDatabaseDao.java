@@ -1,8 +1,10 @@
 package whosHome.common.dataProviders.db;
 
+import com.google.inject.Inject;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import whosHome.common.dataProviders.IDataProvider;
 
 import java.io.Serializable;
@@ -13,12 +15,13 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractDatabaseDao<I extends Serializable, T> implements IDataProvider<I, T> {
-    private SessionFactory _sessionFactory;
+    private Hibernate _hibernate;
     private Class<I> _idType;
     private Class<T> _entityType;
 
-    public AbstractDatabaseDao(SessionFactory sessionFactory) {
-        this.setSession(sessionFactory);
+    @Inject
+    public AbstractDatabaseDao(Hibernate hibernate) {
+        this.setHibernate(hibernate);
 
         Type[] genericTypeArgs = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments();
         this._idType = (Class<I>) genericTypeArgs[0];
@@ -44,7 +47,7 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
 
     @Override
     public synchronized I add(T record) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         I generatedID = (I) session.save(record); // TODO: 7/24/2018 check this
         session.getTransaction().commit();
@@ -54,7 +57,7 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
 
     @Override
     public synchronized void add(Iterable<T> records) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         for (T record : records) {
@@ -67,7 +70,7 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
 
     @Override
     public synchronized void update(T record) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.update(record);
         session.getTransaction().commit();
@@ -76,7 +79,7 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
 
     @Override
     public synchronized void delete(I id) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
         Query query = session.createQuery("delete from " + this.getEntityType().getName() + " where id = :id");
         query.setParameter("id", id);
         query.executeUpdate();
@@ -85,19 +88,23 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
 
     @Override
     public synchronized void delete(Collection<I> ids) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
         Query query = session.createQuery("delete from " + this.getEntityType().getName() + " where id in (:ids)");
         query.setParameterList("ids", ids);
         query.executeUpdate();
         session.close();
     }
 
-    protected void setSession(SessionFactory sessionFactory) {
-        this._sessionFactory = sessionFactory;
+    protected void setHibernate(Hibernate hibernate) {
+        this._hibernate = hibernate;
+    }
+
+    protected Hibernate getHibernate() {
+        return this._hibernate;
     }
 
     protected SessionFactory getSessionFactory() {
-        return this._sessionFactory;
+        return this._hibernate.getSessionFactory();
     }
 
     protected Class<I> getIdType() {

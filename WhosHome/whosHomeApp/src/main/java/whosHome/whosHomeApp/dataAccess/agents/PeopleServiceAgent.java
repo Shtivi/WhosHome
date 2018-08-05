@@ -1,6 +1,8 @@
 package whosHome.whosHomeApp.dataAccess.agents;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 import org.apache.commons.lang.NotImplementedException;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -12,8 +14,6 @@ import whosHome.common.SearchParams;
 import whosHome.whosHomeApp.dataAccess.IPeopleDao;
 import whosHome.whosHomeApp.models.Person;
 
-import javax.inject.Named;
-import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;

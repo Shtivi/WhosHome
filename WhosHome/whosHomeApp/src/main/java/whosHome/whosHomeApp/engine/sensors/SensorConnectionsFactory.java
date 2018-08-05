@@ -1,5 +1,6 @@
 package whosHome.whosHomeApp.engine.sensors;
 
+import com.google.inject.Inject;
 import whosHome.common.dataProviders.ISensorConnectionsMetadataDao;
 import whosHome.common.models.SensorConnectionMetadata;
 import whosHome.common.sensors.client.ISensorConnection;
@@ -21,6 +22,7 @@ public class SensorConnectionsFactory implements ISensorConnectionsFactory {
     private Map<Integer, Function<SensorConnectionMetadata, ISensorConnection>> _builders;
     private ISensorConnectionsMetadataDao _connectionsMetadataDao;
 
+    @Inject
     public SensorConnectionsFactory(ISensorConnectionsMetadataDao connectionsMetadataDao) {
         _builders = new HashMap<>();
         _connectionsMetadataDao = connectionsMetadataDao;

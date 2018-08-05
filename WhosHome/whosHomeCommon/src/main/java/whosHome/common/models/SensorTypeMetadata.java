@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "sensor_types_metadata")
 public class SensorTypeMetadata implements Identifiable<Integer> {
-    @Id @GeneratedValue @Column(name = "sensor_type_id") private int sensorTypeID;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "sensor_type_id") private int sensorTypeID;
     @Column(name = "title") private String title;
     @Column(name = "reliability") private int reliability;
 
