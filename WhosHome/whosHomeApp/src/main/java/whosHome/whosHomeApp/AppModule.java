@@ -12,10 +12,13 @@ import whosHome.common.dataProviders.ISensorTypesMetadataDao;
 import whosHome.common.dataProviders.db.Hibernate;
 import whosHome.common.dataProviders.db.SensorConnectionsMetadataDbDao;
 import whosHome.common.dataProviders.db.SensorTypesMetadataDbDao;
+import whosHome.whosHomeApp.dataAccess.IDevicesDao;
 import whosHome.whosHomeApp.dataAccess.IPeopleDao;
 import whosHome.whosHomeApp.dataAccess.agents.PeopleServiceAgent;
+import whosHome.whosHomeApp.dataAccess.db.DevicesDbDao;
 import whosHome.whosHomeApp.engine.sensors.ISensorConnectionsFactory;
 import whosHome.whosHomeApp.engine.sensors.SensorConnectionsFactory;
+import whosHome.whosHomeApp.utils.mocks.DevicesDaoMock;
 
 public class AppModule extends AbstractModule {
     private Config _config;
@@ -62,10 +65,10 @@ public class AppModule extends AbstractModule {
     }
 
     private void configureDebug() {
-
+        bind(IDevicesDao.class).to(DevicesDaoMock.class);
     }
 
     private void configureProd() {
-
+        bind(IDevicesDao.class).to(DevicesDbDao.class);
     }
 }

@@ -22,6 +22,7 @@ import whosHome.common.sensors.client.events.ActivityDetectionEventArgs;
 import whosHome.common.sensors.client.events.ErrorEventArgs;
 import whosHome.common.sensors.client.events.StatusChangeEventArgs;
 import whosHome.whosHomeApp.dataAccess.IPeopleDao;
+import whosHome.whosHomeApp.engine.recognition.PeopleRecognitionManager;
 import whosHome.whosHomeApp.engine.sensors.ISensorConnectionsFactory;
 import whosHome.whosHomeApp.engine.sensors.builders.LanSensorConnectionBuilder;
 import whosHome.whosHomeApp.models.Person;
@@ -53,6 +54,7 @@ public class Application {
         AppModule appModule = new AppModule(config.getConfig("whosHome"), Environment.valueOf(env.toUpperCase()));
         Injector injector = Guice.createInjector(appModule);
         ISensorConnectionsFactory connectionsFactory = injector.getInstance(ISensorConnectionsFactory.class);
+        PeopleRecognitionManager recognizer = injector.getInstance(PeopleRecognitionManager.class);
         ISensorConnection connection = connectionsFactory.createConnection(1);
         connection.connect();
         connection.listen(new ISensorListener() {
@@ -68,7 +70,7 @@ public class Application {
 
             @Override
             public void onActivityDetection(ActivityDetectionEventArgs args) {
-                System.out.println("2");
+                Optional<Person> person = recognizer.recognize(args.getIdentificationData());
             }
 
             @Override
@@ -93,7 +95,7 @@ public class Application {
     }
 
     @RequestMapping(value = "/isAlive", method = RequestMethod.GET)
-    public boolean greeting() {
+    public boolean isAlive() {
         return true;
     }
 }
