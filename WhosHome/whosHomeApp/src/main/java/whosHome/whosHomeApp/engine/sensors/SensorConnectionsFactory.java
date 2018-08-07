@@ -40,7 +40,7 @@ public class SensorConnectionsFactory implements ISensorConnectionsFactory {
     }
 
     @Override
-    public List<ISensorConnection> createAllConnectionS() throws SensorConnectionInstatiationException {
+    public List<ISensorConnection> createAllConnections() throws SensorConnectionInstatiationException {
         Collection<SensorConnectionMetadata> connectionsMetadata = _connectionsMetadataDao.fetchAll();
         List<ISensorConnection> sensorConnectionInstances = connectionsMetadata.stream()
                 .map(this::buildSensorConnectionInstance)

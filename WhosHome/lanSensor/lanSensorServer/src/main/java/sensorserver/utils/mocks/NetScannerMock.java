@@ -9,13 +9,20 @@ import java.util.Date;
 import java.util.Random;
 
 public class NetScannerMock extends NetScanner {
-    private static final int MAX_DELAY_MS = 2000;
-    private static final int MIN_DELAY_MS = 500;
+    private static final int MAX_DELAY_MS = 7000;
+    private static final int MIN_DELAY_MS = 2500;
+    private static final float DEVICE_AVAILABILITY_PROBABILITY = 0.05f;
     private Random _random;
 
     public NetScannerMock(IScannerListener listener, ScanningTask task) {
         super(listener, task);
         _random = new Random();
+    }
+
+    private boolean generateAvailability() {
+        int bound = (int)(DEVICE_AVAILABILITY_PROBABILITY * 100);
+        int availability = _random.nextInt(bound);
+        return availability == bound - 1;
     }
 
     @Override
@@ -30,7 +37,7 @@ public class NetScannerMock extends NetScanner {
                     duration,
                     _task.getIP(),
                     _task.getIP(),
-                    _random.nextBoolean());
+                    generateAvailability());
 
             _listener.onScanCompleted(this, _task, scanResult);
         } catch (InterruptedException e) {

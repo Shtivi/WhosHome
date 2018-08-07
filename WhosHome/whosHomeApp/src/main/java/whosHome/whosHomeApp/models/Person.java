@@ -80,6 +80,22 @@ public class Person implements Identifiable<String> {
         return new Person(this);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null) return false;
+        if (!other.getClass().equals(this.getClass())) return false;
+        else {
+            Person otherPerson = (Person) other;
+            return otherPerson.getID().equals(this.getID());
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return getID().hashCode();
+    }
+
     public static class Builder {
         private Person _person;
 

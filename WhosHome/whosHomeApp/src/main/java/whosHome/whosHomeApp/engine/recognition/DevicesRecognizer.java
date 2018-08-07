@@ -1,15 +1,12 @@
 package whosHome.whosHomeApp.engine.recognition;
 
-import com.google.inject.ImplementedBy;
 import com.google.inject.Inject;
 import whosHome.common.sensors.client.IdentificationData;
 import whosHome.whosHomeApp.dataAccess.IDevicesDao;
 import whosHome.whosHomeApp.dataAccess.IPeopleDao;
 import whosHome.whosHomeApp.models.Device;
-import whosHome.whosHomeApp.models.Person;
 
 import java.util.Optional;
-import java.util.function.Function;
 
 public class DevicesRecognizer implements IRecognizer {
     private IPeopleDao _peopleDao;

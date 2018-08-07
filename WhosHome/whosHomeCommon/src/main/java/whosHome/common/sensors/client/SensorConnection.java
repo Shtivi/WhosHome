@@ -83,7 +83,7 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     }
 
     private void setStatus(SensorConnectionState newStatus, String reason) {
-        StatusChangeEventArgs args = new StatusChangeEventArgs(_status, newStatus, reason);
+        StatusChangeEventArgs args = new StatusChangeEventArgs(_status, newStatus, reason, getConnectionMetadata());
         _status = newStatus;
         _listeners.forEach(listener -> listener.onStatusChange(args));
     }
@@ -130,7 +130,7 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
 
         @Override
         public void onError(Exception e) {
-            ErrorEventArgs args = new ErrorEventArgs(e);
+            ErrorEventArgs args = new ErrorEventArgs(getConnectionMetadata(), e);
             _listeners.forEach(listener -> listener.onError(args));
         }
     }

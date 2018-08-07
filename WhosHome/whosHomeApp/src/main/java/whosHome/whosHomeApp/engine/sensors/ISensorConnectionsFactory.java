@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ISensorConnectionsFactory {
     ISensorConnection createConnection(int sensorConnectionID) throws SensorConnectionInstatiationException;
-    List<ISensorConnection> createAllConnectionS() throws SensorConnectionInstatiationException;
+    List<ISensorConnection> createAllConnections() throws SensorConnectionInstatiationException;
 }

@@ -19,6 +19,7 @@ import whosHome.whosHomeApp.dataAccess.db.DevicesDbDao;
 import whosHome.whosHomeApp.engine.sensors.ISensorConnectionsFactory;
 import whosHome.whosHomeApp.engine.sensors.SensorConnectionsFactory;
 import whosHome.whosHomeApp.utils.mocks.DevicesDaoMock;
+import whosHome.whosHomeApp.utils.mocks.PeopleDaoMock;
 
 public class AppModule extends AbstractModule {
     private Config _config;
@@ -37,7 +38,6 @@ public class AppModule extends AbstractModule {
         bind(String.class)
                 .annotatedWith(Names.named("peopleApiPath"))
                 .toInstance(_config.getString("peopleService.peopleApiPath"));
-        bind(IPeopleDao.class).to(PeopleServiceAgent.class);
         bind(ISensorConnectionsMetadataDao.class).to(SensorConnectionsMetadataDbDao.class);
         bind(ISensorTypesMetadataDao.class).to(SensorTypesMetadataDbDao.class);
         bind(ISensorConnectionsFactory.class).to(SensorConnectionsFactory.class);
@@ -66,9 +66,11 @@ public class AppModule extends AbstractModule {
 
     private void configureDebug() {
         bind(IDevicesDao.class).to(DevicesDaoMock.class);
+        bind(IPeopleDao.class).to(PeopleDaoMock.class);
     }
 
     private void configureProd() {
         bind(IDevicesDao.class).to(DevicesDbDao.class);
+        bind(IPeopleDao.class).to(PeopleServiceAgent.class);
     }
 }
