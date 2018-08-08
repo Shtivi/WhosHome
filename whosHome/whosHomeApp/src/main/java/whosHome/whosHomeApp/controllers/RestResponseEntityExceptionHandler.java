@@ -12,15 +12,9 @@ import whosHome.whosHomeApp.engine.errors.WhosHomeEngineException;
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(value = {
-            WhosHomeException.class, WhosHomeEngineException.class
-    })
-    protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
-        return handleExceptionInternal(
-                ex,
-                ex.getMessage(),
-                new HttpHeaders(),
-                HttpStatus.CONFLICT,
-                request);
+    @ExceptionHandler(value = {WhosHomeException.class})
+    protected ResponseEntity handleWhosHomeException(WhosHomeException ex) {
+        HttpStatus httpStatus = HttpStatus.valueOf(ex.httpStatus());
+        return ResponseEntity.status(httpStatus).body(ex.getMessage());
     }
 }

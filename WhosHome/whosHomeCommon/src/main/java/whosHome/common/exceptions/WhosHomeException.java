@@ -8,4 +8,8 @@ public class WhosHomeException extends RuntimeException {
     public WhosHomeException(String message, Throwable cause) {
         super(message, cause);
     }
+
+    public int httpStatus() {
+        return 500;
+    }
 }
