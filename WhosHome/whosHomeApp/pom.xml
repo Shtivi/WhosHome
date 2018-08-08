@@ -62,11 +62,6 @@
             <version>2.8.4</version>
         </dependency>
         <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>4.2.0</version>
-        </dependency>
-        <dependency>
             <groupId>whosHome</groupId>
             <artifactId>whosHomeCommon</artifactId>
             <version>1.0-SNAPSHOT</version>
