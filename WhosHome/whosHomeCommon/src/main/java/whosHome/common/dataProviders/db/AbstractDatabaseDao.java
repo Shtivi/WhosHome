@@ -5,6 +5,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import whosHome.common.dataProviders.IDataProvider;
 
 import java.io.Serializable;
@@ -19,7 +20,7 @@ public abstract class AbstractDatabaseDao<I extends Serializable, T> implements 
     private Class<I> _idType;
     private Class<T> _entityType;
 
-    @Inject
+    @Inject @Autowired
     public AbstractDatabaseDao(Hibernate hibernate) {
         this.setHibernate(hibernate);
 

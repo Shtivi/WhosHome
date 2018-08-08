@@ -3,6 +3,7 @@ package whosHome.whosHomeApp.engine;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 import whosHome.common.events.Event;
 import whosHome.common.exceptions.WhosHomeException;
 import whosHome.common.sensors.client.ISensorConnection;
@@ -17,12 +18,14 @@ import whosHome.whosHomeApp.engine.recognition.PeopleRecognitionManager;
 import whosHome.whosHomeApp.engine.sensors.ISensorConnectionsFactory;
 import whosHome.whosHomeApp.models.Person;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Singleton
+@Scope(value = "singleton")
 public class WhosHomeEngine {
     private Logger _logger;
     private PeopleRecognitionManager _recognitionMgr;
@@ -74,6 +77,14 @@ public class WhosHomeEngine {
 
     public Event<PersonActivityEventArgs> onActivityDetection() {
         return onActivityDetectedEvent;
+    }
+
+    public Iterable<ISensorConnection> getAllSensorConnections() {
+        return _sensorConnections;
+    }
+
+    public Iterable<PersonPresenceData> getPeoplePresenceData() {
+        return _knownPeople.values();
     }
 
     private void activityDetected(ActivityDetectionEventArgs activityDetails) {

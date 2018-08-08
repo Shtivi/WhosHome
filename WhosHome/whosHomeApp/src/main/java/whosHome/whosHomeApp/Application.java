@@ -7,13 +7,19 @@ import com.typesafe.config.ConfigFactory;
 import org.apache.commons.cli.Options;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
 import org.apache.commons.cli.*;
+import whosHome.common.dataProviders.ISensorConnectionsMetadataDao;
 import whosHome.whosHomeApp.engine.WhosHomeEngine;
 
 @RestController
 @SpringBootApplication
+@EnableAutoConfiguration
 public class Application {
     public enum Environment { DEBUG, PROD }
 
@@ -28,18 +34,20 @@ public class Application {
             e.printStackTrace();
             System.exit(1);
         }
-
         String env = cli.getOptionValue("environment");
-        Config config = ConfigFactory.load(String.format("application.%s", env.toLowerCase()));
-        //SpringApplication.run(Application.class, args);
+        System.setProperty("env", env);
 
-        AppModule appModule = new AppModule(config.getConfig("whosHome"), Environment.valueOf(env.toUpperCase()));
-        Injector injector = Guice.createInjector(appModule);
-        WhosHomeEngine whosHomeEngine = injector.getInstance(WhosHomeEngine.class);
-        whosHomeEngine.start();
-        whosHomeEngine.onActivityDetection().listen((detectionArgs) -> {
-            System.out.println(detectionArgs.getSubject().getFirstname());
-        });
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+//
+//        Config config = ConfigFactory.load(String.format("application.%s", env.toLowerCase()));
+//
+//        AppModule appModule = new AppModule(config.getConfig("whosHome"), Environment.valueOf(env.toUpperCase()));
+//        Injector injector = Guice.createInjector(appModule);
+//        WhosHomeEngine whosHomeEngine = injector.getInstance(WhosHomeEngine.class);
+//        whosHomeEngine.start();
+//        whosHomeEngine.onActivityDetection().listen((detectionArgs) -> {
+//            System.out.println(detectionArgs.getSubject().getFirstname());
+//        });
     }
 
     private static CommandLine parseArgs(String[] args) throws ParseException {

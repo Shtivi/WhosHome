@@ -4,10 +4,6 @@ package whosHome.common.sensors.client;
 import whosHome.common.models.SensorConnectionMetadata;
 import whosHome.common.sensors.client.commands.SensorCommand;
 
-/**
- *
- * @param <T>
- */
 public interface ISensorConnection<T extends IdentificationData> {
     /**
      * Connects the service, if not connected already and if possible (status == SensorConnectionState.AVAILABLE).
