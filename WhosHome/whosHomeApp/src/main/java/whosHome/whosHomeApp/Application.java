@@ -27,31 +27,13 @@ public class Application {
         Logger logger = Logger.getLogger("Application");
         logger.info("Starting initialization");
 
-        CommandLine cli = null;
-        try {
-            cli = parseArgs(args);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
+        CommandLine cli = parseArgs(args);
         String env = cli.getOptionValue("environment");
         System.setProperty("env", env);
-
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        WhosHomeEngine engine = context.getBean(WhosHomeEngine.class);
-//
-//        Config config = ConfigFactory.load(String.format("application.%s", env.toLowerCase()));
-//
-//        AppModule appModule = new AppModule(config.getConfig("whosHome"), Environment.valueOf(env.toUpperCase()));
-//        Injector injector = Guice.createInjector(appModule);
-//        WhosHomeEngine whosHomeEngine = injector.getInstance(WhosHomeEngine.class);
-//        whosHomeEngine.start();
-//        whosHomeEngine.onActivityDetection().listen((detectionArgs) -> {
-//            System.out.println(detectionArgs.getSubject().getFirstname());
-//        });
     }
 
-    private static CommandLine parseArgs(String[] args) throws ParseException {
+    private static CommandLine parseArgs(String[] args) {
         Option environmentOption = Option.builder()
                 .longOpt("environment")
                 .desc("Set the environment configuration [prod / debug]")
@@ -61,7 +43,13 @@ public class Application {
 
         Options cliOptions = new Options().addOption(environmentOption);
         DefaultParser cliParser = new DefaultParser();
-        CommandLine cli = cliParser.parse(cliOptions, args);
+        CommandLine cli = null;
+        try {
+            cli = cliParser.parse(cliOptions, args);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
         return cli;
     }
 

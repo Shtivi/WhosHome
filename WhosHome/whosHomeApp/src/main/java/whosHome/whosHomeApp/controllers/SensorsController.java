@@ -10,15 +10,15 @@ import whosHome.whosHomeApp.engine.WhosHomeEngine;
 @RestController
 @RequestMapping(value = "/sensors")
 public class SensorsController {
-//    private WhosHomeEngine _whosHomeEngine;
-//
-//    @Autowired
-//    public SensorsController(WhosHomeEngine whosHomeEngine) {
-//        _whosHomeEngine = whosHomeEngine;
-//    }
-//
-//    @GetMapping
-//    public Iterable<ISensorConnection> getAllConnections() {
-//        return _whosHomeEngine.getAllSensorConnections();
-//    }
+    private WhosHomeEngine _whosHomeEngine;
+
+    @Autowired
+    public SensorsController(WhosHomeEngine whosHomeEngine) {
+        _whosHomeEngine = whosHomeEngine;
+    }
+
+    @GetMapping
+    public Iterable<ISensorConnection> getAllConnections() {
+        return _whosHomeEngine.getAllSensorConnections();
+    }
 }
