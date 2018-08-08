@@ -14,6 +14,8 @@ import whosHome.common.sensors.client.SensorConnectionState;
 import whosHome.common.sensors.client.events.ActivityDetectionEventArgs;
 import whosHome.common.sensors.client.events.ErrorEventArgs;
 import whosHome.common.sensors.client.events.StatusChangeEventArgs;
+import whosHome.whosHomeApp.engine.errors.WhosHomeEngineException;
+import whosHome.whosHomeApp.engine.events.EngineStatusChangedEventArgs;
 import whosHome.whosHomeApp.engine.events.PersonActivityEventArgs;
 import whosHome.whosHomeApp.engine.recognition.PeopleRecognitionManager;
 import whosHome.whosHomeApp.engine.sensors.ISensorConnectionsFactory;
@@ -28,7 +30,10 @@ import java.util.concurrent.ConcurrentHashMap;
 @Singleton
 @Scope(value = "singleton")
 public class WhosHomeEngine {
+    public enum Status { INITIALIZING, STANDBY, CONNECTING, WORKING }
+
     private Logger _logger;
+    private Status _engineStatus;
     private PeopleRecognitionManager _recognitionMgr;
     private ISensorConnectionsFactory _connectionsFactory;
     private List<ISensorConnection> _sensorConnections;
@@ -37,6 +42,7 @@ public class WhosHomeEngine {
     private Event<ErrorEventArgs> onSensorErrorEvent;
     private Event<StatusChangeEventArgs> onSensorStatusChangedEvent;
     private Event<PersonActivityEventArgs> onActivityDetectedEvent;
+    private Event<EngineStatusChangedEventArgs> onEngineStatusChangedEvent;
 
     @Autowired
     public WhosHomeEngine(PeopleRecognitionManager recognitionManager, ISensorConnectionsFactory connectionsFactory) {
@@ -48,11 +54,11 @@ public class WhosHomeEngine {
         onActivityDetectedEvent = new Event<>();
         onSensorErrorEvent = new Event<>();
         onSensorStatusChangedEvent = new Event<>();
-
-        _sensorConnections = _connectionsFactory.createAllConnections();
+        onEngineStatusChangedEvent = new Event<>();
     }
 
     public void start() throws WhosHomeException {
+        setEngineStatus(Status.CONNECTING, "connecting to sensor services");
         _sensorConnections
                 .stream()
                 .filter(connection -> connection.getConnectionMetadata().isActiveDefaultly())
@@ -60,12 +66,29 @@ public class WhosHomeEngine {
                     connection.listen(new SensorListener(connection));
                     connection.connect();
                 });
+        this.setEngineStatus(Status.WORKING, "started according to user request");
     }
 
-    public void stop() throws WhosHomeException {
+    public void stop() {
         _sensorConnections.stream()
                 .filter(connection -> connection.getStatus().equals(SensorConnectionState.CONNECTED))
                 .forEach(connection -> connection.disconnect());
+        setEngineStatus(Status.STANDBY, "stopped according to user request");
+    }
+
+    public Iterable<ISensorConnection> getAllSensorConnections() throws WhosHomeEngineException {
+        if (_sensorConnections == null) {
+            throw new WhosHomeEngineException("sensor connections was not initialized yet");
+        }
+        return _sensorConnections;
+    }
+
+    public Iterable<PersonPresenceData> getPeoplePresenceData() {
+        return _knownPeople.values();
+    }
+
+    public Status getEngineStatus() {
+        return _engineStatus;
     }
 
     public Event<ErrorEventArgs> onSensorError() {
@@ -80,12 +103,33 @@ public class WhosHomeEngine {
         return onActivityDetectedEvent;
     }
 
-    public Iterable<ISensorConnection> getAllSensorConnections() {
-        return _sensorConnections;
+    public Event<EngineStatusChangedEventArgs> onEngineStatusChanged() {
+        return onEngineStatusChangedEvent;
     }
 
-    public Iterable<PersonPresenceData> getPeoplePresenceData() {
-        return _knownPeople.values();
+    public void initialize() {
+        setEngineStatus(Status.INITIALIZING, "starting engine initialization");
+        _sensorConnections = _connectionsFactory.createAllConnections();
+        setEngineStatus(Status.STANDBY, "finished initialization");
+    }
+
+    private void setEngineStatus(Status newStatus, Throwable error) {
+        Status oldStatus = _engineStatus;
+        _engineStatus = newStatus;
+        EngineStatusChangedEventArgs args = new EngineStatusChangedEventArgs.Builder(oldStatus, newStatus)
+                .withReason(error.getMessage())
+                .withError(error)
+                .build();
+        this.onEngineStatusChangedEvent.dispatch(args);
+    }
+
+    private void setEngineStatus(Status newStatus, String reason) {
+        Status oldStatus = _engineStatus;
+        _engineStatus = newStatus;
+        EngineStatusChangedEventArgs eventArgs = new EngineStatusChangedEventArgs.Builder(oldStatus, newStatus)
+                .withReason(reason)
+                .build();
+        this.onEngineStatusChangedEvent.dispatch(eventArgs);
     }
 
     private void activityDetected(ActivityDetectionEventArgs activityDetails) {
