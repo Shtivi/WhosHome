@@ -4,6 +4,8 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import org.apache.commons.lang.NotImplementedException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -24,11 +26,10 @@ public class PeopleServiceAgent implements IPeopleDao {
     private String _peopleApiPath;
     private RestTemplate _restTemplate;
 
-    @Inject
-    public PeopleServiceAgent(@Named("peopleServiceUrl") String serviceUrl, @Named("peopleApiPath") String peopleApiPath) {
+    public PeopleServiceAgent(String serviceUrl, String peopleApiPath, RestTemplate restTemplate) {
         _apiUrl = serviceUrl;
         _peopleApiPath = peopleApiPath;
-        _restTemplate = new RestTemplate();
+        _restTemplate = restTemplate;
     }
 
     @Override

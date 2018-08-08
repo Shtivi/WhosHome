@@ -38,6 +38,7 @@ public class Application {
         System.setProperty("env", env);
 
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        WhosHomeEngine engine = context.getBean(WhosHomeEngine.class);
 //
 //        Config config = ConfigFactory.load(String.format("application.%s", env.toLowerCase()));
 //

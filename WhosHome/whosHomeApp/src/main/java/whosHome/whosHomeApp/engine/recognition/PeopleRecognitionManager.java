@@ -2,6 +2,7 @@ package whosHome.whosHomeApp.engine.recognition;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import org.springframework.beans.factory.annotation.Autowired;
 import sensorclient.entities.LanEntity;
 import whosHome.common.sensors.client.IdentificationData;
 import whosHome.whosHomeApp.dataAccess.IDevicesDao;
@@ -16,7 +17,7 @@ public class PeopleRecognitionManager {
     private Map<Class, IRecognizer> _recognizers;
     IPeopleDao _peopleDao;
 
-    @Inject
+    @Autowired
     public PeopleRecognitionManager(IPeopleDao peopleDao, IDevicesDao devicesDao) {
         _peopleDao = peopleDao;
         _recognizers = new HashMap<>();
