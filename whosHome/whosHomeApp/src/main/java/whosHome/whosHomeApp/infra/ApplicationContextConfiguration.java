@@ -1,8 +1,7 @@
-package whosHome.whosHomeApp.conf;
+package whosHome.whosHomeApp.infra;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -13,7 +12,6 @@ import whosHome.common.dataProviders.ISensorTypesMetadataDao;
 import whosHome.common.dataProviders.db.Hibernate;
 import whosHome.common.dataProviders.db.SensorConnectionsMetadataDbDao;
 import whosHome.common.dataProviders.db.SensorTypesMetadataDbDao;
-import whosHome.common.sensors.client.ISensorConnection;
 import whosHome.whosHomeApp.Application;
 import whosHome.whosHomeApp.dataAccess.IDevicesDao;
 import whosHome.whosHomeApp.dataAccess.IPeopleDao;

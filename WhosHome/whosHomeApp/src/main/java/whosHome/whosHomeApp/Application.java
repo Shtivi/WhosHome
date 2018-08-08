@@ -1,21 +1,17 @@
 package whosHome.whosHomeApp;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
 import org.apache.commons.cli.Options;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
 import org.apache.commons.cli.*;
-import whosHome.common.dataProviders.ISensorConnectionsMetadataDao;
 import whosHome.whosHomeApp.engine.WhosHomeEngine;
+import whosHome.whosHomeApp.infra.WhosHomeEngineDestructor;
+import whosHome.whosHomeApp.infra.WhosHomeEngineInitializer;
 
 @RestController
 @SpringBootApplication
@@ -30,7 +26,16 @@ public class Application {
         CommandLine cli = parseArgs(args);
         String env = cli.getOptionValue("environment");
         System.setProperty("env", env);
-        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+
+        ConfigurableApplicationContext context = new SpringApplicationBuilder(Application.class)
+                .listeners(new WhosHomeEngineInitializer(), new WhosHomeEngineDestructor())
+                .build()
+                .run(args);
+
+        WhosHomeEngine engine = context.getBean(WhosHomeEngine.class);
+//        engine.onEngineStatusChanged().listen((eventArg -> {
+//            System.out.println(eventArg.getNewStatus());
+//        }));
     }
 
     private static CommandLine parseArgs(String[] args) {

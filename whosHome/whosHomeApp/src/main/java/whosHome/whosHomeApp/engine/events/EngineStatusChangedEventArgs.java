@@ -35,6 +35,7 @@ public class EngineStatusChangedEventArgs extends AbstractEventArgs {
         EngineStatusChangedEventArgs args;
 
         public Builder(WhosHomeEngine.Status oldStatus, WhosHomeEngine.Status newStatus) {
+            args = new EngineStatusChangedEventArgs();
             args.oldStatus = oldStatus;
             args.newStatus = newStatus;
             args.reason = "";

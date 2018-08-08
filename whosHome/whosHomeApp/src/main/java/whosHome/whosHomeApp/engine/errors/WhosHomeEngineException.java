@@ -1,7 +1,5 @@
 package whosHome.whosHomeApp.engine.errors;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import whosHome.common.exceptions.WhosHomeException;
 
 public class WhosHomeEngineException extends WhosHomeException {
@@ -13,8 +11,8 @@ public class WhosHomeEngineException extends WhosHomeException {
         super(message, cause);
     }
 
-    @Override
-    public int httpStatus() {
-        return 400;
+    public WhosHomeEngineException withHttpStatus(int httpStatus) {
+        _httpStatus = httpStatus;
+        return this;
     }
 }

@@ -21,7 +21,7 @@ import whosHome.whosHomeApp.engine.recognition.PeopleRecognitionManager;
 import whosHome.whosHomeApp.engine.sensors.ISensorConnectionsFactory;
 import whosHome.whosHomeApp.models.Person;
 
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -30,13 +30,13 @@ import java.util.concurrent.ConcurrentHashMap;
 @Singleton
 @Scope(value = "singleton")
 public class WhosHomeEngine {
-    public enum Status { INITIALIZING, STANDBY, CONNECTING, WORKING }
+    public enum Status { CREATED, INITIALIZED, WORKING }
 
     private Logger _logger;
     private Status _engineStatus;
     private PeopleRecognitionManager _recognitionMgr;
     private ISensorConnectionsFactory _connectionsFactory;
-    private List<ISensorConnection> _sensorConnections;
+    private Map<Integer, ISensorConnection> _sensorConnections;
     private Map<Person, PersonPresenceData> _knownPeople;
 
     private Event<ErrorEventArgs> onSensorErrorEvent;
@@ -47,40 +47,75 @@ public class WhosHomeEngine {
     @Autowired
     public WhosHomeEngine(PeopleRecognitionManager recognitionManager, ISensorConnectionsFactory connectionsFactory) {
         _logger = Logger.getLogger("WhosHomeEngine");
+        _logger.debug("creating WhosHomeEngine object");
+
         _connectionsFactory = connectionsFactory;
         _recognitionMgr = recognitionManager;
         _knownPeople = new ConcurrentHashMap<>();
+        _sensorConnections = new HashMap<>();
 
         onActivityDetectedEvent = new Event<>();
         onSensorErrorEvent = new Event<>();
         onSensorStatusChangedEvent = new Event<>();
         onEngineStatusChangedEvent = new Event<>();
+
+        _logger.debug("engine created");
+        _engineStatus = Status.CREATED;
     }
 
-    public void start() throws WhosHomeException {
-        setEngineStatus(Status.CONNECTING, "connecting to sensor services");
+    public synchronized WhosHomeEngine start() throws WhosHomeException {
+        if (_engineStatus != Status.INITIALIZED) {
+            throw new WhosHomeEngineException("unable to start, engine is not initialized").withHttpStatus(400);
+        }
+
+        _logger.info("connecting to sensors");
         _sensorConnections
+                .values()
                 .stream()
                 .filter(connection -> connection.getConnectionMetadata().isActiveDefaultly())
-                .forEach(connection -> {
-                    connection.listen(new SensorListener(connection));
-                    connection.connect();
-                });
+                .forEach(connection -> connection.connect());
+
         this.setEngineStatus(Status.WORKING, "started according to user request");
+        _logger.info("finished connecting to sensors");
+
+        return this;
     }
 
-    public void stop() {
-        _sensorConnections.stream()
+    public synchronized WhosHomeEngine initialize() {
+        _logger.info("fetching sensor connection details");
+        List<ISensorConnection> allConnections = _connectionsFactory.createAllConnections();
+        allConnections.forEach(connection -> {
+            connection.listen(new SensorListener(connection));
+            _sensorConnections.put(connection.getConnectionMetadata().getID(), connection);
+        });
+        setEngineStatus(Status.INITIALIZED, "finished initialization");
+        return this;
+    }
+
+    public synchronized WhosHomeEngine stop() {
+        if (_engineStatus != Status.WORKING) {
+            throw new WhosHomeEngineException("unable to stop, engine is not working").withHttpStatus(400);
+        }
+
+        _logger.info("disconnecting from sensors");
+        _sensorConnections.values().stream()
                 .filter(connection -> connection.getStatus().equals(SensorConnectionState.CONNECTED))
                 .forEach(connection -> connection.disconnect());
-        setEngineStatus(Status.STANDBY, "stopped according to user request");
+        setEngineStatus(Status.INITIALIZED, "stopped according to user request");
+        _logger.info("disconnected from sensors");
+
+        return this;
     }
 
-    public Iterable<ISensorConnection> getAllSensorConnections() throws WhosHomeEngineException {
-        if (_sensorConnections == null) {
+    public synchronized Iterable<ISensorConnection> getAllSensorConnections() throws WhosHomeEngineException {
+        if (_sensorConnections == null || _sensorConnections.isEmpty()) {
             throw new WhosHomeEngineException("sensor connections was not initialized yet");
         }
-        return _sensorConnections;
+        return _sensorConnections.values();
+    }
+
+    public synchronized Optional<ISensorConnection> getSensorConnection(int sensorConnectionID) {
+        return Optional.ofNullable(_sensorConnections.get(sensorConnectionID));
     }
 
     public Iterable<PersonPresenceData> getPeoplePresenceData() {
@@ -107,12 +142,6 @@ public class WhosHomeEngine {
         return onEngineStatusChangedEvent;
     }
 
-    public void initialize() {
-        setEngineStatus(Status.INITIALIZING, "starting engine initialization");
-        _sensorConnections = _connectionsFactory.createAllConnections();
-        setEngineStatus(Status.STANDBY, "finished initialization");
-    }
-
     private void setEngineStatus(Status newStatus, Throwable error) {
         Status oldStatus = _engineStatus;
         _engineStatus = newStatus;
@@ -120,6 +149,7 @@ public class WhosHomeEngine {
                 .withReason(error.getMessage())
                 .withError(error)
                 .build();
+        _logger.info(String.format("engine status changed from '%s' to '%s' with exception '%s': '%s'", oldStatus.toString(), newStatus.toString(), error.getClass().getName(), error.getMessage()));
         this.onEngineStatusChangedEvent.dispatch(args);
     }
 
@@ -129,6 +159,7 @@ public class WhosHomeEngine {
         EngineStatusChangedEventArgs eventArgs = new EngineStatusChangedEventArgs.Builder(oldStatus, newStatus)
                 .withReason(reason)
                 .build();
+        _logger.info(String.format("engine status changed from '%s' to '%s': '%s'", oldStatus.toString(), newStatus.toString(), reason == null ? "no reason specified" : reason));
         this.onEngineStatusChangedEvent.dispatch(eventArgs);
     }
 
@@ -164,11 +195,23 @@ public class WhosHomeEngine {
 
         @Override
         public void onError(ErrorEventArgs args) {
+            _logger.warn(String.format("sensor #%d-%s state changed to '%s': %s '%s'",
+                    args.getSensorConnectionMetadata().getID(),
+                    args.getSensorConnectionMetadata().getName(),
+                    _connection.getStatus().toString(),
+                    args.getError().getClass().getName(),
+                    args.getError().getMessage()));
             onSensorErrorEvent.dispatch(args);
         }
 
         @Override
         public void onStatusChange(StatusChangeEventArgs args) {
+            _logger.info(String.format("sensor #%d-%s state changed from '%s' to '%s': '%s'",
+                    args.getSensorConnectionMetadata().getSensorConnectionID(),
+                    args.getSensorConnectionMetadata().getName(),
+                    args.getOldStatus(),
+                    args.getNewStatus(),
+                    args.getReason()));
             onSensorStatusChangedEvent.dispatch(args);
         }
 

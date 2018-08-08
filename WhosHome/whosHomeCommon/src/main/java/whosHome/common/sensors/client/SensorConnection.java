@@ -28,22 +28,23 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     private Class<T> _entityType;
 
     public SensorConnection(Class<T> entityType, SensorConnectionMetadata connectionMetadata) {
-        String fullURI = connectionMetadata.getUrl() + ":" + connectionMetadata.getPort() + "/" + connectionMetadata.getPath();
-        _client = new Client(URI.create(fullURI));
+        _client = createClient(connectionMetadata);
         _serverMessageDeserializers = new ConcurrentHashMap<>();
         _listeners = new ArrayList<>();
         _connectionMetadata = connectionMetadata;
         _entityType = entityType;
 
         this.initializeMessageSerializers();
-        this.setStatus(SensorConnectionState.READY, "sensor waiting to be connected");
+        this.setStatus(SensorConnectionState.INITIALIZED, "sensor waiting to be connected");
     }
 
     @Override
     public void connect() {
-        if (_status == SensorConnectionState.READY) {
+        if (_status == SensorConnectionState.INITIALIZED) {
+            setStatus(SensorConnectionState.CONNECTING, "attempting to connect");
             _client.connect();
-        } else {
+        } else if (_status != SensorConnectionState.CONNECTING) {
+            setStatus(SensorConnectionState.CONNECTING, "attempting to reconnect");
             _client.reconnect();
         }
     }
@@ -51,7 +52,7 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     @Override
     public void disconnect() {
         if (_status == SensorConnectionState.CONNECTED) {
-            _client.close();
+            _client.closeConnection(1000, "disconnected according to user request");
         } else {
             throw new InvalidOperationException("status is '" + _status.name() + "', expected: '" + SensorConnectionState.CONNECTED.name() + "'");
         }
@@ -80,6 +81,11 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
     @Override
     public boolean removeListener(ISensorListener<T> listener) {
         return _listeners.remove(listener);
+    }
+
+    private Client createClient(SensorConnectionMetadata connectionMetadata) {
+        String fullURI = connectionMetadata.getUrl() + ":" + connectionMetadata.getPort() + "/" + connectionMetadata.getPath();
+        return new Client(URI.create(fullURI));
     }
 
     private void setStatus(SensorConnectionState newStatus, String reason) {
@@ -121,16 +127,19 @@ public class SensorConnection<T extends IdentificationData> implements ISensorCo
 
         @Override
         public void onClose(int i, String s, boolean b) {
+            if (i == -1) return;
+
             if (b) {
-                setStatus(SensorConnectionState.READY, "the server has closed the connection");
+                setStatus(SensorConnectionState.CLOSED, "the server has closed the connection");
             } else {
-                setStatus(SensorConnectionState.READY, "connection closed according to user request");
+                setStatus(SensorConnectionState.CLOSED, "connection closed according to user request");
             }
         }
 
         @Override
         public void onError(Exception e) {
             ErrorEventArgs args = new ErrorEventArgs(getConnectionMetadata(), e);
+            _status = SensorConnectionState.ERROR;
             _listeners.forEach(listener -> listener.onError(args));
         }
     }
