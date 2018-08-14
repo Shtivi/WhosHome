@@ -16,22 +16,22 @@ app.controller("sensorsCtrl", function($scope, sensorsService, $mdToast, notific
     $scope.fetchSesnors();
 
     // Init the websocket
-    ws = new WebSocket(notificationsServiceUrl);
+    // ws = new WebSocket(notificationsServiceUrl);
         
-    ws.onopen =() => {
-        console.log("Connected to the notifications center");
-    }
+    // ws.onopen =() => {
+    //     console.log("Connected to the notifications center");
+    // }
 
-    ws.onmessage = (msg) => {
-        // From string to objet
-        data = JSON.parse(msg.data);
+    // ws.onmessage = (msg) => {
+    //     // From string to objet
+    //     data = JSON.parse(msg.data);
 
-        if (data.eventType == 'SENSOR_STATE_CHANGE') {
-            $scope.sensors[data.sensorID].sensorState = data.newState;
-        }
+    //     if (data.eventType == 'SENSOR_STATE_CHANGE') {
+    //         $scope.sensors[data.sensorID].sensorState = data.newState;
+    //     }
 
-        $scope.$digest();
-    }
+    //     $scope.$digest();
+    // }
 
     // From sensor type to icon
     $scope.sensorIcons = {
@@ -40,10 +40,11 @@ app.controller("sensorsCtrl", function($scope, sensorsService, $mdToast, notific
 
     // From status name to color
     $scope.statusColors = {
-        'ACTIVE': 'green',
-        'READY': 'blue',
+        'CONNECTED': 'green',
+        'INITIALIZED': 'blue',
         'ERROR': 'red',
-        'NOT_READY': 'yellow'
+        'CLOSED': 'yellow',
+        'CONNECTING': 'blue'
     }
 
     // Sensor context menu

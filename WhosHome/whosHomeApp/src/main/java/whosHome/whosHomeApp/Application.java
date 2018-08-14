@@ -2,8 +2,6 @@ package whosHome.whosHomeApp;
 
 import org.apache.commons.cli.Options;
 import org.apache.log4j.Logger;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,7 +13,6 @@ import whosHome.whosHomeApp.infra.WhosHomeEngineInitializer;
 
 @RestController
 @SpringBootApplication
-@EnableAutoConfiguration
 public class Application {
     public enum Environment { DEBUG, PROD }
 
@@ -31,11 +28,6 @@ public class Application {
                 .listeners(new WhosHomeEngineInitializer(), new WhosHomeEngineDestructor())
                 .build()
                 .run(args);
-
-        WhosHomeEngine engine = context.getBean(WhosHomeEngine.class);
-//        engine.onEngineStatusChanged().listen((eventArg -> {
-//            System.out.println(eventArg.getNewStatus());
-//        }));
     }
 
     private static CommandLine parseArgs(String[] args) {
