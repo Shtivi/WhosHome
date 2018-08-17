@@ -2,12 +2,13 @@ import * as React from "react";
 import Typography from '@material-ui/core/Typography';
 import ArticlesList from "./ArticlesList";
 
-export class App extends React.Component<{}, {}> {
+export class App extends React.Component<{}> {
   render() {
     return (
-      <Typography variant="title" gutterBottom>
+      <div>
+        <Typography variant="title">Title</Typography>
         <ArticlesList />
-      </Typography>
+      </div>
     )
   }
 }

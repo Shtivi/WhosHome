@@ -11,7 +11,7 @@ interface ArticleItemProps {
 export class ArticleItem extends React.Component<ArticleItemProps> {
     render() {
         return (
-            <ListItem onClick={() => this.props.onClick}>
+            <ListItem onClick={this.props.onClick}>
                 <ListItemText>
                     {this.props.article.id} <b>{this.props.article.title}</b>
                 </ListItemText>

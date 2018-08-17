@@ -1,25 +1,31 @@
 import * as React from 'react'
 import { Article } from '../models/Article';
 import { Dispatch } from 'redux';
-import { Action } from '../actions/Action';
+import { Action } from 'redux';
 import List from '@material-ui/core/List';
 import { ArticleItem } from './ArticleItem';
 import { removeArticle } from '../actions/ArticleActionCreators'
 import { connect } from "react-redux";
+import { ArticlesState } from '../reducers/ArticlesReducer';
 
 interface ArticlesListProps {
-    articles: Article[]
-    dispatch: Dispatch<Action<Article>>
+    articles: ArticlesState
+    dispatch: Dispatch<Action>
 }
 
 class ArticlesList extends React.Component<ArticlesListProps> {
     render() {
+        const { articles, dispatch } = this.props;
         return (
-            <List>
-                {this.props.articles.map(article => {
-                    <ArticleItem key={article.id} article={article} onClick={() => this.props.dispatch(removeArticle(article))} />
+            <div>
+            <ul>
+                {Object.keys(articles).map((id) => {
+                    let articleID: number = Number(id);
+                    let article = articles[articleID];
+                    return <ArticleItem key={articleID} article={article} onClick={() => dispatch(removeArticle(article))} />
                 })}
-            </List>
+            </ul>
+            </div>
         )
     }
 }
