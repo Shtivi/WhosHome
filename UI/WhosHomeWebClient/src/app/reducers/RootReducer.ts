@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import ArticlesReducer from './ArticlesReducer'
+import PushNotificationsReducer from './PushNotificationsReducer';
 
 const rootReducer = combineReducers({
-    articles: ArticlesReducer
+    push: PushNotificationsReducer
 })
 
 export default rootReducer;
