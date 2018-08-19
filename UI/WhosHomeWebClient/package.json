@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^1.5.0",
+    "@material-ui/icons": "^2.0.2",
     "@stomp/stompjs": "^4.0.7",
     "@types/sockjs-client": "^1.1.0",
     "babel-preset-stage-2": "^6.24.1",
