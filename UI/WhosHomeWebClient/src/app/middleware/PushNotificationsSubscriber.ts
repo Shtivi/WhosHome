@@ -3,6 +3,7 @@ import { ActionTypes } from "../actions/ActionTypes";
 import * as SockJS from 'sockjs-client'
 import * as Stomp from "@stomp/stompjs"
 import { pushNotificationsSubscribed, subscribingPush, pushDisconnected, subscribePushNotifications, pushSubscriptionError } from "../actions/PushNotificationsActionCreators";
+import SensorStatusChanged from "../models/eventArgs/SensorStatusChanged";
 
 let client: Stomp.Client = null;
 let dispatch: Dispatch = null;
@@ -27,6 +28,11 @@ const pushSubsription = (store: Store) => (next: any) => (action: Action<ActionT
 }
 
 const handleConnection = () => {
+    client.subscribe('/topics/sensors/status', (message: Stomp.Message) => {
+        console.log(message.body);
+        let parsedMessage: SensorStatusChanged = <SensorStatusChanged>(JSON.parse(message.body));
+
+    })
     dispatch(pushNotificationsSubscribed());
 }
 

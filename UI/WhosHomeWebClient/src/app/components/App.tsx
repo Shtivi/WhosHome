@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import '../../css/app.css'
 import Paper from '@material-ui/core/Paper'; 
 import StatusBar from "./StatusBar";
+import CircularMenu from './CircularMenu';
 
 export class App extends React.Component<{}> {
   render() {
@@ -15,7 +16,8 @@ export class App extends React.Component<{}> {
       //   </Grid>
       // </Grid>
       <div>
-        <StatusBar />
+        {/* <StatusBar /> */}
+        <CircularMenu />
       </div>
     )
     return comp;

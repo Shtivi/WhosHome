@@ -4,6 +4,10 @@ export const subscribePushNotifications = () => ({
     type: ActionTypes.SUBSCRIBE_PUSH
 })
 
+export const unsubsribePushNotifications = () => ({
+    type: ActionTypes.UNSUBSCRIBE_PUSH
+})
+
 export const pushNotificationsSubscribed = () => ({
     type: ActionTypes.PUSH_SUBSCRIBED_SUCCESSFULLY
 })
