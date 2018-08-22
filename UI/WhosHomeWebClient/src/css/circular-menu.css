@@ -72,8 +72,8 @@
   overflow: hidden;
   left: 50%;
   top: 0%;
-  margin-top: -1.5em;
-  margin-left: -10em;
+  margin-top: -1.7em;
+  margin-left: -10.05em;
   transition: border .3s ease;
 }
 
@@ -83,8 +83,8 @@
   height: 14.5em;
   width: 14.5em;
   position: absolute;
-  bottom: -7.25em;
-  right: -7.25em;
+  bottom: -8.75em;
+  right: -8.75em;
   border-radius: 50%;
   text-decoration: none;
   color: #fff;
@@ -96,7 +96,6 @@
 
 .csstransforms .cn-wrapper li a span {
   font-size: 1.1em;
-  opacity: 0.7;
 }
 /* for a central angle x, the list items must be skewed by 90-x degrees
 in our case x=40deg so skew angle is 50deg
@@ -127,13 +126,13 @@ items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
 } */
 
 .csstransforms .cn-wrapper li:nth-child(odd) a {
-  background-color: #a11313;
-  background-color: hsla(0, 88%, 63%, 1);
+  /* background-color: #a11313;
+  background-color: hsla(0, 88%, 63%, 1); */
 }
 
 .csstransforms .cn-wrapper li:nth-child(even) a {
-  background-color: #a61414;
-  background-color: hsla(0, 88%, 65%, 1);
+  /* background-color: #a61414;
+  background-color: hsla(0, 88%, 65%, 1); */
 }
 
 /* active style */

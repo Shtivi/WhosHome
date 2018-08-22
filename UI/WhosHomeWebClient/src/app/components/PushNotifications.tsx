@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Notifications from '@material-ui/icons/Notifications';
 import NotificationsOff from '@material-ui/icons/NotificationsOff';
 import NotificationImportant from '@material-ui/icons/NotificationImportant';
-import { subscribePushNotifications, unsubsribePushNotifications } from "../actions/PushNotificationsActionCreators";
+import { subscribePushNotifications } from "../actions/PushNotificationsActionCreators";
 
 interface PushNotificationsProps {
     pushStatus: PushNotificationsState
@@ -21,7 +21,7 @@ class PushNotifications extends React.Component<PushNotificationsProps> {
         let { pushStatus } = this.props;
         switch (pushStatus.connectionStatus) {
             case PushConnectionStatus.CONNECTED:
-                return <SvgIcon onClick={() => this.props.dispatch(unsubsribePushNotifications())}><Notifications></Notifications></SvgIcon>
+                return <SvgIcon onClick={() => this.props.dispatch(subscribePushNotifications())}><Notifications></Notifications></SvgIcon>
             case PushConnectionStatus.CONNECTING:
                 return <CircularProgress />
             case PushConnectionStatus.DISCONNECTED:

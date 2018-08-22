@@ -2,13 +2,12 @@ import * as React from "react";
 import '../../css/circular-menu.css';
 import NotificationsOff from '@material-ui/icons/NotificationsOff';
 import Menu from '@material-ui/icons/Menu';
+import Close from '@material-ui/icons/Close';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import { withStyles, createStyles, WithStyles } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
-import cyan from '@material-ui/core/colors/cyan';
-
 
 const styles = createStyles({
     mainButton: {
@@ -18,13 +17,27 @@ const styles = createStyles({
         zIndex: 11,
         width: '7em',
         height: '7em',
-        paddingBottom: '2em',
+        paddingBottom: '2.5em',
         backgroundColor: grey[900],
-        color: cyan[500]
+        color: grey[100],
+        boxShadow: 'none',
     },
     mainButtonActive: {
-        backgroundColor: grey[100],
-        color: grey[900]
+        backgroundColor: grey[900],
+        color: grey[100],
+        borderColor: grey[50],
+        borderStyle: 'solid',
+        borderWidth: '3px'
+    },
+    optionButton: {
+        background: 'none',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: '#ffffff',
+        color: '#ffffff',
+        opacity: 1,
+        width: '32px',
+        height: '32px'
     }
 });
 
@@ -52,9 +65,6 @@ class circularMenu extends React.Component<CiruclarMenuProps, CiruclarMenuState>
 
     private show = () => this.setState({displayed: true});
     private hide = () => this.setState({displayed:false});
-    private hoverOn = () => this.setState({hover:true});
-    private hoverOff = () => this.setState({hover:false});
-
     private wrapperClick = (e: any) => {
         e.stopPropagation();
     }
@@ -64,24 +74,33 @@ class circularMenu extends React.Component<CiruclarMenuProps, CiruclarMenuState>
         let {classes} = this.props;
         return (
             <div className='csstransforms'>
-                <Button onClick={this.toggle} variant="fab" 
-                        className={classes.mainButton + ' ' + (displayed ? classes.mainButtonActive : '') +
-                                   (hover ? classes.mainButton : '')}>
-                    <Menu></Menu>
+                <Button onClick={this.toggle} variant="fab" style={displayed ? {backgroundColor: grey[800]} : {backgroundColor: grey[800]}}
+                        className={classes.mainButton + ' ' + (displayed ? classes.mainButtonActive : '' )}>
+                    { displayed ? <Close></Close> : <Menu></Menu> }
                 </Button>
                 <div className={"cn-wrapper" + (displayed ? ' opened-nav' : '')} onClick={this.wrapperClick}>
                     <ul>
                         <li><a href="#"><span>
-                            <IconButton><SvgIcon>
-                                <NotificationsOff></NotificationsOff>
-                            </SvgIcon></IconButton>
+                            <IconButton className={classes.optionButton}>
+                                <SvgIcon>
+                                    <NotificationsOff></NotificationsOff>
+                                </SvgIcon>
+                            </IconButton>
                         </span></a></li>
-                        <li><a href="#"><span>                            <IconButton><SvgIcon>
-                                <NotificationsOff></NotificationsOff>
-                            </SvgIcon></IconButton></span></a></li>
-                        <li><a href="#"><span>                            <IconButton><SvgIcon>
-                                <NotificationsOff></NotificationsOff>
-                            </SvgIcon></IconButton></span></a></li>
+                        <li><a href="#"><span>
+                            <IconButton className={classes.optionButton}>
+                                <SvgIcon>
+                                    <NotificationsOff></NotificationsOff>
+                                </SvgIcon>
+                            </IconButton>
+                        </span></a></li>
+                        <li><a href="#"><span>
+                            <IconButton className={classes.optionButton}>
+                                <SvgIcon>>
+                                    <NotificationsOff></NotificationsOff>
+                                </SvgIcon>
+                            </IconButton>
+                        </span></a></li>
                     </ul>
                 </div>
                 <div id="cn-overlay" className={"cn-overlay" + (displayed ? ' on-overlay' : '')} onClick={this.hide}></div>

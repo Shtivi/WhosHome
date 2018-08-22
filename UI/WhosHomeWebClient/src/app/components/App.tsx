@@ -1,25 +1,17 @@
 import * as React from "react";
-import Grid from '@material-ui/core/Grid';
 import '../../css/app.css'
-import Paper from '@material-ui/core/Paper'; 
 import StatusBar from "./StatusBar";
 import CircularMenu from './CircularMenu';
+import { Route } from 'react-router-dom'
 
 export class App extends React.Component<{}> {
   render() {
-    var comp = (
-      // <Grid container spacing={0} justify='center' alignItems='center' className='main-container'>
-      //   <Grid item xs={12} lg={6}>
-      //     <Paper elevation={12} square>
-      //       <StatusBar />
-      //     </Paper>
-      //   </Grid>
-      // </Grid>
+    return (
       <div>
         {/* <StatusBar /> */}
-        <CircularMenu />
+          {/* <CircularMenu /> */}
+          <Route exact path='/ggg' component={() => <b>111</b>} />
       </div>
     )
-    return comp;
   }
 }
