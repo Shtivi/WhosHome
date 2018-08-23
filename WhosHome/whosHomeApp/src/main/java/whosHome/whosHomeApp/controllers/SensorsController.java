@@ -9,7 +9,7 @@ import whosHome.common.sensors.client.SensorConnectionState;
 import whosHome.whosHomeApp.engine.WhosHomeEngine;
 
 @RestController
-@RequestMapping(value = "/sensors")
+@RequestMapping(value = "/api/sensors")
 public class SensorsController {
     private WhosHomeEngine _whosHomeEngine;
 

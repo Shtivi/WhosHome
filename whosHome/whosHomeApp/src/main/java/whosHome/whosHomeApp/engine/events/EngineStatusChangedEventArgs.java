@@ -1,5 +1,6 @@
 package whosHome.whosHomeApp.engine.events;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import whosHome.common.events.AbstractEventArgs;
 import whosHome.whosHomeApp.engine.WhosHomeEngine;
 
@@ -27,6 +28,7 @@ public class EngineStatusChangedEventArgs extends AbstractEventArgs {
         return reason;
     }
 
+    @JsonIgnore
     public Optional<Throwable> getError() {
         return Optional.ofNullable(error);
     }

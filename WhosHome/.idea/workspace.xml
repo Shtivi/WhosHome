@@ -41,8 +41,8 @@
       <file leaf-file-name="NotificationsService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/NotificationsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="233">
+              <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,36 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/resources/application.properties">
+      <file leaf-file-name="StatusChangeEventArgs.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/StatusChangeEventArgs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" selection-start-column="18" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebSocketConfiguration.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WebSocketConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="97" lean-forward="true" selection-start-line="4" selection-start-column="97" selection-end-line="4" selection-end-column="97" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WhosHomeEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/WhosHomeEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="96" selection-start-line="96" selection-end-line="96" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setEngineStatus#0;class#WhosHomeEngine#0" />
-                <element signature="method#setEngineStatus#1;class#WhosHomeEngine#0" />
-                <element signature="method#activityDetected#0;class#WhosHomeEngine#0" />
-                <element signature="method#addNewPersonData#0;class#WhosHomeEngine#0" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -87,8 +62,8 @@
       <file leaf-file-name="SensorsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/SensorsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="35" lean-forward="true" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+            <state relative-caret-position="131">
+              <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,11 +71,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SensorConnectionState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/SensorConnectionState.java">
+      <file leaf-file-name="WhosHomeEngine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/WhosHomeEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+            <state relative-caret-position="-663">
+              <caret line="165" column="17" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#setEngineStatus#0;class#WhosHomeEngine#0" />
+                <element signature="method#setEngineStatus#1;class#WhosHomeEngine#0" />
+                <element signature="method#addNewPersonData#0;class#WhosHomeEngine#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebSocketConfiguration.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WebSocketConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="24" column="61" lean-forward="true" selection-start-line="24" selection-start-column="61" selection-end-line="26" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/events/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -145,11 +147,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/application.prod.conf" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/sensors/ISensorConnectionsFactory.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/sensorListeners/AbstractSensorListener.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/DevicesRecognizer.java" />
-        <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/ErrorEventArgs.java" />
         <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/StatusChangeEventArgs.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/PersonActivityEvent.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/models/Person.java" />
@@ -169,20 +169,17 @@
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/PeopleRecognitionManager.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/conf/ApplicationContextConfiguration.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChanged.java" />
-        <option value="$PROJECT_DIR$/whosHomeCommon/pom.xml" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/ApplicationListener.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/ApplicationStoppedListener.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/ApplicationStartupListener.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WhosHomeEngineStarter.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WhosHomeEngineDestructor.java" />
-        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java" />
         <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/exceptions/WhosHomeException.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/errors/WhosHomeEngineException.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/WhosHomeEngine.java" />
         <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/SensorConnectionState.java" />
         <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/SensorConnection.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WhosHomeEngineInitializer.java" />
-        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/SensorsController.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/client/index.html" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/MvcConfig.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/public/index.html" />
@@ -195,6 +192,11 @@
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/NotificationsService.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorConnectionMetadata.java" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/SensorsController.java" />
+        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/pom.xml" />
+        <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/ErrorEventArgs.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WebSocketConfiguration.java" />
       </list>
     </option>
@@ -229,9 +231,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="950" />
-    <option name="width" value="979" />
-    <option name="height" value="1040" />
+    <option name="x" value="608" />
+    <option name="width" value="627" />
+    <option name="height" value="666" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -344,16 +346,21 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="whosHomeCommon" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="sensorsco&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/SensorsController.java&#10;application.pro&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.properties&#10;appli&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java&#10;whoshomeapp&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/pom.xml&#10;po&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/pom.xml&#10;engin&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WhosHomeEngineInitializer.java&#10;irecog&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/IRecognizer.java&#10;todo&#9;ACTION&#9;ActivateTODOToolWindow&#10;sensorstat&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/sensors/client/SensorConnectionState.java&#10;applicatio.pro&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.properties&#10;whoshom&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WhosHomeEngineInitializer.java&#10;whoshomeex&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/exceptions/WhosHomeException.java&#10;whosHomeExcep&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/exceptions/WhosHomeException.java&#10;whosHomeex&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/exceptions/WhosHomeException.java&#10;pom&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/pom.xml&#10;engine&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java&#10;event&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java&#10;whosh&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/WhosHomeEngine.java&#10;peopleser&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/dataAccess/agents/PeopleServiceAgent.java&#10;proper&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.debug.properties&#10;peopleserv&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/dataAccess/agents/PeopleServiceAgent.java&#10;applicationconf&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/conf/ApplicationContextConfiguration.java&#10;projec&#9;ACTION&#9;ActivateProjectToolWindow&#10;maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;whoshomeap&#9;RUN_CONFIGURATION&#9;WhosHomeApp  (mnemonic is to &quot;[WhosHomeApp] Debug&quot;)&#10;config&#9;FILE&#9;jar://C:/Users/idosh/.m2/repository/org/springframework/spring-context/4.3.4.RELEASE/spring-context-4.3.4.RELEASE.jar!/org/springframework/context/ConfigurableApplicationContext.class&#10;configurableapplicationcontext&#9;PSI&#9;JAVA://org.springframework.context.ConfigurableApplicationContext&#10;appm&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/AppModule.java&#10;isensorconnec&#9;PSI&#9;JAVA://whosHome.common.sensors.client.ISensorConnection&#10;isensorcon&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/sensors/ISensorConnectionsFactory.java&#10;devicesmo&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/utils/mocks/DevicesDaoMock.java&#10;mocks&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/utils/mocks&#10;nets&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/lanSensor/lanSensorServer/src/main/java/sensorserver/utils/mocks/NetScannerMock.java&#10;mave&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;project&#9;ACTION&#9;ActivateProjectToolWindow&#10;ap&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java&#10;person&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/PersonPresenceData.java&#10;activityde&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/ActivityDetectionEventArgs.java&#10;app&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.debug.conf&#10;applic&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.prod.conf&#10;devicesre&#9;PSI&#9;JAVA://whosHome.whosHomeApp.engine.recognition.DevicesRecognizer&#10;ire&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/IRecognizer.java&#10;de&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/DevicesRecognizer.java&#10;appmo&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/AppModule.java&#10;application.co&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.debug.conf&#10;hiber&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/hibernate.cfg.xml&#10;integer&#9;PSI&#9;JAVA://java.lang.Integer&#10;sensor&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/models/SensorConnectionMetadata.java&#10;abstra&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/dataProviders/db/AbstractDatabaseDao.java&#10;HIBERNATE&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/dataProviders/db/Hibernate.java" />
+    <property name="SearchEverywhereHistoryKey" value="deb&#9;ACTION&#9;ActivateDebugToolWindow&#10;run&#9;ACTION&#9;ActivateRunToolWindow&#10;sensorsco&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/SensorsController.java&#10;application.pro&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.properties&#10;appli&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java&#10;whoshomeapp&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/pom.xml&#10;po&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/pom.xml&#10;engin&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WhosHomeEngineInitializer.java&#10;irecog&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/IRecognizer.java&#10;todo&#9;ACTION&#9;ActivateTODOToolWindow&#10;sensorstat&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/sensors/client/SensorConnectionState.java&#10;applicatio.pro&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.properties&#10;whoshom&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WhosHomeEngineInitializer.java&#10;whoshomeex&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/exceptions/WhosHomeException.java&#10;whosHomeExcep&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/exceptions/WhosHomeException.java&#10;whosHomeex&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/exceptions/WhosHomeException.java&#10;pom&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/pom.xml&#10;engine&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java&#10;event&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java&#10;whosh&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/WhosHomeEngine.java&#10;peopleser&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/dataAccess/agents/PeopleServiceAgent.java&#10;proper&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.debug.properties&#10;peopleserv&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/dataAccess/agents/PeopleServiceAgent.java&#10;applicationconf&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/conf/ApplicationContextConfiguration.java&#10;projec&#9;ACTION&#9;ActivateProjectToolWindow&#10;maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;whoshomeap&#9;RUN_CONFIGURATION&#9;WhosHomeApp  (mnemonic is to &quot;[WhosHomeApp] Debug&quot;)&#10;config&#9;FILE&#9;jar://C:/Users/idosh/.m2/repository/org/springframework/spring-context/4.3.4.RELEASE/spring-context-4.3.4.RELEASE.jar!/org/springframework/context/ConfigurableApplicationContext.class&#10;configurableapplicationcontext&#9;PSI&#9;JAVA://org.springframework.context.ConfigurableApplicationContext&#10;appm&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/AppModule.java&#10;isensorconnec&#9;PSI&#9;JAVA://whosHome.common.sensors.client.ISensorConnection&#10;isensorcon&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/sensors/ISensorConnectionsFactory.java&#10;devicesmo&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/utils/mocks/DevicesDaoMock.java&#10;mocks&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/utils/mocks&#10;nets&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/lanSensor/lanSensorServer/src/main/java/sensorserver/utils/mocks/NetScannerMock.java&#10;mave&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;project&#9;ACTION&#9;ActivateProjectToolWindow&#10;ap&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java&#10;person&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/PersonPresenceData.java&#10;activityde&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/ActivityDetectionEventArgs.java&#10;app&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.debug.conf&#10;applic&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.prod.conf&#10;devicesre&#9;PSI&#9;JAVA://whosHome.whosHomeApp.engine.recognition.DevicesRecognizer&#10;ire&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/IRecognizer.java&#10;de&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/DevicesRecognizer.java&#10;appmo&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/java/whosHome/whosHomeApp/AppModule.java&#10;application.co&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/application.debug.conf&#10;hiber&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeApp/src/main/resources/hibernate.cfg.xml&#10;integer&#9;PSI&#9;JAVA://java.lang.Integer&#10;sensor&#9;FILE&#9;file://D:/Ido/Projects/WhosHome/whosHome/whosHomeCommon/src/main/java/whosHome/common/models/SensorConnectionMetadata.java" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -494,30 +501,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32965517" />
-      <window_info anchor="bottom" id="Messages" order="3" weight="0.32965517" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32943678" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="1" weight="0.3294271" />
       <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.48827586" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.2678002" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" x="57" y="64" width="384" height="725" id="Project" order="6" visible="true" weight="0.2389323" />
+      <window_info content_ui="combo" x="57" y="64" width="384" height="725" id="Project" order="6" visible="true" weight="0.21041666" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.49931034" />
+      <window_info active="true" anchor="bottom" id="Debug" order="7" visible="true" weight="0.38469714" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3294271" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -532,7 +539,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="103" />
+      <option name="time" value="113" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -584,56 +591,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/ApplicationContextConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="80" column="84" selection-start-line="80" selection-start-column="84" selection-end-line="80" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/dataProviders/db/SensorTypesMetadataDbDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/ApplicationStoppedListener.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.0.3.RELEASE/spring-boot-2.0.3.RELEASE.jar!/org/springframework/boot/context/event/SpringApplicationEvent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.7.RELEASE/spring-context-5.0.7.RELEASE.jar!/org/springframework/context/event/ContextStoppedEvent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.7.RELEASE/spring-context-5.0.7.RELEASE.jar!/org/springframework/context/event/ContextClosedEvent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.0.3.RELEASE/spring-boot-2.0.3.RELEASE.jar!/org/springframework/boot/context/event/ApplicationReadyEvent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.7.RELEASE/spring-context-5.0.7.RELEASE.jar!/org/springframework/context/event/ApplicationContextEvent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -655,24 +612,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/events/IEventListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/StatusChangeEventArgs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -764,6 +707,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
           <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2654#2655#0" expanded="true" />
+            <element signature="e#2684#2685#0" expanded="true" />
+            <element signature="e#2752#2753#0" expanded="true" />
+            <element signature="e#2800#2801#0" expanded="true" />
+            <element signature="e#2877#2878#0" expanded="true" />
+            <element signature="e#2919#2920#0" expanded="true" />
+            <element signature="e#2991#2992#0" expanded="true" />
+            <element signature="e#3038#3039#0" expanded="true" />
+            <element signature="e#3118#3119#0" expanded="true" />
+            <element signature="e#3168#3169#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -866,35 +822,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeApp/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/IEngineListener.java" />
     <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/SensorConnectionState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/NotificationsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -908,34 +840,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/WhosHomeEngine.java">
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/events/AbstractEventArgs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="100">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorTypeMetadata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/models/SensorConnectionMetadata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/PeoplePresenceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/ErrorEventArgs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setEngineStatus#0;class#WhosHomeEngine#0" />
-            <element signature="method#setEngineStatus#1;class#WhosHomeEngine#0" />
-            <element signature="method#activityDetected#0;class#WhosHomeEngine#0" />
-            <element signature="method#addNewPersonData#0;class#WhosHomeEngine#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/StatusChangeEventArgs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/events/EngineStatusChangedEventArgs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-280">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/SensorConnectionState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/SensorsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="35" lean-forward="true" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        <state relative-caret-position="131">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/events/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/WhosHomeEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663">
+          <caret line="165" column="17" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setEngineStatus#0;class#WhosHomeEngine#0" />
+            <element signature="method#setEngineStatus#1;class#WhosHomeEngine#0" />
+            <element signature="method#addNewPersonData#0;class#WhosHomeEngine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/NotificationsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-messaging/5.0.7.RELEASE/spring-messaging-5.0.7.RELEASE.jar!/org/springframework/messaging/simp/config/MessageBrokerRegistry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/WebSocketConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="97" lean-forward="true" selection-start-line="4" selection-start-column="97" selection-end-line="4" selection-end-column="97" />
+        <state relative-caret-position="420">
+          <caret line="24" column="61" lean-forward="true" selection-start-line="24" selection-start-column="61" selection-end-line="26" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
