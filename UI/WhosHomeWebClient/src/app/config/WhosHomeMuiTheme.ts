@@ -8,6 +8,9 @@ const whosHomeMuiTheme = createMuiTheme({
             main: ​​'#00d2a8'
         },
         secondary: blue
+    },
+    typography: {
+        fontFamily: 'Hiragino'
     }
 });
 

@@ -1,3 +1,5 @@
+import { SensorConnectionState } from "./eventArgs/SensorStatusChanged";
+
 export class SensorTypeMetadata {
     public constructor(public sensorTypeID: number,
                        public title: string,
@@ -12,4 +14,10 @@ export class SensorConnectionMetadata {
                        public name: string,
                        public isActiveDefaultly: boolean,
                        public sensorTypeMetadata: SensorTypeMetadata) {}
+}
+
+export class SensorConnection {
+    public constructor(
+        public sensorConnectionMetadata: SensorConnectionMetadata, 
+        public status: SensorConnectionState) {}
 }

@@ -21,13 +21,13 @@ class PushNotifications extends React.Component<PushNotificationsProps> {
         let { pushStatus } = this.props;
         switch (pushStatus.connectionStatus) {
             case PushConnectionStatus.CONNECTED:
-                return <SvgIcon onClick={() => this.props.dispatch(unsubsribePushNotifications())}><Notifications></Notifications></SvgIcon>
+                return <SvgIcon style={{fontSize: '32px'}} onClick={() => this.props.dispatch(unsubsribePushNotifications())}><Notifications></Notifications></SvgIcon>
             case PushConnectionStatus.CONNECTING:
                 return <CircularProgress />
             case PushConnectionStatus.DISCONNECTED:
-                return <SvgIcon onClick={() => this.props.dispatch(subscribePushNotifications())}><NotificationsOff></NotificationsOff></SvgIcon>
+                return <SvgIcon style={{fontSize: '32px'}} onClick={() => this.props.dispatch(subscribePushNotifications())}><NotificationsOff></NotificationsOff></SvgIcon>
             case PushConnectionStatus.ERROR:
-                return <SvgIcon color='error' onClick={() => this.props.dispatch(subscribePushNotifications())}><NotificationImportant></NotificationImportant></SvgIcon>
+                return <SvgIcon style={{fontSize: '32px'}} color='error' onClick={() => this.props.dispatch(subscribePushNotifications())}><NotificationImportant></NotificationImportant></SvgIcon>
         }
     }
 

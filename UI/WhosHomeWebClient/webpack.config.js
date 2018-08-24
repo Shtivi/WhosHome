@@ -27,6 +27,16 @@ module: {
             test: /\.css$/,
             use: [ 'style-loader', 'css-loader' ]
         },
+        {
+            test: /\.(ttf|eot|woff|woff2|otf)$/,
+            use: {
+                loader: "file-loader",
+                options: {
+                    outputPath: 'fonts/',
+                    name: "./src/fonts/[name].[ext]",
+                },
+            },
+        },
         { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ],
 },
