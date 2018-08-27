@@ -1,19 +1,54 @@
 import { SensorsState } from "../store/Store";
-import { ActionTypes } from "../actions/ActionTypes";
+import { ActionTypes, AsyncStatus } from "../actions/ActionTypes";
 import SensorStatusChanged from "../models/eventArgs/SensorStatusChanged";
+import PushNotification, { NotificationType } from "../models/PushNotification";
+import { SensorConnection } from "../models/SensorConnection";
+import { DeferredAction } from "../actions/DeferredAction";
+import { Action } from "redux";
 
 const initialState: SensorsState = {
     sensors: {}
 }
 
-export default (state: SensorsState = initialState, action: {type: ActionTypes, payload: any}) => {
+export default (state: SensorsState = initialState, action: Action<ActionTypes> | DeferredAction<SensorConnection[]>) => {
     switch (action.type) {
-        case ActionTypes.SENSOR_STATUS_CHANGED: 
-            let sensorsState: SensorsState = {...state};
-            let eventArgs: SensorStatusChanged = (<SensorStatusChanged> action.payload);
-            // todo: implement - change the state according to new status
-            return sensorsState;
+        case ActionTypes.PUSH_RECEIVED: 
+            //return handlePush(state, action.payload);
+            break;
+        case ActionTypes.FETCH_SENSORS:
+            let deferredAction: DeferredAction<SensorConnection[]> = <DeferredAction<SensorConnection[]>>action;
+            console.log(action);
+            return handleSensorsFetching(state, deferredAction.payload, deferredAction.asyncStatus);
         default:
             return state;
+    }
+}
+
+const handlePush = (currentState: SensorsState, notification: PushNotification<any>): SensorsState => {
+    let updatedState: SensorsState = {...currentState};
+
+    switch (notification.notificationType()) {
+        case NotificationType.SENSOR_STATUS_CHANGED: 
+            console.log(notification);
+            break;
+        case NotificationType.SENSOR_ERROR: 
+            console.warn(notification);
+            break;
+        default:
+            break;
+    }
+
+    return updatedState;
+}
+
+const handleSensorsFetching = (currentState: SensorsState, payload: SensorConnection[], status: AsyncStatus): SensorsState => {
+    switch (status) {
+        case AsyncStatus.COMPLETED: 
+            let updatedState = {...currentState};
+            updatedState.sensors = {};
+            payload.forEach(sensor => updatedState.sensors[sensor.connectionMetadata.sensorConnectionID] = sensor);
+            return updatedState;
+        default:
+            return currentState;
     }
 }

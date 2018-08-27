@@ -12,6 +12,9 @@ const styles = createStyles({
     },
     rightSide: {
         marginLeft: 'auto'
+    },
+    avatar: {
+        border: '1px solid #fff'
     }
 });
 
@@ -22,9 +25,9 @@ class StatusBar extends React.Component<StatusBarProps> {
         const {classes} = this.props;
 
         return (
-            <AppBar className={classes.appBar} position="static">
+            <AppBar className={classes.appBar} position="sticky">
                 <Toolbar>
-                    <Avatar>IS</Avatar>
+                    <Avatar className={classes.avatar}>IS</Avatar>
                     <div className={classes.rightSide}>
                         <PushNotifications />
                     </div>

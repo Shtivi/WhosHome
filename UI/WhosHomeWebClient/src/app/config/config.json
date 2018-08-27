@@ -1,5 +1,0 @@
-{
-    "push": {
-        "endpoint": "http://localhost:8080/push"
-    }
-}

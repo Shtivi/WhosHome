@@ -37,6 +37,22 @@ module: {
                 },
             },
         },
+        {
+            test: /\.(png|jp(e*)g|svg)$/,
+            // use: {
+            //     loader: "file-loader",
+            //     options: {
+            //         outputPath: 'pics/',
+            //         name: "./src/pics/[name].[ext]",
+            //     },
+            // }
+            use: [{
+                loader: 'file-loader',
+                options: { 
+                    name: 'pics/[name].[ext]'
+                },
+                // publicPath: 'dist/pics'
+            }]        },
         { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ],
 },

@@ -7,5 +7,10 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Hiragino'
+    height: 100%;
+    font-family: 'Hiragino';
+}
+
+#root {
+    height: 100%;
 }

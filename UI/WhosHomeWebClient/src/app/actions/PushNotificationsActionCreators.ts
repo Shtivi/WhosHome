@@ -2,6 +2,7 @@ import { ActionTypes } from "./ActionTypes";
 import SensorStatusChanged from "../models/eventArgs/SensorStatusChanged";
 import SensorError from "../models/eventArgs/SensorError";
 import EngineStatusChanged from "../models/eventArgs/EngineStatusChanged";
+import PushNotification from "../models/PushNotification";
 
 export const subscribePushNotifications = () => ({
     type: ActionTypes.SUBSCRIBE_PUSH
@@ -29,17 +30,22 @@ export const pushDisconnected = (reason?: any) => ({
     payload: reason
 })
 
-export const sensorStatusChanged = (eventArgs: SensorStatusChanged)  => ({
-    type: ActionTypes.SENSOR_STATUS_CHANGED,
-    payload: eventArgs
+export const pushReceived = (pushNotification: PushNotification<any>) => ({
+    type: ActionTypes.PUSH_RECEIVED,
+    payload: pushNotification
 })
 
-export const sensorError = (eventArgs: SensorError) => ({
-    type: ActionTypes.SENSOR_ERROR,
-    payload: eventArgs
-})
+// export const sensorStatusChanged = (eventArgs: SensorStatusChanged)  => ({
+//     type: ActionTypes.SENSOR_STATUS_CHANGED,
+//     payload: eventArgs
+// })
 
-export const engineStatusChanged = (eventArgs: EngineStatusChanged) => ({
-    type: ActionTypes.ENGINE_STATUS_CHANGED,
-    payload: eventArgs
-})
+// export const sensorError = (eventArgs: SensorError) => ({
+//     type: ActionTypes.SENSOR_ERROR,
+//     payload: eventArgs
+// })
+
+// export const engineStatusChanged = (eventArgs: EngineStatusChanged) => ({
+//     type: ActionTypes.ENGINE_STATUS_CHANGED,
+//     payload: eventArgs
+// })

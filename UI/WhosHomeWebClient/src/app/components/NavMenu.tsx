@@ -9,7 +9,6 @@ import { NavLink, Link, RouteComponentProps, withRouter } from 'react-router-dom
 
 const styles = createStyles({
     root: {
-        backgroundColor: '#f5f5f5',
         borderTop: '1px solid #e9e9e9',
         position: 'fixed',
         bottom: '0px',
@@ -60,9 +59,6 @@ class NavMenu extends React.Component<NavMenuProps, NavMenuState> {
 
         return (
             <BottomNavigation showLabels={false} className={classes.root} onChange={this.handleSelection} value={this.state.value}>
-                {/* <BottomNavigationAction label='' icon={<Router className={classes.navIcon} />} value='/sensors' />
-                <BottomNavigationAction label="" icon={<People className={classes.navIcon} />} value='/' />
-                <BottomNavigationAction label='' icon={<Settings className={classes.navIcon} />} value='/settings' /> */}
                 {this.actions.map((action, i) => {
                     return <BottomNavigationAction key={i} label={action.label} icon={action.icon} value={action.value} />
                 })}

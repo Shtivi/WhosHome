@@ -6,13 +6,13 @@ import {
     pushNotificationsSubscribed, 
     subscribingPush, pushDisconnected, 
     pushSubscriptionError,
-    sensorStatusChanged,
-    sensorError,
-    engineStatusChanged
+    pushReceived
 } from "../actions/PushNotificationsActionCreators";
 import SensorStatusChanged from "../models/eventArgs/SensorStatusChanged";
 import SensorError from "../models/eventArgs/SensorError";
 import EngineStatusChanged from "../models/eventArgs/EngineStatusChanged";
+import PushNotification, { NotificationType } from "../models/PushNotification";
+import config from '../config/config'
 
 let client: Stomp.Client = null;
 let dispatch: Dispatch = null;
@@ -22,7 +22,7 @@ const pushSubsription = (store: Store) => (next: any) => (action: Action<ActionT
 
     switch(action.type) {
         case ActionTypes.SUBSCRIBE_PUSH: 
-            let socket = new SockJS('http://localhost:9000/push');
+            let socket = new SockJS(config.push.endpoint);
             client = Stomp.over(socket);
             store.dispatch(subscribingPush());
             client.connect({}, handleConnection, handleError, handleDisconnection);
@@ -37,25 +37,22 @@ const pushSubsription = (store: Store) => (next: any) => (action: Action<ActionT
 }
 
 const handleConnection = () => {
-    client.subscribe('/topics/sensors/status', (message: Stomp.Message) => {
-        console.log(message.body);
-        let parsedMessage: SensorStatusChanged = <SensorStatusChanged>(JSON.parse(message.body));
-        dispatch(sensorStatusChanged(parsedMessage));
+    client.subscribe(config.push.topics.sensorsStatus, (message: Stomp.Message) => {
+        let eventArgs: SensorStatusChanged = <SensorStatusChanged>(JSON.parse(message.body));
+        dispatch(pushReceived(PushNotification.of(NotificationType.SENSOR_STATUS_CHANGED, eventArgs)))
     })
     
-    client.subscribe('/topics/sensors/error', (message: Stomp.Message) => {
-        console.log(message.body);
-        let parsedMessage: SensorError = <SensorError>(JSON.parse(message.body));
-        dispatch(sensorError(parsedMessage));
+    client.subscribe(config.push.topics.sensorError, (message: Stomp.Message) => {
+        let eventArgs: SensorError = <SensorError>(JSON.parse(message.body));
+        dispatch(pushReceived(PushNotification.of(NotificationType.SENSOR_ERROR, eventArgs)))
     })
 
-    client.subscribe('/topics/engine/status', (message: Stomp.Message) => {
-        console.log(message.body);
-        let parsedMessage: EngineStatusChanged = <EngineStatusChanged>(JSON.parse(message.body));
-        dispatch(engineStatusChanged(parsedMessage));
+    client.subscribe(config.push.topics.engineStatus, (message: Stomp.Message) => {
+        let eventArgs: EngineStatusChanged = <EngineStatusChanged>(JSON.parse(message.body));
+        dispatch(pushReceived(PushNotification.of(NotificationType.ENGINE_STATUS_CHANGED, eventArgs)))
     })
 
-    client.subscribe('/topics/people/detection', (message: Stomp.Message) => {
+    client.subscribe(config.push.topics.peopleDetection, (message: Stomp.Message) => {
         // console.warn('implement a subscriber for people detection!');
         console.log(message.body);
     })

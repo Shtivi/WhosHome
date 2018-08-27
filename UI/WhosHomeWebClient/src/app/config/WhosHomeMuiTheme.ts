@@ -5,9 +5,12 @@ import blue from '@material-ui/core/colors/blue';
 const whosHomeMuiTheme = createMuiTheme({
     palette: {
         primary: {
-            main: ​​'#00d2a8'
+            // main: ​​'#00d2a8'
+            main: '#a9bfe1'
         },
-        secondary: blue
+        secondary: {
+            main: '#7491d0'
+        }
     },
     typography: {
         fontFamily: 'Hiragino'

@@ -18,6 +18,6 @@ export class SensorConnectionMetadata {
 
 export class SensorConnection {
     public constructor(
-        public sensorConnectionMetadata: SensorConnectionMetadata, 
+        public connectionMetadata: SensorConnectionMetadata, 
         public status: SensorConnectionState) {}
 }
