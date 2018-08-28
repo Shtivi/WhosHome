@@ -34,18 +34,3 @@ export const pushReceived = (pushNotification: PushNotification<any>) => ({
     type: ActionTypes.PUSH_RECEIVED,
     payload: pushNotification
 })
-
-// export const sensorStatusChanged = (eventArgs: SensorStatusChanged)  => ({
-//     type: ActionTypes.SENSOR_STATUS_CHANGED,
-//     payload: eventArgs
-// })
-
-// export const sensorError = (eventArgs: SensorError) => ({
-//     type: ActionTypes.SENSOR_ERROR,
-//     payload: eventArgs
-// })
-
-// export const engineStatusChanged = (eventArgs: EngineStatusChanged) => ({
-//     type: ActionTypes.ENGINE_STATUS_CHANGED,
-//     payload: eventArgs
-// })

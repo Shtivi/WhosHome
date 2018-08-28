@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
 import { fetchAllSensors } from "../actions/SensorActionCreators";
+import SensorListItem from "./SensorListItem";
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -61,6 +62,7 @@ class SensorsPage extends React.Component<SensorsPageProps, SensorPageState> {
 
     render() {
         const {classes} = this.props;
+        const {sensorsState} = this.props;
         return (
             <div className={classes.root}>
                 <div className={classes.statsWrapper}>
@@ -71,8 +73,9 @@ class SensorsPage extends React.Component<SensorsPageProps, SensorPageState> {
                     <CircularProgress variant="static" value={50} size={100} className={classes.statsProgs} />
                 </div>
                 <List className={classes.sensorsList}>
-                    {/* {[1,2,3,4,5,6,7,8,9,10,11].map((sensor, i) => (
-                    ))}; */}
+                    {Object.keys(sensorsState.sensors).map((sensorID: string) => (
+                        <SensorListItem key={sensorID} sensorConnection={sensorsState.sensors[Number(sensorID)]} />
+                    ))}
                 </List>
             </div>
         );

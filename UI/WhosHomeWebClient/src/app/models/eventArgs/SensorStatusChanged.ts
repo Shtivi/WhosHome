@@ -2,11 +2,11 @@ import AbstractEventArgs from "./AbstractEventArgs";
 import { SensorConnectionMetadata } from "../SensorConnection";
 
 export enum SensorConnectionState {
-    ERROR = 'Error',
-    INITIALIZED = 'Initialized',
-    CLOSED = 'Closed',
-    CONNECTING = 'Connecting',
-    CONNECTED = 'Connected'
+    ERROR = 'ERROR',
+    INITIALIZED = 'INITIALIZED',
+    CLOSED = 'CLOSED',
+    CONNECTING = 'CONNECTING',
+    CONNECTED = 'CONNECTED'
 }
 
 export default class SensorStatusChanged extends AbstractEventArgs {

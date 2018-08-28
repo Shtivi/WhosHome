@@ -2,21 +2,22 @@ import { ActionTypes, AsyncStatus } from "./ActionTypes";
 import { Action } from "redux";
 import { Promise } from "es6-promise";
 
-export interface DeferredAction<R> extends Action<ActionTypes> {
+export interface DeferredAction<R, E = any> extends Action<ActionTypes> {
     promise?: Promise<R>,
     asyncStatus: AsyncStatus,
     payload?: R,
-    error?: Error
+    error?: Error,
+    extra?: E
 }
 
-export class DeferredActionBuilder<T> {
-    private action: DeferredAction<T>;
+export class DeferredActionBuilder<T, E = any> {
+    private action: DeferredAction<T, E>;
 
-    public static from <T>(originalAction: Action<ActionTypes>): DeferredActionBuilder<T> {
+    public static from <T, E = any>(originalAction: Action<ActionTypes>): DeferredActionBuilder<T, E> {
         return new DeferredActionBuilder<T>(originalAction.type);
     }
 
-    public static of <T>(type: ActionTypes): DeferredActionBuilder<T> {
+    public static of <T, E = any>(type: ActionTypes): DeferredActionBuilder<T, E> {
         return new DeferredActionBuilder<T>(type);
     }
 
@@ -27,27 +28,32 @@ export class DeferredActionBuilder<T> {
         }
     }
 
-    public withPromise(promise: Promise<T>): DeferredActionBuilder<T> {
+    public withPromise(promise: Promise<T>): DeferredActionBuilder<T, E> {
         this.action.promise = promise;
         return this;
     }
 
-    public withPayload(payload: T): DeferredActionBuilder<T> {
+    public withPayload(payload: T): DeferredActionBuilder<T, E> {
         this.action.payload = payload;
         return this;
     }
 
-    public withError(error: Error): DeferredActionBuilder<T> {
+    public withError(error: Error): DeferredActionBuilder<T, E> {
         this.action.error = error;
         return this;
     }
 
-    public withAsyncStatus(asyncStatus: AsyncStatus): DeferredActionBuilder<T> {
+    public withAsyncStatus(asyncStatus: AsyncStatus): DeferredActionBuilder<T, E> {
         this.action.asyncStatus = asyncStatus;
         return this;
     }
 
-    public build(): DeferredAction<T> {
-        return this.action;
+    public withExtraArg(extra: E): DeferredActionBuilder<T, E> {
+        this.action.extra = extra;
+        return this;
+    }
+
+    public build(): DeferredAction<T, E> {
+        return {...this.action};
     }
 }

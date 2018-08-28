@@ -1,13 +1,23 @@
 import * as React from "react";
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import { withStyles, createStyles, WithStyles } from '@material-ui/core/styles';
+import { withStyles, createStyles, WithStyles, Theme } from '@material-ui/core/styles';
 import Router from '@material-ui/icons/RouterOutlined';
 import People from '@material-ui/icons/PeopleOutlined';
 import Settings from '@material-ui/icons/SettingsOutlined';
+import Notifications from '@material-ui/icons/NotificationsOutlined';
+import NotificationsOff from '@material-ui/icons/NotificationsOffOutlined';
+import NotificationImportant from '@material-ui/icons/NotificationImportantOutlined';
 import { NavLink, Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { PushNotificationsState } from "../store/Store";
+import { Action, Dispatch } from "redux";
+import { connect } from "react-redux";
+import { PushConnectionStatus } from "../models/PushConnectionStatus";
+import { CircularProgress } from "@material-ui/core";
+import Zoom from '@material-ui/core/Zoom';
+import Badge from '@material-ui/core/Badge';
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
     root: {
         borderTop: '1px solid #e9e9e9',
         position: 'fixed',
@@ -16,10 +26,16 @@ const styles = createStyles({
     }, 
     navIcon: {
         fontSize: '36px'
-    }
+    },
+    margin: {
+        margin: theme.spacing.unit * 2,
+    }  
 });
 
-interface NavMenuProps extends WithStyles<typeof styles>, RouteComponentProps<any> {}
+interface NavMenuProps extends WithStyles<typeof styles>, RouteComponentProps<any> {
+    pushState: PushNotificationsState
+    dispatch: Dispatch<Action>
+}
 
 interface NavMenuState {
     value: any
@@ -54,11 +70,33 @@ class NavMenu extends React.Component<NavMenuProps, NavMenuState> {
         value: '/settings'
     }]
     
+    private renderPushNotificationsIcon() {
+        switch (this.props.pushState.connectionStatus) {
+            case PushConnectionStatus.CONNECTED:
+                return <Notifications className={this.props.classes.navIcon}></Notifications>
+            case PushConnectionStatus.CONNECTING:
+                return <CircularProgress />
+            case PushConnectionStatus.DISCONNECTED:
+                return <NotificationsOff className={this.props.classes.navIcon}></NotificationsOff>
+            case PushConnectionStatus.ERROR:
+                return (
+                    <NotificationImportant className={this.props.classes.navIcon}></NotificationImportant>
+                )
+        }
+    }
+
     render() {
         let { classes } = this.props;
 
         return (
             <BottomNavigation showLabels={false} className={classes.root} onChange={this.handleSelection} value={this.state.value}>
+                {/* <BottomNavigationAction label='' icon={<Router className={this.props.classes.navIcon} />} value='/sensors' />
+                <BottomNavigationAction label='' icon={<People className={this.props.classes.navIcon} />} value='/' />
+                {/* <Zoom in={true}>
+                    <Badge className={classes.margin} color='secondary' badgeContent={this.props.pushState.notificationsLog.length}> */}
+                        {/* <BottomNavigationAction label='' icon={this.renderPushNotificationsIcon()} value='/notifications' /> */}
+                    {/* </Badge>
+                </Zoom> */} */}
                 {this.actions.map((action, i) => {
                     return <BottomNavigationAction key={i} label={action.label} icon={action.icon} value={action.value} />
                 })}
@@ -67,4 +105,14 @@ class NavMenu extends React.Component<NavMenuProps, NavMenuState> {
     }
 }
 
-export default withStyles(styles)(withRouter(NavMenu));
+const mapStateToProps = (state: any) => ({
+    pushState: state.push
+})
+
+
+const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
+    dispatch: dispatch
+})
+
+export default withStyles(styles)(withRouter(connect(mapStateToProps, mapDispatchToProps)(NavMenu)));
+//export default withStyles(styles)(withRouter(NavMenu));
