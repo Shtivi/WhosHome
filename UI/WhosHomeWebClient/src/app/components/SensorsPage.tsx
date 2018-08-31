@@ -8,6 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
 import { fetchAllSensors, toggleSensor } from "../actions/SensorActionCreators";
 import SensorListItem from "./SensorListItem";
+import { SensorConnectionState } from "../models/eventArgs/SensorStatusChanged";
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -66,17 +67,27 @@ class SensorsPage extends React.Component<SensorsPageProps, SensorPageState> {
         this.props.dispatch(toggleSensor(sensorID));
     }
 
+    private countActiveSensors = (): number => {
+        const sensors = this.props.sensorsState.sensors;
+        return Object.keys(sensors)
+                    .filter((sensorID: string) => sensors[Number(sensorID)].status == SensorConnectionState.CONNECTED)
+                    .length;
+    }
+
     render() {
         const {classes} = this.props;
         const {sensorsState} = this.props;
+        const activeSensorsCount: number = this.countActiveSensors();
+        const allSensorsCount: number = Object.keys(sensorsState.sensors).length;
+    
         return (
             <div className={classes.root}>
                 <div className={classes.statsWrapper}>
                     <Button variant="fab" className={classes.statsContent}>
-                        4
-                        <span style={{fontSize: '16px'}}>/5</span>
+                        {activeSensorsCount}
+                        <span style={{fontSize: '16px'}}>/{allSensorsCount}</span>
                     </Button>
-                    <CircularProgress variant="static" value={50} size={100} className={classes.statsProgs} />
+                    <CircularProgress variant="static" value={(activeSensorsCount * 100) / allSensorsCount} size={100} className={classes.statsProgs} />
                 </div>
                 <List className={classes.sensorsList}>
                     {Object.keys(sensorsState.sensors).map((sensorID: string) => (
