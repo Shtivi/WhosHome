@@ -6,7 +6,7 @@ import { SensorsState } from "../store/Store";
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
-import { fetchAllSensors } from "../actions/SensorActionCreators";
+import { fetchAllSensors, toggleSensor } from "../actions/SensorActionCreators";
 import SensorListItem from "./SensorListItem";
 
 const styles = (theme: Theme) => createStyles({
@@ -44,7 +44,9 @@ interface SensorsPageProps extends WithStyles<typeof styles> {
     sensorsState: SensorsState
 }
 
-interface SensorPageState {}
+interface SensorPageState {
+
+}
 
 const mapStateToProps = (state: any) => ({
     sensorsState: state.sensors
@@ -58,6 +60,10 @@ class SensorsPage extends React.Component<SensorsPageProps, SensorPageState> {
     public constructor(props: SensorsPageProps) {
         super(props);
         this.props.dispatch(fetchAllSensors());
+    }
+
+    private handleSensorToggle = (sensorID: number): void => {
+        this.props.dispatch(toggleSensor(sensorID));
     }
 
     render() {
@@ -74,7 +80,7 @@ class SensorsPage extends React.Component<SensorsPageProps, SensorPageState> {
                 </div>
                 <List className={classes.sensorsList}>
                     {Object.keys(sensorsState.sensors).map((sensorID: string) => (
-                        <SensorListItem key={sensorID} sensorConnection={sensorsState.sensors[Number(sensorID)]} />
+                        <SensorListItem key={sensorID} sensorConnection={sensorsState.sensors[Number(sensorID)]} sensorToggleHandler={this.handleSensorToggle} />
                     ))}
                 </List>
             </div>

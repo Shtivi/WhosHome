@@ -21,7 +21,7 @@ export class SensorAgent implements ISensorsAgent {
 
     public toggleSensor(sensorID: number): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            axios.get(`${this.sensorsApiConfig.endpoint}/${this.sensorsApiConfig.toggleSensor}/${sensorID}`)
+            axios.get(`${this.sensorsApiConfig.endpoint}/${this.sensorsApiConfig.api.toggleSensor}/${sensorID}`)
                 .then(res => resolve())
                 .catch(error => reject(error));
         })

@@ -13,8 +13,7 @@ const initialState: SensorsState = {
 export default (state: SensorsState = initialState, action: Action<ActionTypes> | DeferredAction<SensorConnection[]>) => {
     switch (action.type) {
         case ActionTypes.PUSH_RECEIVED: 
-            //return handlePush(state, action.payload);
-            break;
+            return handlePush(state, (<any>action).payload);
         case ActionTypes.FETCH_SENSORS:
             let deferredAction: DeferredAction<SensorConnection[]> = <DeferredAction<SensorConnection[]>>action;
             console.log(action);
@@ -28,8 +27,11 @@ const handlePush = (currentState: SensorsState, notification: PushNotification<a
     let updatedState: SensorsState = {...currentState};
 
     switch (notification.notificationType()) {
-        case NotificationType.SENSOR_STATUS_CHANGED: 
-            console.log(notification);
+        case NotificationType.SENSOR_STATUS_CHANGED:
+            let payload: SensorStatusChanged = <SensorStatusChanged>notification.payload();
+            let updatedState = {...currentState};
+            updatedState.sensors[payload.sensorConnectionMetadata.sensorConnectionID].status = payload.newStatus;
+            return updatedState;
             break;
         case NotificationType.SENSOR_ERROR: 
             console.warn(notification);

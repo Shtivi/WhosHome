@@ -17,6 +17,7 @@ import blue from '@material-ui/core/colors/blue';
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 import { SensorConnectionState } from '../models/eventArgs/SensorStatusChanged';
+import { CircularProgress } from '@material-ui/core';
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -28,7 +29,8 @@ const styles = (theme: Theme) => createStyles({
 });
 
 interface SensorsListItemPros extends WithStyles<typeof styles> {
-    sensorConnection: SensorConnection
+    sensorConnection: SensorConnection,
+    sensorToggleHandler: (sensorID: number) => void
 }
 
 class SensorListItem extends React.Component<SensorsListItemPros> {
@@ -73,9 +75,13 @@ class SensorListItem extends React.Component<SensorsListItemPros> {
                     secondary={`${sensorConnection.connectionMetadata.sensorTypeMetadata.title}, ${sensorConnection.status}`} 
                 />
                 <ListItemSecondaryAction>
-                    <IconButton>
-                        <SvgIcon><PowerIcon /></SvgIcon>
-                    </IconButton>
+                    {(sensorConnection.status == SensorConnectionState.CONNECTING) ? (
+                        <CircularProgress />
+                    ) : (
+                        <IconButton onClick={() => this.props.sensorToggleHandler(sensorConnection.connectionMetadata.sensorConnectionID)}>
+                            <SvgIcon><PowerIcon /></SvgIcon>
+                        </IconButton>
+                    )}
                 </ListItemSecondaryAction>
             </ListItem>
         );
