@@ -17,6 +17,7 @@
 
         <mapping class="whosHome.common.models.SensorTypeMetadata"></mapping>
         <mapping class="whosHome.common.models.SensorConnectionMetadata"></mapping>
+        <mapping class="whosHome.whosHomeApp.models.Device"></mapping>
 
     </session-factory>
 </hibernate-configuration>

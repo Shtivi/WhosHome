@@ -3,14 +3,13 @@ package whosHome.whosHomeApp.models;
 import whosHome.common.Identifiable;
 
 import javax.persistence.*;
-import java.security.acl.Owner;
 
 @Entity
 @Table(name = "devices")
 public class Device implements Identifiable<String> {
     @Id @Column(name = "mac_address") private String macAddress;
     @Column(name = "owner_id") private String ownerID;
-    private Owner owner;
+//    private Person owner;
 
     public Device() {}
 
@@ -30,13 +29,13 @@ public class Device implements Identifiable<String> {
         this.ownerID = ownerID;
     }
 
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
+//    public Person getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(Person owner) {
+//        this.owner = owner;
+//    }
 
     @Override
     public String getID() {
