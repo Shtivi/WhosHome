@@ -90,13 +90,6 @@ class NavMenu extends React.Component<NavMenuProps, NavMenuState> {
 
         return (
             <BottomNavigation showLabels={false} className={classes.root} onChange={this.handleSelection} value={this.state.value}>
-                {/* <BottomNavigationAction label='' icon={<Router className={this.props.classes.navIcon} />} value='/sensors' />
-                <BottomNavigationAction label='' icon={<People className={this.props.classes.navIcon} />} value='/' />
-                {/* <Zoom in={true}>
-                    <Badge className={classes.margin} color='secondary' badgeContent={this.props.pushState.notificationsLog.length}> */}
-                        {/* <BottomNavigationAction label='' icon={this.renderPushNotificationsIcon()} value='/notifications' /> */}
-                    {/* </Badge>
-                </Zoom> */} */}
                 {this.actions.map((action, i) => {
                     return <BottomNavigationAction key={i} label={action.label} icon={action.icon} value={action.value} />
                 })}
@@ -115,4 +108,3 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
 })
 
 export default withStyles(styles)(withRouter(connect(mapStateToProps, mapDispatchToProps)(NavMenu)));
-//export default withStyles(styles)(withRouter(NavMenu));
