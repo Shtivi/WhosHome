@@ -1,6 +1,5 @@
 package whosHome.whosHomeApp.engine;
 
-import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +91,7 @@ public class WhosHomeEngine {
         return this;
     }
 
-    public synchronized WhosHomeEngine stop() {
+    public synchronized WhosHomeEngine stop() throws WhosHomeEngineException {
         if (_engineStatus != Status.WORKING) {
             throw new WhosHomeEngineException("unable to stop, engine is not working").withHttpStatus(400);
         }
@@ -175,9 +174,10 @@ public class WhosHomeEngine {
             }
 
             PersonActivityEventArgs personActivityEventArgs =
-                    new PersonActivityEventArgs(activityDetails, person, personPresenceData.presenceCertainty());
+                    new PersonActivityEventArgs(activityDetails, person, personPresenceData.presenceChances());
             this.onActivityDetectedEvent.dispatch(personActivityEventArgs);
         });
+        // TODO: 9/2/2018 what happens with un recognized entities?
     }
 
     private PersonPresenceData addNewPersonData(ActivityDetectionEventArgs activityDetails, Person person) {

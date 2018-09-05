@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 public class SensorConnectionsFactory implements ISensorConnectionsFactory {
     private static final String NO_SUCH_CONNECTION = "Could not find a data record for connection with id %d";
     private static final String NO_BUILDER_SPECIFIED = "No builder specified for connection type '%s' (%d)";
-    private static final int LAN_SENSOR_TYPE_ID = 1;
 
     private Map<Integer, Function<SensorConnectionMetadata, ISensorConnection>> _builders;
     private ISensorConnectionsMetadataDao _connectionsMetadataDao;

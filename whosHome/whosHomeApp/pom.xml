@@ -78,21 +78,28 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-websocket</artifactId>-->
-            <!--<version>4.2.4.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-messaging</artifactId>-->
-            <!--<version>4.2.4.RELEASE</version>-->
-        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
             <version>1.5.2.RELEASE</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.jodah/concurrentunit -->
+        <dependency>
+            <groupId>net.jodah</groupId>
+            <artifactId>concurrentunit</artifactId>
+            <version>0.4.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <properties>

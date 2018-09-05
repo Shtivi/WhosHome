@@ -25,4 +25,8 @@ public class PersonActivityEventArgs {
     public double getPresenceChances() {
         return _presenceChances;
     }
+
+    private boolean isRecognized() {
+        return _subject != null;
+    }
 }

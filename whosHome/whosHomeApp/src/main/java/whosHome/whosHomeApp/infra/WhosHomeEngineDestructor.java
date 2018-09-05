@@ -8,6 +8,8 @@ public class WhosHomeEngineDestructor implements ApplicationListener<ContextClos
     @Override
     public void onApplicationEvent(ContextClosedEvent contextClosedEvent) {
         WhosHomeEngine engine = contextClosedEvent.getApplicationContext().getBean(WhosHomeEngine.class);
-        engine.stop();
+        if (engine.getEngineStatus() == WhosHomeEngine.Status.WORKING) {
+            engine.stop();
+        }
     }
 }
