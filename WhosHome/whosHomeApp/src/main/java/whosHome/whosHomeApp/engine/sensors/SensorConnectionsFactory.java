@@ -3,6 +3,7 @@ package whosHome.whosHomeApp.engine.sensors;
 import com.google.inject.Inject;
 import whosHome.common.dataProviders.ISensorConnectionsMetadataDao;
 import whosHome.common.models.SensorConnectionMetadata;
+import whosHome.common.models.SensorTypeMetadata;
 import whosHome.common.sensors.client.ISensorConnection;
 import whosHome.whosHomeApp.engine.sensors.builders.LanSensorConnectionBuilder;
 import whosHome.whosHomeApp.engine.sensors.builders.SensorConnectionInstatiationException;
@@ -17,7 +18,6 @@ import java.util.stream.Collectors;
 public class SensorConnectionsFactory implements ISensorConnectionsFactory {
     private static final String NO_SUCH_CONNECTION = "Could not find a data record for connection with id %d";
     private static final String NO_BUILDER_SPECIFIED = "No builder specified for connection type '%s' (%d)";
-    private static final int LAN_SENSOR_TYPE_ID = 1;
 
     private Map<Integer, Function<SensorConnectionMetadata, ISensorConnection>> _builders;
     private ISensorConnectionsMetadataDao _connectionsMetadataDao;
@@ -28,6 +28,11 @@ public class SensorConnectionsFactory implements ISensorConnectionsFactory {
         _connectionsMetadataDao = connectionsMetadataDao;
 
         fillBuilders();
+    }
+
+    public SensorConnectionsFactory(ISensorConnectionsMetadataDao connectionsMetadataDao, Map<Integer, Function<SensorConnectionMetadata, ISensorConnection>>  builders) {
+        _builders = builders;
+        _connectionsMetadataDao = connectionsMetadataDao;
     }
 
     @Override
