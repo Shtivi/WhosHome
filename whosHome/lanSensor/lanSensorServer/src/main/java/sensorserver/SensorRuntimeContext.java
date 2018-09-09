@@ -14,13 +14,15 @@ public class SensorRuntimeContext {
     private ISensorService _server;
     private Environment _Environment;
     private CommandLine _cmd;
+    private boolean _simulationMode;
 
-    public SensorRuntimeContext(Config config, Engine engine, ISensorService service, Environment environment, CommandLine cmd) {
+    public SensorRuntimeContext(Config config, Engine engine, ISensorService service, Environment environment, boolean simulationMode, CommandLine cmd) {
         this.setConfig(config);
         this.setEngine(engine);
         this.setServer(service);
         this._Environment = environment;
         this._cmd = cmd;
+        this._simulationMode = simulationMode;
     }
 
     public Config getConfig() {
@@ -42,6 +44,10 @@ public class SensorRuntimeContext {
     public void start() {
         this._engine.start();
         this._server.start();
+    }
+
+    public boolean simulationMode () {
+        return _simulationMode;
     }
 
     public void shutdown() throws Exception {

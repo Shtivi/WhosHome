@@ -49,11 +49,14 @@ public class Main {
 
         SensorRuntimeContext.Environment environment =
                 SensorRuntimeContext.Environment.valueOf(cli.getOptionValue("environment").toUpperCase());
+        boolean simulationMode = cli.hasOption("simulation");
         String operatingSystem = cli.getOptionValue("os");
+        if (simulationMode)
+            logger.info("###   SIMULATION MODE   ###");
         logger.info("environment: " + environment);
         logger.info("operating system configuration: " + operatingSystem);
 
-        Injector injector = Guice.createInjector(new SensorSeverModule(config, environment, operatingSystem));
+        Injector injector = Guice.createInjector(new SensorSeverModule(config, environment, operatingSystem, simulationMode));
 
         // Tasks & workers managers
         int pingTimeout = config.getInt("network.ping-timeout");
@@ -85,7 +88,7 @@ public class Main {
         server.onClientConnection().listen(Main::clientConnectionHook);
 
         // Create the context object
-        context = new SensorRuntimeContext(config, engine, server, environment, cli);
+        context = new SensorRuntimeContext(config, engine, server, environment, simulationMode, cli);
         commandExecutor = new CommandsManager(context);
         server.onMessageReceived().listen(Main::commandsHandler);
 
@@ -150,10 +153,16 @@ public class Main {
                 .desc("Set the operation system name you are currently running [windows / linux]")
                 .hasArg()
                 .build();
+        Option simulationOption = Option.builder("simulation")
+                .desc("Run as simulation")
+                .hasArg(false)
+                .required(false)
+                .build();
 
         Options cliOptions = new Options()
                 .addOption(environmentOption)
-                .addOption(osOption);
+                .addOption(osOption)
+                .addOption(simulationOption);
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(cliOptions, args);

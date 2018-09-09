@@ -3,6 +3,7 @@ package whosHome.whosHomeApp.engine.sensors;
 import com.google.inject.Inject;
 import whosHome.common.dataProviders.ISensorConnectionsMetadataDao;
 import whosHome.common.models.SensorConnectionMetadata;
+import whosHome.common.models.SensorTypeMetadata;
 import whosHome.common.sensors.client.ISensorConnection;
 import whosHome.whosHomeApp.engine.sensors.builders.LanSensorConnectionBuilder;
 import whosHome.whosHomeApp.engine.sensors.builders.SensorConnectionInstatiationException;
@@ -27,6 +28,11 @@ public class SensorConnectionsFactory implements ISensorConnectionsFactory {
         _connectionsMetadataDao = connectionsMetadataDao;
 
         fillBuilders();
+    }
+
+    public SensorConnectionsFactory(ISensorConnectionsMetadataDao connectionsMetadataDao, Map<Integer, Function<SensorConnectionMetadata, ISensorConnection>>  builders) {
+        _builders = builders;
+        _connectionsMetadataDao = connectionsMetadataDao;
     }
 
     @Override

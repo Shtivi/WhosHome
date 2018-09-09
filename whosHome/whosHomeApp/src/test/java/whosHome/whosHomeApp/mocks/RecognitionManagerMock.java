@@ -10,22 +10,19 @@ import java.util.Date;
 import java.util.Optional;
 
 public class RecognitionManagerMock {
-    public static final Person P_1 = new Person();
-    public static final Person P_2 = new Person();
+    public static final Person P_1 = new Person
+            .Builder("Ido", "Shtivi")
+            .withID("1")
+            .withInsertionDate(new Date())
+            .withFacebookID("777")
+            .withPhoneNo("111-2223334")
+            .build();
 
-    static {
-        P_1.setID("1");
-        P_1.setFirstname("Ido");
-        P_1.setLastname("Shtivi");
-        P_1.setPhoneNo("054-1111111");
-        P_1.setFacebookID("777");
-        P_1.setInsertionDate(new Date());
-
-        P_2.setID("2");
-        P_2.setFirstname("aaa");
-        P_2.setLastname("AAA");
-        P_2.setInsertionDate(new Date());
-    }
+    public static final Person P_2 = new Person
+            .Builder("XXX", "xxx")
+            .withID("2")
+            .withInsertionDate(new Date())
+            .build();
 
     public static PeopleRecognitionManager createMock() {
         PeopleRecognitionManager mock = mock(PeopleRecognitionManager.class);

@@ -13,10 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class SensorConnectionMock implements ISensorConnection<IdentificationDataMock> {
     private SensorConnectionState _status;
@@ -40,7 +38,6 @@ public class SensorConnectionMock implements ISensorConnection<IdentificationDat
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    //startEventsGeneration();
                     setStatus(SensorConnectionState.CONNECTED, "connection established");
                 }
             }, 10);
@@ -51,12 +48,6 @@ public class SensorConnectionMock implements ISensorConnection<IdentificationDat
     public void disconnect() {
         if (_status == SensorConnectionState.CONNECTED) {
             setStatus(SensorConnectionState.CLOSED, "disconnected according to user request");
-//            try {
-//                stopEventsGeneration();
-//                setStatus(SensorConnectionState.CLOSED, "disconnected according to user request");
-//            } catch (InterruptedException e) {
-//                setStatus(SensorConnectionState.ERROR, e.getMessage());
-//            }
         } else {
             throw new InvalidOperationException("status is '" + _status.name() + "', expected: '" + SensorConnectionState.CONNECTED.name() + "'");
         }
@@ -93,20 +84,5 @@ public class SensorConnectionMock implements ISensorConnection<IdentificationDat
         StatusChangeEventArgs args = new StatusChangeEventArgs(_status, newStatus, reason, getConnectionMetadata());
         _status = newStatus;
         _listeners.forEach(listener -> listener.onStatusChange(args));
-    }
-
-    protected void startEventsGeneration() {
-        _scanningEventsDispatcher.scheduleAtFixedRate(this::dispatchRandomDetection, 500, 500, TimeUnit.MILLISECONDS);
-    }
-
-    protected void stopEventsGeneration() throws InterruptedException {
-        _scanningEventsDispatcher.shutdown();
-        if (!_scanningEventsDispatcher.awaitTermination(500, TimeUnit.MILLISECONDS)) {
-            _scanningEventsDispatcher.shutdownNow();
-        }
-    }
-
-    protected void dispatchRandomDetection() {
-
     }
 }

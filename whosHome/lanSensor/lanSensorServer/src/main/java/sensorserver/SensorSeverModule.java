@@ -25,16 +25,22 @@ import sensorserver.utils.HibernateUtils;
 import sensorserver.utils.mocks.ArpTableMock;
 import sensorserver.utils.mocks.VendorsProviderMock;
 import sensorserver.utils.mocks.WorkersFactoryMock;
+import sensorserver.utils.mocks.simulation.ArpTableSimulation;
+import sensorserver.utils.mocks.simulation.WorkersFactorySimulation;
+
+import java.util.List;
 
 public class SensorSeverModule extends AbstractModule {
     private Config _config;
     private SensorRuntimeContext.Environment _environment;
     private String _operatingSystem;
+    private boolean _simulationMode;
 
-    public SensorSeverModule(Config config, SensorRuntimeContext.Environment environment, String opeartingSystem) {
+    public SensorSeverModule(Config config, SensorRuntimeContext.Environment environment, String opeartingSystem, boolean simulationMode) {
         _config = config;
         _environment = environment;
         _operatingSystem = opeartingSystem;
+        _simulationMode = simulationMode;
     }
 
     @Override
@@ -78,17 +84,35 @@ public class SensorSeverModule extends AbstractModule {
         bind(new TypeLiteral<ICache>(){}).to(new TypeLiteral<MemoryCache>(){});
     }
 
+    private void initializeSimulation() {
+        bind(new TypeLiteral<List<String>>(){})
+                .annotatedWith(Names.named("macAddressesSimulation"))
+                .toInstance(_config.getStringList("simulation.macAddresses"));
+        bind(ArpTable.class).to(ArpTableSimulation.class);
+        bind(IWorkersFactory.class).to(WorkersFactoryMock.class);
+    }
+
     private void initializeDebug() {
         bind(new TypeLiteral<ICache<String, Vendor>>(){}).to(new TypeLiteral<MemoryCache<String, Vendor>>(){});
-        bind(ArpTable.class).to(ArpTableMock.class);
         bind(IVendorsProvider.class).to(VendorsProviderMock.class);
-        bind(IWorkersFactory.class).to(WorkersFactoryMock.class);
+
+        if (_simulationMode) {
+            initializeSimulation();
+        } else {
+            bind(ArpTable.class).to(ArpTableMock.class);
+            bind(IWorkersFactory.class).to(WorkersFactoryMock.class);
+        }
     }
 
     private void initializeProd() {
         bind(new TypeLiteral<ICache<String, Vendor>>(){}).to(new TypeLiteral<DaoCache<String, Vendor>>(){});
         bind(IVendorsDao.class).to(MysqlVendorsDao.class);
         bind(IVendorsProvider.class).to(Mac2VendorProvider.class);
-        bind(IWorkersFactory.class).to(WorkersFactory.class);
+
+        if (_simulationMode) {
+            initializeSimulation();
+        } else {
+            bind(IWorkersFactory.class).to(WorkersFactory.class);
+        }
     }
 }
