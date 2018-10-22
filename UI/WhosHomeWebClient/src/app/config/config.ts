@@ -14,5 +14,11 @@ export default {
             "fetchAllSensors": "",
             "toggleSensor": "toggle"
         }
+    },
+    "presenceData": {
+        "endpoint": "http://localhost:9000/api/presence",
+        "api": {
+            "fetchAllPeoplePresenceData": ""
+        }
     }
 }

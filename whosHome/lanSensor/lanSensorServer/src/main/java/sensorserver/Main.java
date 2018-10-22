@@ -60,7 +60,13 @@ public class Main {
 
         // Tasks & workers managers
         int pingTimeout = config.getInt("network.ping-timeout");
-        ITasksSupplier<ScanningTask> tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);
+        ITasksSupplier<ScanningTask> tasksSupplier = null;
+        if (simulationMode) {
+            // TODO: 10/19/2018 REFACTOR!!! SHOULD COME FROM CONFIGURAION
+             tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(5), pingTimeout);
+        } else {
+            tasksSupplier = new NetScanTasksSupplier(NetworkUtils.getLanIpsList(), pingTimeout);
+        }
 
         // Lan entities holder
         IEntitiesHolder<LanEntity> entitiesHolder = injector.getInstance(IEntitiesHolder.class);

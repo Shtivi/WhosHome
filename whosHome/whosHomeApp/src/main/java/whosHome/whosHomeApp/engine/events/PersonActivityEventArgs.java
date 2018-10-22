@@ -8,6 +8,7 @@ public class PersonActivityEventArgs {
     private Person _subject;
     private double _presenceChances;
 
+
     public PersonActivityEventArgs(ActivityDetectionEventArgs activityDetails, Person subject, double presenceChances) {
         _activityDetails = activityDetails;
         _subject = subject;

@@ -16,7 +16,7 @@ public class ArpTableSimulation extends ArpTable {
     private static Map<String, String> generateIpToMacMapping(List<String> ipAddresses, List<String> macAddresses) {
         HashMap<String, String> mapping = new HashMap<>();
 
-        int runUntil = ipAddresses.size() < macAddresses.size() ? ipAddresses.size() : macAddresses.size();
+        int runUntil = Math.min(ipAddresses.size(), macAddresses.size());
         for (int index = 0; index < runUntil; index++) {
             mapping.put(ipAddresses.get(index), macAddresses.get(index));
         }
@@ -42,13 +42,13 @@ public class ArpTableSimulation extends ArpTable {
 
         _random = new Random();
         _macAddresses = macAddresses;
-        _ipToMacMapping = generateIpToMacMapping(NetworkUtils.getLanIpsList(), macAddresses);
+        _ipToMacMapping = generateIpToMacMapping(NetworkUtils.getLanIpsList(5), macAddresses);
     }
 
     @Override
     public void refresh() {
         super._entries.clear();
-        List<String> ips = NetworkUtils.getLanIpsList();
+        Set<String> ips = this._ipToMacMapping.keySet();
 
         ips.forEach(ip -> {
             if (_random.nextBoolean()) {

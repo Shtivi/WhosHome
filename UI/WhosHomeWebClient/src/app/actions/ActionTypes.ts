@@ -14,6 +14,9 @@ export enum ActionTypes {
     /** Sensors */
     TOGGLE_SENSOR = "TOGGLE_SENSOR",
     FETCH_SENSORS = "FETCH_SENSORS",
+
+    /** Presence */
+    FETCH_PRESENCE_DATA = "FETCH_PRESENCE_DATA"
 }
 
 export enum AsyncStatus {

@@ -1,0 +1,1 @@
+{"version":3,"file":"RootReducer.js","sourceRoot":"","sources":["../../src/app/reducers/RootReducer.ts"],"names":[],"mappings":";;AAAA,+BAAwC;AACxC,uEAAkE;AAClE,mDAA8C;AAC9C,qDAAgD;AAEhD,IAAM,WAAW,GAAG,uBAAe,CAAC;IAChC,IAAI,EAAE,kCAAwB;IAC9B,OAAO,EAAE,wBAAc;IACvB,QAAQ,EAAE,yBAAe;CAC5B,CAAC,CAAA;AAEF,kBAAe,WAAW,CAAC"}

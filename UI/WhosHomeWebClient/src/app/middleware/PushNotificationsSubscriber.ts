@@ -13,6 +13,7 @@ import SensorError from "../models/eventArgs/SensorError";
 import EngineStatusChanged from "../models/eventArgs/EngineStatusChanged";
 import PushNotification, { NotificationType } from "../models/PushNotification";
 import config from '../config/config'
+import PersonActivityEventArgs from "../models/eventArgs/PersonActivityEventArgs";
 
 let client: Stomp.Client = null;
 let dispatch: Dispatch = null;
@@ -53,8 +54,8 @@ const handleConnection = () => {
     })
 
     client.subscribe(config.push.topics.peopleDetection, (message: Stomp.Message) => {
-        // console.warn('implement a subscriber for people detection!');
-        console.log(message.body);
+        let eventArgs: PersonActivityEventArgs = <PersonActivityEventArgs>(JSON.parse(message.body));
+        dispatch(pushReceived(PushNotification.of(NotificationType.ACTIVITY_DETECTION, eventArgs)));
     })
 
     dispatch(pushNotificationsSubscribed());

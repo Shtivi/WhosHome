@@ -32,7 +32,6 @@ const handlePush = (currentState: SensorsState, notification: PushNotification<a
             let updatedState = {...currentState};
             updatedState.sensors[payload.sensorConnectionMetadata.sensorConnectionID].status = payload.newStatus;
             return updatedState;
-            break;
         case NotificationType.SENSOR_ERROR: 
             console.warn(notification);
             break;

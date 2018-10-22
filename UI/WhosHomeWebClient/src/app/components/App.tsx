@@ -11,6 +11,8 @@ import { withStyles, createStyles, WithStyles } from '@material-ui/core/styles';
 import { Dispatch, Action } from "redux";
 import { connect } from 'react-redux'
 import { subscribePushNotifications } from "../actions/PushNotificationsActionCreators";
+import PresencePage from "./PresencePage";
+import NotificationsPage from "./NotificationsPage";
 
 const styles = (theme: Theme) => createStyles({
   root: {
@@ -39,6 +41,8 @@ class App extends React.Component<Props> {
         <div className={classes.root}>
             <StatusBar />
             <Route exact path='/sensors' component={() => <SensorsPage />} />
+            <Route exact path='/' component={() => <PresencePage />} />
+            <Route exact path='/notifications' component={() => <NotificationsPage />}/>
             <NavMenu />
         </div>
       </MuiThemeProvider>

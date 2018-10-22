@@ -13,7 +13,7 @@ import { subscribePushNotifications, unsubsribePushNotifications } from "../acti
 import { connect } from 'react-redux'
 import { withStyles, createStyles, WithStyles, Theme } from '@material-ui/core/styles';
 import Zoom from '@material-ui/core/Zoom';
-import Snackbar from '@material-ui/core/Snackbar';
+import { RouteComponentProps, withRouter } from "react-router";
 
 const styles = (theme: Theme) => createStyles({
     margin: {
@@ -21,7 +21,7 @@ const styles = (theme: Theme) => createStyles({
     }    
 })
 
-interface PushNotificationsProps extends WithStyles<typeof styles> {
+interface PushNotificationsProps extends WithStyles<typeof styles>, RouteComponentProps<any> {
     pushState: PushNotificationsState
     dispatch: Dispatch<Action>
 }
@@ -31,7 +31,8 @@ class PushNotifications extends React.Component<PushNotificationsProps> {
         let { pushState } = this.props;
         switch (pushState.connectionStatus) {
             case PushConnectionStatus.CONNECTED:
-                return <SvgIcon style={{fontSize: '32px'}} onClick={() => this.props.dispatch(unsubsribePushNotifications())}><Notifications></Notifications></SvgIcon>
+                // return <SvgIcon style={{fontSize: '32px'}} onClick={() => this.props.dispatch(unsubsribePushNotifications())}><Notifications></Notifications></SvgIcon>
+                return <SvgIcon style={{fontSize: '32px'}} onClick={() => this.props.history.push('/notifications')}><Notifications></Notifications></SvgIcon>
             case PushConnectionStatus.CONNECTING:
                 return <CircularProgress />
             case PushConnectionStatus.DISCONNECTED:
@@ -59,10 +60,6 @@ class PushNotifications extends React.Component<PushNotificationsProps> {
                     ) :
                     (
                         <IconButton>{icon}</IconButton>
-                        // (pushState.connectionStatus == PushConnectionStatus.ERROR) ? 
-                        // (
-                        //     <Snackbar open={false} anchorOrigin={{vertical: 'top', horizontal: 'left'}} message={pushState.error} />
-                        // ) 
                     )
         );  
     }
@@ -77,4 +74,4 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
     dispatch: dispatch
 })
 
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(PushNotifications));
+export default withStyles(styles)(withRouter(connect(mapStateToProps, mapDispatchToProps)(PushNotifications)));

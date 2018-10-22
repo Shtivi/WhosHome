@@ -1,5 +1,6 @@
 package whosHome.common.sensors.client.events;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import whosHome.common.events.AbstractEventArgs;
 import whosHome.common.models.SensorConnectionMetadata;
 import whosHome.common.sensors.client.IdentificationData;
@@ -22,6 +23,7 @@ public class ActivityDetectionEventArgs<T extends IdentificationData> extends Ab
         _connectionMetadata = connectionMetadata;
     }
 
+    @JsonProperty
     public Type activityType() {
         return _eventType;
     }

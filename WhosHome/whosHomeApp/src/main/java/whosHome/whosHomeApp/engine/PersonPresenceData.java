@@ -1,5 +1,6 @@
 package whosHome.whosHomeApp.engine;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import whosHome.common.sensors.client.events.ActivityDetectionEventArgs;
 import whosHome.whosHomeApp.models.Person;
 
@@ -7,6 +8,10 @@ import java.time.Instant;
 import java.util.*;
 
 public class PersonPresenceData implements Iterable<ActivityDetectionEventArgs> {
+    public static PersonPresenceData of(Person person) {
+        return new PersonPresenceData(person);
+    }
+
     private Person _person;
     private List<ActivityDetectionEventArgs> _personActivities;
     private double _presenceChances;
@@ -25,10 +30,6 @@ public class PersonPresenceData implements Iterable<ActivityDetectionEventArgs> 
 
     public PersonPresenceData(Person person) {
         this(person, new ArrayList<>());
-    }
-
-    public static PersonPresenceData of(Person person) {
-        return new PersonPresenceData(person);
     }
 
     public PersonPresenceData addActivity(ActivityDetectionEventArgs activityDetails) {
@@ -50,12 +51,25 @@ public class PersonPresenceData implements Iterable<ActivityDetectionEventArgs> 
      * Each activity refers to the sensor detected it, and each sensor type has it's reliability factor.
      * @return The chances that the subject is currently present, as a number between 0 and 10.
      */
+    @JsonProperty
     public double presenceChances() {
         return _presenceChances;
     }
 
+    @JsonProperty
     public Date lastUpdateTime() {
         return Date.from(_lastUpdateTime);
+    }
+
+    @JsonProperty(value = "personActivities")
+    @Override
+    public Iterator<ActivityDetectionEventArgs> iterator() {
+        return _personActivities.iterator();
+    }
+
+    @JsonProperty
+    public Person getPerson() {
+        return this._person;
     }
 
     private double calculatePresenceChances() {
@@ -70,10 +84,5 @@ public class PersonPresenceData implements Iterable<ActivityDetectionEventArgs> 
                 })
                 .average()
                 .orElse(0);
-    }
-
-    @Override
-    public Iterator<ActivityDetectionEventArgs> iterator() {
-        return _personActivities.iterator();
     }
 }

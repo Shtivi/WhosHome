@@ -1,0 +1,1 @@
+{"version":3,"file":"AbstractEventArgs.js","sourceRoot":"","sources":["../../../src/app/models/eventArgs/AbstractEventArgs.ts"],"names":[],"mappings":";;AAAA;IAGI,2BAAmB,IAAW;QAC1B,IAAI,CAAC,IAAI,GAAG,IAAI,IAAI,IAAI,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,IAAI,IAAI,EAAE,CAAC;IACjD,CAAC;IACL,wBAAC;AAAD,CAAC,AAND,IAMC"}

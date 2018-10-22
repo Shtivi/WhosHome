@@ -11,7 +11,7 @@ import java.util.Random;
 public class NetScannerMock extends NetScanner {
     private static final int MAX_DELAY_MS = 7000;
     private static final int MIN_DELAY_MS = 2500;
-    private static final float DEVICE_AVAILABILITY_PROBABILITY = 0.05f;
+    private static final float DEVICE_AVAILABILITY_PROBABILITY = 0.15f;
     private Random _random;
 
     public NetScannerMock(IScannerListener listener, ScanningTask task) {
