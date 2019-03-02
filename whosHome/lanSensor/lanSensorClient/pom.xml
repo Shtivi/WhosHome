@@ -25,7 +25,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>lanSensorClient.Main</mainClass>
+                                    <mainClass>sensorclient.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

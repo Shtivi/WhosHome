@@ -21,7 +21,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>lanSensorClient.Main</mainClass>
+                  <mainClass>sensorclient.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
