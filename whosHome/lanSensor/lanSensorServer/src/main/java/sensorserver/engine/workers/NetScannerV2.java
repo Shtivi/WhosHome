@@ -1,0 +1,66 @@
+package sensorserver.engine.workers;
+
+import org.apache.commons.lang.time.StopWatch;
+import sensorserver.engine.tasks.ScanningTask;
+import sensorserver.engine.tasks.ScanningTaskResult;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.util.Date;
+
+public class NetScannerV2 implements Runnable {
+    protected IScannerListener _listener;
+    protected ScanningTask _task;
+
+    private static boolean testIpAvailability(String address, int timeout) {
+        try {
+            try (Socket crunchifySocket = new Socket()) {
+                crunchifySocket.connect(new InetSocketAddress(address, 7), timeout);
+            }
+            return true;
+        } catch (IOException exception) {
+            return false;
+        }
+    }
+
+    public NetScannerV2(IScannerListener listener, ScanningTask task) {
+        if (listener == null) {
+            throw new IllegalArgumentException("listener cannot be null");
+        }
+
+        if (task == null) {
+            throw new IllegalArgumentException("task parameter cannot be null");
+        }
+
+        _task = task;
+        _listener = listener;
+    }
+
+    @Override
+    public void run() {
+        _listener.onScanStarted(this, _task);
+        try {
+            InetAddress ipAddr = InetAddress.getByName(this._task.getIP());
+            String hostname = ipAddr.getHostName();
+
+            StopWatch stopper = new StopWatch();
+            stopper.start();
+            boolean availabilityTest = testIpAvailability(this._task.getIP(), this._task.getTimeout());
+
+            stopper.stop();
+            ScanningTaskResult scanResult = new ScanningTaskResult(
+                    new Date(stopper.getStartTime()),
+                    stopper.getTime(),
+                    this._task.getIP(),
+                    hostname,
+                    availabilityTest
+            );
+
+            _listener.onScanCompleted(this, _task, scanResult);
+        } catch (Exception e) {
+            _listener.onScanFailed(this, _task, e);
+        }
+    }
+}
