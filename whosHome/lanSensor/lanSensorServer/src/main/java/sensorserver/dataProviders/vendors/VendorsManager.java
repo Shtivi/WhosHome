@@ -11,8 +11,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import static com.sun.imageio.plugins.jpeg.JPEG.vendor;
-
 public class VendorsManager {
     private Logger _logger;
     private IVendorsProvider _vendorsProvider;
@@ -40,9 +38,8 @@ public class VendorsManager {
                 String vendorName = promisedVendor.get();
                 Vendor vendor = new Vendor(macPrefix, vendorName);
                 _cache.cache(vendor);
+                promise.complete(vendor.getName());
             }
-
-            promise.complete(vendor);
         } catch (ExecutionException e) {
             if (e.getCause() instanceof MacAddressException) {
                 promise.complete(e.getCause().getMessage());

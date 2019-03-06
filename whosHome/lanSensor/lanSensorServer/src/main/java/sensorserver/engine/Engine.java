@@ -174,7 +174,7 @@ public class Engine {
 
             LanEntity.LanEntityBuilder entityBuilder = new LanEntity.LanEntityBuilder(result.getIP(), result.getHostname());
 
-            if (result.isAvailable() || _arpTable.contains(result.getIP())) {
+            if (result.isAvailable()) {
                 _arpTable.onceDetected(result.getIP(), (mac) -> {
                     entityBuilder.setMAC(mac);
                     String vendor = null;

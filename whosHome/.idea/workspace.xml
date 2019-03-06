@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df93eb29-d04f-44a4-9e70-271c20319e4a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/NetScannerV2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -17,7 +22,6 @@
     <ignored path="$PROJECT_DIR$/lanSensor/lanSensorClient/target/" />
     <ignored path="$PROJECT_DIR$/lanSensor/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,29 +34,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="171" column="27" selection-start-line="171" selection-start-column="27" selection-end-line="171" selection-end-column="27" />
+            <state relative-caret-position="114">
+              <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NetScanner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/NetScanner.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetScannerV2.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/NetScannerV2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="49" column="103" selection-start-line="49" selection-start-column="103" selection-end-line="49" selection-end-column="103" />
+            <state relative-caret-position="44">
+              <caret line="32" column="51" lean-forward="true" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,41 +55,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScanningWorkersContractor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/ScanningWorkersContractor.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="119">
+              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkersFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SensorService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/server/SensorService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PersonPresenceData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/PersonPresenceData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-200">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="454">
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
             </state>
           </provider>
         </entry>
@@ -153,9 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/infra/MvcConfig.java" />
-        <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/public/index.html" />
-        <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/IRecognizer.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/RestResponseEntityExceptionHandler.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/controllers/NotificationsController.java" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/IEngineListener.java" />
@@ -200,10 +171,13 @@
         <option value="$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/events/ActivityDetectionEventArgs.java" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorClient/pom.xml" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/application.prod.properties" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/NetScannerV2.java" />
+        <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java" />
+        <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java" />
+        <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java" />
+        <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf" />
       </list>
     </option>
   </component>
@@ -248,74 +222,61 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="sensorserver" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sensorserver" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
               <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
@@ -323,86 +284,14 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sensorserver" type="462c0819:PsiDirectoryNode" />
               <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="workers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
-              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whosHome" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whosHome" type="462c0819:PsiDirectoryNode" />
-              <item name="whosHomeApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -411,7 +300,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -440,45 +329,69 @@
       <module name="lanSensorClient" />
       <option name="PROGRAM_PARAMETERS" value="ws://localhost:6000" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="[LanSensorServer] Debug" type="Application" factoryName="Application" folderName="LanSensor">
       <option name="MAIN_CLASS_NAME" value="sensorserver.Main" />
       <module name="lanSensorServer" />
       <option name="PROGRAM_PARAMETERS" value="-environment debug -os windows" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="[LanSensorServer] Prod (Windows)" type="Application" factoryName="Application" folderName="LanSensor">
       <option name="MAIN_CLASS_NAME" value="sensorserver.Main" />
       <module name="lanSensorServer" />
       <option name="PROGRAM_PARAMETERS" value="-environment prod -os windows" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="[LanSensorServer] Prod (linux)" type="Application" factoryName="Application" folderName="LanSensor">
       <option name="MAIN_CLASS_NAME" value="sensorserver.Main" />
       <module name="lanSensorServer" />
       <option name="PROGRAM_PARAMETERS" value="-environment prod -os linux" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="[LanSensorServer] Simulation" type="Application" factoryName="Application" folderName="LanSensor">
       <option name="MAIN_CLASS_NAME" value="sensorserver.Main" />
       <module name="lanSensorServer" />
       <option name="PROGRAM_PARAMETERS" value="-environment debug -os windows -simulation" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="[WhosHomeApp] Debug" type="Application" factoryName="Application" folderName="WhosHomeApp">
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.Application" />
       <module name="whosHomeApp" />
       <option name="PROGRAM_PARAMETERS" value="--environment=debug" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="[WhosHomeApp] Prod" type="Application" factoryName="Application" folderName="WhosHomeApp">
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.Application" />
       <module name="whosHomeApp" />
       <option name="PROGRAM_PARAMETERS" value="--environment=prod" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="PersonPresenceDataTesting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="whosHomeApp" />
@@ -488,20 +401,12 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="whosHome.whosHomeApp.engine" />
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.engine.PersonPresenceDataTesting" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="WhosHomeEngineTesting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="whosHomeApp" />
@@ -511,20 +416,12 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="whosHome.whosHomeApp.engine" />
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.engine.WhosHomeEngineTesting" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="WhosHomeEngineTesting.onActivityDetection_multipleActivitiesAndRecognized_shouldDispatchEventsNormally" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="whosHomeApp" />
@@ -534,20 +431,14 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="whosHome.whosHomeApp.engine" />
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.engine.WhosHomeEngineTesting" />
       <option name="METHOD_NAME" value="onActivityDetection_multipleActivitiesAndRecognized_shouldDispatchEventsNormally" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="WhosHomeEngineTesting.onActivityDetection_singleActivityAndRecognized_shouldDispatchEventNormally" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="whosHomeApp" />
@@ -557,20 +448,14 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="whosHome.whosHomeApp.engine" />
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.engine.WhosHomeEngineTesting" />
       <option name="METHOD_NAME" value="onActivityDetection_singleActivityAndRecognized_shouldDispatchEventNormally" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="WhosHomeEngineTesting.stop_normalState_shouldDisconnectAllConnectedSensors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="whosHomeApp" />
@@ -580,58 +465,28 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="whosHome.whosHomeApp.engine" />
       <option name="MAIN_CLASS_NAME" value="whosHome.whosHomeApp.engine.WhosHomeEngineTesting" />
       <option name="METHOD_NAME" value="stop_normalState_shouldDisconnectAllConnectedSensors" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
+    <configuration default="true" type="TestNG">
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.[LanSensorServer] Debug" />
@@ -712,37 +567,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="bottom" id="TODO" order="9" weight="0.32965517" />
-      <window_info active="true" anchor="bottom" id="Messages" order="3" visible="true" weight="0.3267974" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="1" weight="0.32916668" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32943678" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.5206972" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" x="57" y="64" width="384" height="725" id="Project" order="6" visible="true" weight="0.20788912" />
-      <window_info id="Learn" order="2" />
-      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info id="Learn" order="2" />
+      <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.63071895" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3294271" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info id="Image Layers" order="5" />
+      <window_info content_ui="combo" x="57" y="64" width="384" height="725" id="Project" order="6" visible="true" weight="0.18947369" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32943678" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.3250444" />
       <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32943678" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.5206972" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.32965517" />
+      <window_info active="true" anchor="bottom" id="Debug" order="10" visible="true" weight="0.6305506" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Maven Projects" order="1" weight="0.32916668" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3294271" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -770,9 +625,20 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -784,7 +650,6 @@
           <option name="timeStamp" value="166" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="169" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -870,13 +735,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorClient/src/main/java/sensorclient/entities/LanEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whosHomeCommon/src/main/java/whosHome/common/sensors/client/IdentificationData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-147">
@@ -891,13 +749,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/time/Instant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="731" column="25" selection-start-line="731" selection-start-column="17" selection-end-line="731" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/time/Instant.java" />
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/utils/mocks/ArpTableMock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-320">
@@ -1083,15 +935,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+        <state relative-caret-position="454">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
         </state>
       </provider>
     </entry>
@@ -1177,20 +1022,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="171" column="27" selection-start-line="171" selection-start-column="27" selection-end-line="171" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Runnable.java" />
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/IWorkersFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -1202,13 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1237,6 +1062,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="670">
           <caret line="49" column="103" selection-start-line="49" selection-start-column="103" selection-end-line="49" selection-end-column="103" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="32" column="51" lean-forward="true" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

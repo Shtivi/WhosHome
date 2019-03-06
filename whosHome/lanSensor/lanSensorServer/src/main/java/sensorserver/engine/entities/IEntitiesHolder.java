@@ -8,7 +8,7 @@ import java.util.Collection;
 public interface IEntitiesHolder<T> {
     void add(T entity);
     void remove(T entity);
-    LanEntity getEntityById(Object id);
+    T getEntityById(Object id);
     Collection<T> getPresentEntities();
     Event<EntityEventArgs> entityIn();
     Event<EntityEventArgs> entityOut();
