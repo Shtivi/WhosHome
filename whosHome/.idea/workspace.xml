@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df93eb29-d04f-44a4-9e70-271c20319e4a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,17 +30,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
+            <state relative-caret-position="97">
+              <caret line="179" column="34" lean-forward="true" selection-start-line="179" selection-start-column="34" selection-end-line="179" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+              <folding>
+                <element signature="e#256#257#0" expanded="true" />
+                <element signature="e#311#312#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="32" column="51" lean-forward="true" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+            <state relative-caret-position="17">
+              <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -172,12 +178,12 @@
         <option value="$PROJECT_DIR$/lanSensor/lanSensorClient/pom.xml" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/whosHomeApp/src/main/resources/application.prod.properties" />
-        <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/NetScannerV2.java" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/entities/IEntitiesHolder.java" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java" />
         <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf" />
+        <option value="$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java" />
       </list>
     </option>
   </component>
@@ -285,6 +291,18 @@
               <item name="sensorserver" type="462c0819:PsiDirectoryNode" />
               <item name="engine" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WhosHome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WhosHome" type="462c0819:PsiDirectoryNode" />
+              <item name="lanSensor" type="462c0819:PsiDirectoryNode" />
+              <item name="lanSensorServer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sensorserver" type="462c0819:PsiDirectoryNode" />
+              <item name="engine" type="462c0819:PsiDirectoryNode" />
+              <item name="workers" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -323,12 +341,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.[LanSensorServer] Prod (Windows)">
+  <component name="RunManager" selected="Application.[LanSensorClient] Run">
     <configuration name="[LanSensorClient] Run" type="Application" factoryName="Application" folderName="LanSensor">
       <option name="MAIN_CLASS_NAME" value="sensorclient.Main" />
       <module name="lanSensorClient" />
-      <option name="PROGRAM_PARAMETERS" value="ws://localhost:6000" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="PROGRAM_PARAMETERS" value="ws://192.168.1.200:6000" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -576,7 +593,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
-      <window_info content_ui="combo" x="57" y="64" width="384" height="725" id="Project" order="6" visible="true" weight="0.18947369" />
+      <window_info active="true" content_ui="combo" x="57" y="64" width="384" height="725" id="Project" order="6" visible="true" weight="0.25263157" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -584,11 +601,11 @@
       <window_info anchor="bottom" id="Messages" order="3" weight="0.3250444" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32943678" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.5206972" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.5204263" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.32965517" />
-      <window_info active="true" anchor="bottom" id="Debug" order="10" visible="true" weight="0.6305506" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.6305506" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Maven Projects" order="1" weight="0.32916668" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -655,7 +672,6 @@
       <configuration name="Application">
         <watch expression="cli.getOptionValue(&quot;environment&quot;)" language="JAVA" />
         <watch expression="_config.getStringList(&quot;simulation.macAddresses&quot;)" language="JAVA" />
-        <watch expression="_apiUrl + _peopleApiPath + &quot;/&quot; + id" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -933,13 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whosHomeApp/src/main/java/whosHome/whosHomeApp/engine/recognition/DevicesRecognizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -1051,13 +1060,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/NetScannerV2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="670">
@@ -1075,13 +1077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/resources/application.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1091,10 +1086,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/dataProviders/vendors/VendorsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="32" column="51" lean-forward="true" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+        <state relative-caret-position="17">
+          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="179" column="34" lean-forward="true" selection-start-line="179" selection-start-column="34" selection-end-line="179" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lanSensor/lanSensorServer/src/main/java/sensorserver/engine/workers/WorkersFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding>
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#311#312#0" expanded="true" />
           </folding>
         </state>
       </provider>
